@@ -1,0 +1,99 @@
+{
+  "video_id": 6,
+  "filename": "6_Early_mask_removal.mp4",
+  "title": "Early Mask Removal",
+  "duration_s": 10.0,
+  "technical": {
+    "fps": 30.0,
+    "frame_count": 300,
+    "duration_s": 10.0,
+    "width": 1920,
+    "height": 1080,
+    "status": "default_no_cv2"
+  },
+  "topic": "Tips & Tricks",
+  "subtopic": "Sleep Continuity",
+  "clinical_tags": [
+    "early_removal",
+    "unconscious_removal",
+    "sleep_fragmentation"
+  ],
+  "biomarker_tags": [
+    "cpap_use_low"
+  ],
+  "symptom_tags": [
+    "waking_up_without_mask"
+  ],
+  "trigger_conditions": {
+    "CPAP_Use": "> 0",
+    "CPAP_Use_max": "< 4.0",
+    "CPAP_Presure90": "< 12.0"
+  },
+  "visual_summary": "Addresses taking mask off mid-night and tips to keep it on longer.",
+  "narration_summary": "If you wake up and find your mask off simply put it back on and restart the machine",
+  "whisper_audio_transcript": "",
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Illustrates waking up in middle of night and taking off mask."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Setting an alarm to re-fit mask or putting tape on headgear straps."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Extending therapy duration past 4-hour clinical threshold."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      5
+    ],
+    "can_precede": [
+      17,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_1_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "6_Early_mask_removal.en.vtt",
+      "full_narration": "If you wake up and find your mask off simply put it back on and restart the machine",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.500",
+          "text": "If you wake up and find your mask off"
+        },
+        {
+          "start": "00:00:03.500",
+          "end": "00:00:10.000",
+          "text": "simply put it back on and restart the machine"
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "6_Early_mask_removal.fr.vtt",
+      "full_narration": "Si vous vous réveillez et trouvez votre masque enlevé, remettez-le simplement et redémarrez la machine.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.500",
+          "text": "Si vous vous réveillez et trouvez votre masque enlevé,"
+        },
+        {
+          "start": "00:00:03.500",
+          "end": "00:00:10.000",
+          "text": "remettez-le simplement et redémarrez la machine."
+        }
+      ]
+    }
+  }
+}

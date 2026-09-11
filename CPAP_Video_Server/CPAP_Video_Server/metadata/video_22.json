@@ -1,0 +1,101 @@
+{
+  "video_id": 22,
+  "filename": "22_RadG_Low_oxygen_reading.mp4",
+  "title": "RadG - Low Oxygen Reading",
+  "duration_s": 10.0,
+  "technical": {
+    "fps": 30.0,
+    "frame_count": 300,
+    "duration_s": 10.0,
+    "width": 1920,
+    "height": 1080,
+    "status": "default_no_cv2"
+  },
+  "topic": "Wearable Biomarkers",
+  "subtopic": "Pulse Oximetry Alert (RadG)",
+  "clinical_tags": [
+    "radg",
+    "pulse_oximetry",
+    "spo2_low"
+  ],
+  "biomarker_tags": [
+    "radg_spo2_low"
+  ],
+  "symptom_tags": [
+    "cyanosis_risk",
+    "shortness_of_breath"
+  ],
+  "trigger_conditions": {
+    "RadG_SpO2": "< 88.0"
+  },
+  "visual_summary": "RadG medical pulse oximeter sensor showing low SpO2 percentage reading.",
+  "narration_summary": "Your oxygen reading was lower than expected. Wear your CPAP all night and contact your provider if low readings continue.",
+  "whisper_audio_transcript": "",
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "RadG bedside monitor showing SpO2 reading dropping below 88%."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Demonstrates continuous real-time blood oxygen monitoring."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Recommends verifying sensor placement and ensuring CPAP airflow."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      16
+    ],
+    "can_precede": [
+      15,
+      23
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_1_of_2",
+      "existing_plus_generated"
+    ]
+  },
+  "safety_level": "biomarker_alert",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "22_RadG_Low_oxygen_reading.en.vtt",
+      "full_narration": "Your oxygen reading was lower than expected. Wear your CPAP all night and contact your provider if low readings continue.",
+      "cues": [
+        {
+          "start": "00:00.000",
+          "end": "00:04.500",
+          "text": "Your oxygen reading was lower than expected."
+        },
+        {
+          "start": "00:04.700",
+          "end": "00:09.800",
+          "text": "Wear your CPAP all night and contact your provider if low readings continue."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "22_RadG_Low_oxygen_reading.fr.vtt",
+      "full_narration": "Votre taux d’oxygène était plus bas que prévu. Portez votre CPAP toute la nuit et contactez votre professionnel de santé si cela continue.",
+      "cues": [
+        {
+          "start": "00:00.000",
+          "end": "00:04.500",
+          "text": "Votre taux d’oxygène était plus bas que prévu."
+        },
+        {
+          "start": "00:04.700",
+          "end": "00:09.800",
+          "text": "Portez votre CPAP toute la nuit et contactez votre professionnel de santé si cela continue."
+        }
+      ]
+    }
+  }
+}

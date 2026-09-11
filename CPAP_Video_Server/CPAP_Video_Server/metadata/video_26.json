@@ -1,0 +1,99 @@
+{
+  "video_id": 26,
+  "filename": "26_SomnoArt_Sleep_architecture_changed.mp4",
+  "title": "SomnoArt - Sleep Architecture Changed",
+  "duration_s": 10.0,
+  "technical": {
+    "fps": 30.0,
+    "frame_count": 300,
+    "duration_s": 10.0,
+    "width": 1920,
+    "height": 1080,
+    "status": "default_no_cv2"
+  },
+  "topic": "Wearable Biomarkers",
+  "subtopic": "Sleep Staging & REM Reduction (SomnoArt)",
+  "clinical_tags": [
+    "somnoart",
+    "rem_reduction",
+    "deep_sleep_loss"
+  ],
+  "biomarker_tags": [
+    "somnoart_rem_low"
+  ],
+  "symptom_tags": [
+    "daytime_sleepiness",
+    "memory_fog"
+  ],
+  "trigger_conditions": {
+    "SomnoArt_REM_Pct": "< 12.0"
+  },
+  "visual_summary": "SomnoArt hypnogram chart showing reduced REM and slow-wave deep sleep stages.",
+  "narration_summary": "Your sleep pattern changed during the night. Use your CPAP all night and discuss ongoing changes with your provider.",
+  "whisper_audio_transcript": "",
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "SomnoArt clinical hypnogram showing absence of deep REM sleep cycles."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Explains how sleep apnea micro-arousals suppress restorative REM sleep."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Encourages consistent CPAP use to restore natural sleep architecture."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      6,
+      17,
+      24
+    ],
+    "can_precede": [
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_1_of_2"
+    ]
+  },
+  "safety_level": "biomarker_alert",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "26_SomnoArt_Sleep_architecture_changed.en.vtt",
+      "full_narration": "Your sleep pattern changed during the night. Use your CPAP all night and discuss ongoing changes with your provider.",
+      "cues": [
+        {
+          "start": "00:00.000",
+          "end": "00:04.800",
+          "text": "Your sleep pattern changed during the night."
+        },
+        {
+          "start": "00:05.000",
+          "end": "00:09.800",
+          "text": "Use your CPAP all night and discuss ongoing changes with your provider."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "26_SomnoArt_Sleep_architecture_changed.fr.vtt",
+      "full_narration": "Votre structure de sommeil a changé pendant la nuit. Utilisez votre CPAP toute la nuit et discutez de ces changements avec votre professionnel de santé.",
+      "cues": [
+        {
+          "start": "00:00.000",
+          "end": "00:04.800",
+          "text": "Votre structure de sommeil a changé pendant la nuit."
+        },
+        {
+          "start": "00:05.000",
+          "end": "00:09.800",
+          "text": "Utilisez votre CPAP toute la nuit et discutez de ces changements avec votre professionnel de santé."
+        }
+      ]
+    }
+  }
+}

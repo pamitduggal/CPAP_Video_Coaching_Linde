@@ -1,48 +1,48 @@
-# CPAP Just-in-Time Video Coaching — Raspberry Pi Edge Service
+# CPAP Just-in-Time Video Coaching: Raspberry Pi Edge Service
 
-FastAPI edge computing service deployed on the patient-side Raspberry Pi 5 node.  
-Developed in partnership between **DISP Laboratory (Université Lumière Lyon 2 / INSA Lyon)** and **Linde HomeCare France**.
-
----
-
-## 1. Architectural Mission: "Detect, Decide, and Forward"
-
-The Raspberry Pi 5 edge node is positioned at the network periphery between the patient's smartphone, the Video VM, and the central clinical database. Its role is strictly deterministic triage and latency measurement:
-- Ingests raw nightly patient CSV telemetry via `POST /ingest`.
-- Executes 37 clinical triage rules in under 6ms (`edge_detection.py`).
-- Routes interventions across Scenario 1 (single clip), Scenario 2 (virtual sequence), or Scenario 3 (generative AI).
-- Forwards selected video requests to the Video VM (`POST /api/orchestrate` or `POST /api/vertex-generate`).
-- Tracks client roundtrip playback latency via `POST /timing/{id}` and pushes telemetry traces to the central backend.
-
-The Pi does not render or serve heavy MP4 files; all media delivery is delegated to the Video Server.
+FastAPI edge computing service for the patient-side Raspberry Pi 5.  
+DISP Laboratory (Université Lumière Lyon 2 / INSA Lyon) and Linde HomeCare France.
 
 ---
 
-## 2. Directory Structure
+## What this node does
+
+The Pi runs right next to the patient. It receives raw CSV exports from the mobile companion app, checks for therapy problems against 37 clinical rules in under 6 milliseconds, and decides what video to show. It does not store or render video files; video streaming belongs to the Video VM. The Pi only figures out which clip the patient needs, orders it from the Video VM, and logs timing telemetry back to the central database.
+
+Here is the operational loop:
+1. The phone app sends a nightly CSV to `POST /ingest`.
+2. `edge_detection.py` parses the newest therapy row and evaluates rule thresholds.
+3. `load_library.py` selects an intervention: a single clip (Scenario 1), a dual-clip playlist sequence (Scenario 2), or a generative prompt (Scenario 3).
+4. The Pi notifies the Video VM (`POST /api/orchestrate` or `POST /api/vertex-generate`).
+5. When playback starts, the phone hits `POST /timing/{id}` so we can measure true roundtrip latency.
+
+---
+
+## Directory layout
 
 ```text
 CPAP_Raspberry_Pi/
-├── app.py                # Core FastAPI service (:8000), authentication & timing
-├── edge_detection.py     # 37-rule deterministic clinical anomaly triage engine
-├── load_library.py       # Startup video indexer & Scenario 1/2/3 decision trees
-├── sync_catalog.py       # Distributed catalog synchronization utility
-├── metadata/             # 37 clinical video metadata profiles (video_01..37.json)
-├── test_csv/             # Verification CSV fixtures & automated regression scripts
-├── phone_csv/            # Ready-to-use CSV files for mobile app manual testing
-└── .env.example          # Environment variables template
+├── app.py                # FastAPI HTTP service (:8000), auth, ingest, and timing
+├── edge_detection.py     # Rule engine evaluating the 37 clinical triggers
+├── load_library.py       # Startup video catalog loader and scenario routing logic
+├── sync_catalog.py       # Sync script pulling trigger updates from the Video VM
+├── metadata/             # 37 individual video metadata files (video_01..37.json)
+├── test_csv/             # Test fixtures and regression verification scripts
+├── phone_csv/            # Sample CSV files formatted for mobile testing
+└── .env.example          # Environment variable template
 ```
 
 ---
 
-## 3. Quick Start
+## Quick start
 
-### Step 1: Environment Setup
+### 1. Configure environment
 ```bash
 cp .env.example .env
-# Edit .env and supply your API_KEY, VIDEO_SERVER_API_KEY, and BACKEND_API_KEY
 ```
+Open `.env` and set `API_KEY` (must match the key configured on the phone), `VIDEO_SERVER_API_KEY`, and `BACKEND_API_KEY`.
 
-### Step 2: Install Dependencies & Run
+### 2. Run the server
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
@@ -50,25 +50,25 @@ pip install -r requirements.txt
 uvicorn app:app --host 0.0.0.0 --port 8000
 ```
 
-Verify service status:
+Check the health endpoint:
 ```bash
 curl -s http://localhost:8000/health
 ```
 
 ---
 
-## 4. Single Source of Truth Documentation
+## Detailed documentation
 
-To prevent duplicate instructions, all exhaustive technical specifications have been consolidated into the centralized `docs/` manual:
+To avoid duplicating technical details, detailed architecture and route tables live in `docs/`:
 
-| Topic | Reference Document |
+| Topic | Document |
 | :--- | :--- |
-| **System Architecture & Data Flows** | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) |
-| **Component Mechanics & 37 Rule Logic** | [docs/COMPONENTS.md](../docs/COMPONENTS.md) |
-| **Complete Codebase Directory Map** | [docs/CODEBASE_MAP.md](../docs/CODEBASE_MAP.md) |
-| **REST API Contracts & Ingestion Schemas** | [docs/API.md](../docs/API.md) |
-| **Route Index & HTTP Error Statuses** | [docs/ROUTES.md](../docs/ROUTES.md) |
-| **State Persistence & Event Logging** | [docs/STATE.md](../docs/STATE.md) |
-| **Production Deployment & Tailscale Funnel** | [docs/DEPLOYMENT.md](../docs/DEPLOYMENT.md) |
-| **Testing, Fixtures & Adding Anomaly Rules** | [docs/DEVELOPMENT.md](../docs/DEVELOPMENT.md) |
-| **Master Handover & Intern Roadmap** | [docs/HANDOVER_REPORT.md](../docs/HANDOVER_REPORT.md) |
+| Multi-node topology and flow | [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) |
+| Rule definitions and threshold logic | [docs/COMPONENTS.md](../docs/COMPONENTS.md) |
+| File and module inventory | [docs/CODEBASE_MAP.md](../docs/CODEBASE_MAP.md) |
+| API schemas and payload formats | [docs/API.md](../docs/API.md) |
+| Route index and HTTP status codes | [docs/ROUTES.md](../docs/ROUTES.md) |
+| Log files and event persistence | [docs/STATE.md](../docs/STATE.md) |
+| Production deployment and Tailscale setup | [docs/DEPLOYMENT.md](../docs/DEPLOYMENT.md) |
+| Regression test scripts | [docs/DEVELOPMENT.md](../docs/DEVELOPMENT.md) |
+| Intern handover notes | [docs/HANDOVER_REPORT.md](../docs/HANDOVER_REPORT.md) |

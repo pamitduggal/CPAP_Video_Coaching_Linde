@@ -1,171 +1,157 @@
-# SleepCare CPAP Ecosystem — Technical Handover Report
+# SleepCare CPAP Ecosystem: Technical Handover Report
 
-> **DISP Laboratory (Lyon) & Linde HomeCare France**  
-> *Project: Just-in-Time Clinical Video Coaching & Multimodal AI Telemonitoring for CPAP Therapy*  
-> **Author**: Pamit Duggal (Software & AI Engineering Intern)  
-> **Date**: September 2026  
-> **Target Audience**: Incoming Software & AI Engineering Intern, Research Engineers, Clinical System Administrators
+> DISP Laboratory (Université Lumière Lyon 2 / INSA Lyon) and Linde HomeCare France  
+> Project: Just-in-Time Clinical Video Coaching and Multimodal AI Telemonitoring for CPAP Therapy  
+> Author: Pamit Duggal (Software and AI Engineering Intern)  
+> Date: September 2026  
+> Intended readers: Incoming software and AI engineering interns, research engineers, and clinical system administrators
 
 ---
 
-## 1. Executive Summary & Welcome
+## 1. Project context and handover scope
 
-Welcome to the **SleepCare CPAP** ecosystem! This repository contains the complete production-grade source code, machine learning pipelines, microservices, and edge runtime powering the **SleepCare Just-in-Time Video Coaching & AI Supervisor** platform. 
+I wrote this report to give the next engineering intern a clear, unfiltered view of what is running, why we built it this way, and where the traps are.
 
-The system provides autonomous 24/7 telemonitoring and closed-loop audiovisual clinical interventions for Obstructive Sleep Apnea (OSA) patients receiving Continuous Positive Airway Pressure (CPAP) therapy. It bridges the gap between raw medical device telemetry (CPAP machines and 5 wearable biomarker sensors) and patient compliance by detecting anomalies in near-real-time and prescribing dynamic, bilingual, 1080p coaching videos directly to patient mobile apps and clinician surveillance portals.
+SleepCare addresses a practical failure point in sleep apnea treatment. Continuous Positive Airway Pressure (CPAP) works well clinically, but nearly half of patients stop using their machine within the first year. They run into mask leaks, nasal soreness, or pressure discomfort, get frustrated, and leave the device in a closet. Routine clinical check-ups happen months too late to catch this.
 
-The architecture was successfully validated in end-to-end trials and showcased at the live clinical stakeholder demonstration in **Berlin**, demonstrating sub-second delivery over simulated 5G Quality on Demand (QoD) networks and achieving a **90.12% CMS therapy compliance rate** across a cohort of **41,117 patients**.
+Our goal was to close that feedback loop. When a patient syncs their device data in the morning, our system evaluates the previous night across 37 clinical rules on a local edge node. If something went wrong, the patient receives a short, targeted coaching video explaining how to adjust their strap, clean their mask, or change their humidifier setting. For broader cohort management, an AI server tracks 41,117 patients across seven analytical layers, identifying individuals heading toward therapy abandonment and queuing clinical phone calls or visits.
+
+We demonstrated this entire closed-loop system live to our consortium partners in Berlin, running over simulated 5G Quality on Demand network slices. The cohort analysis showed a 90.12% CMS compliance rate.
 
 ![SleepCare Architecture](images/sleepcare_architecture.jpg)
 
 ---
 
-## 2. Documentation Master Index
+## 2. Documentation index
 
-This handover package is structured into modular, comprehensive reference manuals located in this `docs/` directory:
+I split our system documentation into separate reference guides in this `docs/` folder:
 
-| Document | Purpose & Scope |
+| Document | Scope |
 | :--- | :--- |
-| **[ARCHITECTURE.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/ARCHITECTURE.md)** | Full system topology, end-to-end telemetry lifecycle ($t_0 \dots t_7$), cross-node communication protocols, Mermaid sequence diagrams, and 5G QoD network models. |
-| **[COMPONENTS.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/COMPONENTS.md)** | Deep dive into the 4 architectural pillars: Raspberry Pi 5 Edge Node, CPAP Video Server (VM4), AI Supervisor Server (VM3), and Central Clinical Backend (VM2). |
-| **[CODEBASE_MAP.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/CODEBASE_MAP.md)** | File-by-file directory breakdown of all 3 server repositories, explaining the purpose of every script, configuration, data file, and asset. |
-| **[API.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/API.md)** | Unified REST API manual covering edge ingestion, video streaming, catalog sync, AI pipeline triggering, and authentication headers. |
-| **[ROUTES.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/ROUTES.md)** | Exhaustive endpoint index detailing every route, HTTP method, payload schema, query parameter, and HTTP status code. |
-| **[STATE.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/STATE.md)** | In-depth breakdown of state persistence: JSON ledgers, 3-level deduplication caches, trigger catalogs, SQLite/PostgreSQL schemas, and thread-safety locks. |
-| **[DEPLOYMENT.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/DEPLOYMENT.md)** | Step-by-step production runbooks, environment variable dictionaries, port configuration, Tailscale Funnel setup, batch launchers, and systemd services. |
-| **[DEVELOPMENT.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/DEVELOPMENT.md)** | Developer onboarding guide: local testing workflows, running automated test suites (134+ checks), adding new videos, modifying trigger rules, and debugging gotchas. |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Multi-node topology, sequence diagrams, and latency budget from phone ingest to video start. |
+| [COMPONENTS.md](COMPONENTS.md) | Deep dive into the Raspberry Pi edge node, Video VM, AI Supervisor, and Central Backend. |
+| [CODEBASE_MAP.md](CODEBASE_MAP.md) | File-by-file inventory of scripts, configurations, models, and assets across all three codebases. |
+| [API.md](API.md) | Request and response formats for data ingestion, video streaming, catalog sync, and ML triggering. |
+| [ROUTES.md](ROUTES.md) | Endpoint catalog with HTTP verbs, authentication headers, and status codes. |
+| [STATE.md](STATE.md) | JSON ledgers, deduplication prompt cache, trigger matrices, and atomic file-swap logic. |
+| [DEPLOYMENT.md](DEPLOYMENT.md) | Production setup, environment configuration, Windows batch files, and systemd units. |
+| [DEVELOPMENT.md](DEVELOPMENT.md) | Local test suite execution, adding new coaching videos, and rule modification procedures. |
 
 ---
 
-## 3. High-Level System Overview & Server Inventory
+## 3. Server node inventory
 
-The ecosystem spans **three active server nodes** communicating across LAN, WAN, and VPN networks:
+Our testbed spans three active computing nodes communicating across private LAN and VPN connections:
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                 SLEEPCARE MULTI-NODE TOPOLOGY                               │
-├────────────────────────────────┬───────────────────────────────┬────────────────────────────┤
-│ Node Name & Directory          │ Network Address & Ports       │ Core Role & Responsibilities│
-├────────────────────────────────┼───────────────────────────────┼────────────────────────────┤
-│ 1. Raspberry Pi 5 Edge Node    │ LAN: 192.168.x.x:8000         │ "Detect, Decide, Forward"  │
-│    (CPAP_Raspberry_Pi)         │ Tailscale Funnel / Public     │ Ingests patient CSVs, runs │
-│                                │ Binding: 0.0.0.0:8000         │ threshold triage, timing.  │
-├────────────────────────────────┼───────────────────────────────┼────────────────────────────┤
-│ 2. CPAP Video Server (VM4)     │ Host: 159.84.143.246:8080     │ Media Streaming & GenAI    │
-│    (CPAP_Video_Server)         │ Binding: 0.0.0.0:8080         │ 39 1080p MP4s, 78 WebVTTs, │
-│                                │ Dashboard: http://localhost:8080│ HTTP 206 TTFB <5ms, Veo 3.1│
-├────────────────────────────────┼───────────────────────────────┼────────────────────────────┤
-│ 3. AI Supervisor Server (VM3)  │ Host: 159.84.143.151:8000     │ 7-Layer ML Engine & Sync   │
-│    (CPAP_AI_Server)            │ Webhook Daemon: :8001         │ CUSUM, XGBoost, CatBoost,  │
-│                                │ Binding: 0.0.0.0:8000, :8001  │ Cox survival, uplift.      │
-├────────────────────────────────┼───────────────────────────────┼────────────────────────────┤
-│ 4. Central Clinical Backend    │ Host: http://159.84.143.151:80│ Central Database & Portal  │
-│    (VM2 - Reference Node)      │ (External VM)                 │ PostgreSQL DB_Clinical,    │
-│                                │                               │ Clinician web dashboard.   │
-└────────────────────────────────┴───────────────────────────────┴────────────────────────────┘
+```text
++--------------------------------+-------------------------------+------------------------------+
+| Node and Directory             | Network Address and Ports     | Primary Responsibility       |
++--------------------------------+-------------------------------+------------------------------+
+| 1. Raspberry Pi 5 Edge Node    | LAN: 192.168.x.x:8000         | Evaluates nightly CSVs,      |
+|    (CPAP_Raspberry_Pi)         | Public: Tailscale Funnel      | runs 37 clinical rules,      |
+|                                | Bind: 0.0.0.0:8000            | measures client RTT.         |
++--------------------------------+-------------------------------+------------------------------+
+| 2. CPAP Video Server (VM4)     | Host: 159.84.143.246:8080     | Serves 39 1080p MP4 videos   |
+|    (CPAP_Video_Server)         | Bind: 0.0.0.0:8080            | and 78 WebVTT subtitles over |
+|                                | Web UI: http://localhost:8080 | HTTP 206 byte ranges.        |
++--------------------------------+-------------------------------+------------------------------+
+| 3. AI Supervisor Server (VM3)  | Host: 159.84.143.151:8000     | 7-layer ML pipeline across   |
+|    (CPAP_AI_Server)            | Daemon: 159.84.143.151:8001   | 41,117 patients; catalog     |
+|                                | Bind: 0.0.0.0:8000, :8001     | sync listener on port 8001.  |
++--------------------------------+-------------------------------+------------------------------+
+| 4. Central Clinical Backend    | Host: 159.84.143.151:80       | PostgreSQL DB_Clinical,      |
+|    (VM2 Reference Node)        | (External VM managed by team) | clinician web portal.        |
++--------------------------------+-------------------------------+------------------------------+
 ```
 
 ---
 
-## 4. Key Accomplishments & Current Status
+## 4. Key milestones achieved
 
-During the internship period, the following milestones were achieved and tested:
+Here is what we completed and verified during the internship:
 
-1. **Real-Time Edge Triage Engine**:
-   - Implemented a lightweight, sub-6ms decision engine on Raspberry Pi 5 (`edge_detection.py`) covering 37 clinical rules (Videos 1–27 for CPAP metrics; Videos 28–37 for Withings, Masimo, Hexoskin, and Somno-Art wearable anomalies).
-   - Designed a dual-phase telemetry reporting loop (`/ingest` + `/timing/{id}`) calculating real client RTT and pushing millisecond metrics to the central clinical database (`DB_Clinical.telemetry.event_traces`).
+1. **Edge triage engine**:
+   - Wrote a Python triage engine (`edge_detection.py`) that runs in under 6 milliseconds on the Raspberry Pi 5.
+   - Handled 37 clinical triggers: Videos 1 to 27 cover standard CPAP machine metrics (leak rate, residual AHI, hours of use), while Videos 28 to 37 monitor continuous wearable inputs (Withings ScanWatch, Masimo pulse oximetry, Hexoskin smart shirts, and Somno-Art EEG headbands).
+   - Built a two-phase telemetry reporting loop (`/ingest` followed by `/timing/{id}`) that captures real client roundtrip latency and writes trace metrics into the clinical database (`DB_Clinical.telemetry.event_traces`).
 
-2. **Enterprise Media Streaming & Virtual Sequence Assembly**:
-   - Curated and indexed **39 Full HD (1080p, 30fps) videos** paired with **78 bilingual WebVTT subtitle tracks (100% English & French parity)**.
-   - Built a high-throughput HTTP 206 Partial Content byte-range streaming engine in FastAPI achieving **< 5ms Time-to-First-Byte (TTFB)**.
-   - Implemented **Scenario 2 Virtual Sequence Stitching**: eliminated server re-encoding bottlenecks by delivering playlist sequences with client-side 1.5s Alpha Crossfade (`fade_1_5s`) and solving the duplicate subtitle DOM overlay problem.
+2. **Media streaming and playlist sequencing**:
+   - Indexed 39 Full HD (1080p, 30fps) coaching videos and authored 78 matching WebVTT subtitle files (full parity across French and English).
+   - Configured FastAPI with chunked HTTP 206 Partial Content streaming, keeping initial byte latency under 5 milliseconds on our network tests.
+   - Built virtual playlist stitching for Scenario 2: rather than re-encoding two MP4 files together on the server, the server delivers an ordered JSON playlist and the client web player executes a clean 1.5-second crossfade (`fade_1_5s`), bypassing server rendering bottlenecks.
 
-3. **Multi-Tier Pre-Generation Deduplication Shield**:
-   - Engineered an in-memory 3-level deduplication shield (`deduplication_engine.py`) for Scenario 3 Generative AI synthesis (Level 1 MD5 prompt hash, Level 2 slug match, Level 3 deep metadata semantics), cutting costly Google Cloud Veo 3.1 API calls to **< 1ms reuse**.
-   - Built an atomic, thread-safe `AssignmentLedger` preventing duplicate video prescriptions to patients.
+3. **Deduplication shield for generative video**:
+   - For Scenario 3 (on-demand video synthesis with Google Veo 3.1), cloud API calls are slow and expensive. I built a three-tier deduplication filter in `deduplication_engine.py`. It first checks an MD5 hash of the clinical prompt, then searches a slug lookup table, and finally compares semantic keywords. If an identical clip was generated earlier, it returns the cached video in less than one millisecond.
+   - Created an atomic `AssignmentLedger` using file swaps to prevent duplicate video prescriptions from reaching the same patient.
 
-4. **7-Layer Machine Learning Intelligence Hub**:
-   - Operationalized the end-to-end analytical pipeline in `CPAP_AI_Server` (`M4_FINAL_F2.ipynb` / `core/pipeline.py`) across 41,117 patients: CUSUM/EWMA online drift alarms, phenotype clustering, multimodal state transitions, stacked supervised risk classification ($z\_risk$), Cox proportional hazards survival modeling, and CATE causal uplift intervention selection.
-   - Built a dual-port architecture (Port 8000 for REST/Dashboard, Port 8001 for background catalog sync webhooks) with an automatic pre-flight port scanner (`scripts/clear_ports.py`) resolving Windows socket conflicts.
+4. **Machine learning supervisor**:
+   - Packaged the end-to-end analytical pipeline (`M4_FINAL_F2.ipynb` and `core/pipeline.py`) across 41,117 patient records.
+   - Configured statistical control charts (CUSUM and EWMA) for sudden shifts, gradient boosted decision trees for 30-day dropout risk, Cox proportional hazards for long-term survival, and uplift models to decide whether video, telephone, or in-person outreach works best.
+   - Implemented a two-port service design (port 8000 for the clinician dashboard, port 8001 for background catalog sync webhooks) with a port cleanup utility (`scripts/clear_ports.py`) that prevents socket collisions during server restarts on Windows.
 
 ---
 
-## 5. Security & Credentials Matrix
+## 5. Security and credentials
 
-Each server relies on strict header tokens to prevent unauthorized mutations. Configure these in each server's local `.env` file (see `.env.example` templates):
+We took care to sanitize the entire codebase before publishing this repository. Production API keys have been removed and replaced with environment variables:
 
-| Token Variable | Environment Configuration | Used By | Purpose |
+| Variable | Location | Caller and Destination | Purpose |
 | :--- | :--- | :--- | :--- |
-| `API_KEY` (Pi Edge) | `Set in CPAP_Raspberry_Pi/.env` | Phone App $\to$ Pi Edge | Authenticates `POST /ingest` & `/timing` |
-| `SERVER_API_KEY` / `VIDEO_SERVER_API_KEY` | `Set in CPAP_Video_Server/.env` | Pi Edge & AI Server $\to$ Video VM4 | Authenticates `POST /api/orchestrate` & `/api/vertex-generate` |
-| `VIDEO_SERVER_KEY` / `X-Video-Server-Key` | `Set in CPAP_Video_Server/.env` | Video VM4 $\to$ Central VM2 | Pushes video assignments (`POST /api/videos/{id}/assign`) |
-| `BACKEND_API_KEY` / `X-ML-Key` | `Set in CPAP_AI_Server/.env` | AI Server & Video VM $\to$ Central VM2 | Pushes predictions & telemetry traces |
-| `AI_SERVER_API_KEY` | `Set in CPAP_AI_Server/.env` | Admin clients $\to$ AI Server | Authenticates AI pipeline execution |
-| `GOOGLE_VERTEX_API_KEY` | `Set in CPAP_Video_Server/.env` | Video VM4 $\to$ Google Cloud | Synthesizes Veo 3.1 videos & Gemini Flash subtitles |
+| `API_KEY` | `CPAP_Raspberry_Pi/.env` | Mobile Phone -> Pi Edge | Protects `POST /ingest` and `POST /timing` |
+| `SERVER_API_KEY` | `CPAP_Video_Server/.env` | Pi Edge & AI Server -> Video VM | Protects `POST /api/orchestrate` and `/api/vertex-generate` |
+| `VIDEO_SERVER_KEY` | `CPAP_Video_Server/.env` | Video VM -> Central VM2 | Signs video assignment webhooks |
+| `BACKEND_API_KEY` | `CPAP_AI_Server/.env` | AI Server & Video VM -> Central VM2 | Authorizes telemetry and prediction pushes |
+| `AI_SERVER_API_KEY` | `CPAP_AI_Server/.env` | Clinician clients -> AI Server | Authorizes pipeline execution requests |
+| `GOOGLE_VERTEX_API_KEY` | `CPAP_Video_Server/.env` | Video VM -> Google Cloud | Authorizes Veo 3.1 video generation |
 
-> [!WARNING]
-> Live `.env` files contain sensitive operational secrets. Ensure `.env` is never committed to public Git repositories or shared unencrypted.
-
----
-
-## 6. Known Quirks, Traps & Watchouts for the Next Intern
-
-Before writing any new code, read these critical quirks discovered and documented during development:
-
-1. **The `pressure90` Column Naming Mismatch on Edge Pi**:
-   - The patient mobile app exports CPAP pressure as `pressure90` (lowercase).
-   - In `edge_detection.py`, the code looks for `Presure90` (note spelling) or `pressure`. If the incoming CSV has `pressure90`, it falls back to `0.0`, causing pressure-based rules (videos 4, 7, 10, 11) to fail to trigger on raw phone data.
-   - *Fix pending*: Add `pressure90` to the column resolution tuple in `edge_detection.py`.
-
-2. **Phone App Calling Deprecated `POST /event`**:
-   - `POST /event` was deleted on 2026-09-03 in favor of the clean `/ingest` + `/timing` protocol.
-   - Older builds of the mobile phone app still attempt `POST /event` after `/timing` and log a "Failed to send" error even though `/ingest` succeeded. Coordinate with the mobile team to remove this legacy call.
-
-3. **Video VM Localhost Dashboard Security Lock**:
-   - Accessing `http://159.84.143.246:8080/dashboard` from an external browser returns an **HTTP 403 Forbidden** security card by design.
-   - To inspect the Video VM dashboard remotely, use an SSH tunnel:
-     ```bash
-     ssh -L 8080:localhost:8080 user@159.84.143.246
-     ```
-     Then open `http://localhost:8080/dashboard` in your local browser.
-
-4. **Scenario 3 Google Cloud Quota Limits**:
-   - Live video rendering through Google Veo 3.1 requires high Vertex AI project quotas. If the Google Cloud account experiences quota exhaustion, Vertex returns `429 RESOURCE_EXHAUSTED`.
-   - The 3-Level Pre-Gen Deduplication Shield handles this gracefully by prioritizing existing or cached assets (`generative_cache_index.json`).
-
-5. **Windows Socket Reset (`WinError 64` / `10048`)**:
-   - On Windows Server, abruptly closed browser tabs can cause Uvicorn IOCP resets. Both `start_server.bat` (Video Server) and `run_ai_server.bat` (AI Server) incorporate automatic port-clearing scripts (`clear_ports.py`) and auto-recovery process wrappers to guarantee 24/7 uptime.
+Keep your active `.env` files out of Git. Use `.env.example` as a template whenever setting up a new environment.
 
 ---
 
-## 7. Immediate Roadmap & Suggested Next Tasks
+## 6. Practical engineering notes and watchouts
 
-Here are the recommended priority tasks for the incoming intern:
+These are specific quirks I encountered during development that will save you hours of debugging:
 
-- [ ] **Task 1: Harmonize Pressure Column Extraction on Pi Edge**
-   - Update `CPAP_Raspberry_Pi/edge_detection.py` to accept `pressure90` alongside `Presure90` and `pressure`.
-   - Re-run `test_csv/verify.py` to confirm zero regression.
+1. **The `pressure90` column name on the edge node**:
+   The patient mobile app exports CPAP pressure as `pressure90` in lowercase. In `edge_detection.py`, earlier code checked for `Presure90` (with a single 's') or `pressure`. If the incoming CSV only contains `pressure90`, the parser falls back to `0.0`. This means pressure-dependent rules (such as Videos 4, 7, 10, and 11) will not fire on raw phone data unless `pressure90` is explicitly handled. Adding that field to the column tuple in `edge_detection.py` is an immediate easy win.
 
-- [ ] **Task 2: Async GenAI Job Polling on Video Server**
-   - Currently, `POST /api/vertex-generate` waits synchronously for cloud synthesis. For videos exceeding 20 seconds, this can risk HTTP timeouts.
-   - Implement a background task queue (e.g. Celery or FastAPI BackgroundTasks) with a job status polling route (`GET /api/vertex-generate/status/{job_id}`).
+2. **Mobile app sending legacy `POST /event`**:
+   We removed the old `POST /event` endpoint on the Pi in early September in favor of the cleaner `/ingest` plus `/timing` workflow. Certain test builds of the mobile phone app still attempt to send data to `/event` after logging timing. The phone will display an error message even though the ingestion was successful. You will need to coordinate with the mobile team to remove that dead call.
 
-- [ ] **Task 3: Automated Database Reconnect on Central Backend**
-   - On the Central VM2 backend, ensure the telemetry upsert query uses a single atomic SQL `MERGE` / `ON CONFLICT (event_id) DO UPDATE` to prevent occasional primary key race conditions between Phase 1 and Phase 2 pushes.
+3. **Video server dashboard access restrictions**:
+   If you try opening `http://159.84.143.246:8080/dashboard` directly in your laptop browser, you will get an HTTP 403 Forbidden error. This is intentional; external requests are blocked for security. To view the dashboard remotely, set up an SSH port forward:
+   ```bash
+   ssh -L 8080:localhost:8080 user@159.84.143.246
+   ```
+   Then open `http://localhost:8080/dashboard` locally.
 
-- [ ] **Task 4: Dynamic Wearable Rules Ingestion from Catalog**
-   - Currently, `sync_catalog.py` on the Pi verifies that the catalog matches `edge_detection.WEARABLE_LOGIC`. Enhance `edge_detection.py` to dynamically evaluate trigger rules directly from `metadata/*.json` so new videos can be deployed without Python code changes.
+4. **Vertex AI quota ceilings**:
+   Rendering new video clips with Google Veo 3.1 consumes substantial GPU quotas. If your Google Cloud project hits its limit, Vertex returns an HTTP 429 quota error. Our deduplication engine handles this by falling back to pre-existing video clips whenever possible.
+
+5. **Windows socket collisions**:
+   On Windows Server 2022, Uvicorn occasionally holds onto port 8000 after an unexpected terminal close. If you try restarting the server immediately, Python throws a `WinError 10048` (address already in use). We added `scripts/clear_ports.py` to the startup batch script to identify the orphaned PID and terminate it before launching.
 
 ---
 
-## 8. Emergency Contacts & Project References
+## 7. Recommended next steps
+
+If you are continuing development on SleepCare, here is where I recommend starting:
+
+1. **Pressure column normalization**: Update `CPAP_Raspberry_Pi/edge_detection.py` to resolve `pressure90` and verify the change with `test_csv/verify.py`.
+2. **Asynchronous job handling for video generation**: At present, `POST /api/vertex-generate` holds the HTTP connection open while the cloud model renders the video. If the video takes longer than 20 seconds, the request risks timing out. Switching this to a background queue with a status check endpoint (`GET /api/vertex-generate/status/{job_id}`) would make this much more reliable.
+3. **Database upsert hardening**: On the central VM2 backend, ensure the telemetry ingestion query uses `ON CONFLICT (event_id) DO UPDATE` to avoid occasional primary key conflicts between Phase 1 and Phase 2 pushes.
+4. **Dynamic trigger updates on the Pi**: Currently, changing a rule on the Pi requires modifying `edge_detection.py`. Updating `sync_catalog.py` to evaluate rule conditions dynamically from `metadata/*.json` would allow clinicians to deploy new rules without touching Python code.
+
+---
+
+## 8. Reference contacts
 
 - **Academic Supervisor**: DISP Laboratory, Université Lumière Lyon 2 / INSA Lyon
-- **Industrial Partner**: Linde HomeCare France (Medical Device & Telemonitoring Division)
-- **Primary Development Workstations**:
-  - Edge Node: Raspberry Pi 5 (Debian Linux Bookworm)
-  - VM3 (AI Server): Windows Server 2022 (`159.84.143.151`)
+- **Industrial Partner**: Linde HomeCare France
+- **Server hardware details**:
+  - Edge Node: Raspberry Pi 5 (Debian 12 Bookworm, aarch64)
+  - VM3 (AI Supervisor): Windows Server 2022 (`159.84.143.151`)
   - VM4 (Video Server): Windows Server 2022 (`159.84.143.246`)
-  - VM2 (Central Database & Clinical Portal): Ubuntu Linux (`159.84.143.151:80`)
+  - VM2 (Central Database): Ubuntu Linux (`159.84.143.151:80`)
 
-*Good luck taking the SleepCare CPAP platform to its next evolution! Please proceed to [ARCHITECTURE.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/ARCHITECTURE.md) to explore the system design.*
+Next, read [ARCHITECTURE.md](ARCHITECTURE.md) for the end-to-end telemetry flow.

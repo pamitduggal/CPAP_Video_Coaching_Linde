@@ -1,61 +1,61 @@
-# SleepCare CPAP Ecosystem — Unified REST API Manual
+# SleepCare CPAP Ecosystem: Unified REST API Manual
 
-> **DISP Laboratory (Lyon) & Linde HomeCare France**  
-> *Author: Pamit Duggal (Software & AI Engineering Intern)*  
-> *Scope: Multi-Node API Interfaces, Schemas & Working Code Samples*
-
----
-
-## 1. Global API Architecture & Conventions
-
-### Base URLs by Target Node
-
-| Subsystem Node | Local Network URL | Production / Public URL |
-| :--- | :--- | :--- |
-| **Raspberry Pi 5 Edge Node** | `http://localhost:8000` | `http://192.168.x.x:8000` or `https://<funnel>.ts.net` |
-| **CPAP Video Server (VM4)** | `http://localhost:8080` | `http://159.84.143.246:8080` |
-| **AI Supervisor Server (VM3)** | `http://localhost:8000` | `http://159.84.143.151:8000` |
-| **AI Webhook Companion (VM3)** | `http://localhost:8001` | `http://159.84.143.151:8001` |
-| **Central Clinical Backend (VM2)**| — | `http://159.84.143.151:80` |
-
-### Standard Authentication Headers Matrix
-
-| Header Key | Expected Value | Used For Endpoints |
-| :--- | :--- | :--- |
-| `X-API-Key` | `<YOUR_EDGE_API_KEY>` | Pi Edge: `/ingest`, `/timing/{id}`, `/patient/{id}/*` |
-| `X-API-KEY` | `<YOUR_VIDEO_SERVER_API_KEY>` | Video VM: `/api/orchestrate`, `/api/vertex-generate`, `/api/catalog/rebuild` |
-| `X-Video-Server-Key` | `<YOUR_VIDEO_SERVER_KEY>` | Central Backend: `POST /api/videos/{patient_id}/assign` |
-| `X-API-Key` | `<YOUR_BACKEND_API_KEY>` | Central Backend: `POST /api/telemetry/event-trace` |
-| `X-ML-Key` | `<YOUR_BACKEND_API_KEY>` | Central Backend: `POST /api/data/predictions` |
-| `X-API-KEY` | `<YOUR_AI_SERVER_API_KEY>` | AI Server: `/api/patient/{id}`, `/api/pipeline/run` |
+> DISP Laboratory (Université Lumière Lyon 2 / INSA Lyon) and Linde HomeCare France  
+> Author: Pamit Duggal (Software and AI Engineering Intern)  
+> Scope: REST endpoints, payloads, headers, and code examples
 
 ---
 
-## 2. Edge Ingestion & Telemetry APIs (Raspberry Pi 5)
+## 1. Network addresses and authentication
 
-### 2.1 Ingest Nightly Telemetry CSV (`POST /ingest`)
-Uploads a patient telemetry CSV from the mobile app. The Pi extracts the newest night, evaluates 37 anomaly rules, and triggers Video VM orchestration if an event is detected.
+### Base URLs by node
 
-- **URL**: `POST http://localhost:8000/ingest`
-- **Content-Type**: `multipart/form-data`
-- **Header**: `X-API-Key: <YOUR_EDGE_API_KEY>`
+| Node | Local Network URL | Production / Public URL |
+| :--- | :--- | :--- |
+| Raspberry Pi 5 Edge Node | `http://localhost:8000` | `http://192.168.x.x:8000` or `https://<funnel>.ts.net` |
+| CPAP Video Server (VM4) | `http://localhost:8080` | `http://159.84.143.246:8080` |
+| AI Supervisor Server (VM3) | `http://localhost:8000` | `http://159.84.143.151:8000` |
+| AI Webhook Companion (VM3) | `http://localhost:8001` | `http://159.84.143.151:8001` |
+| Central Clinical Backend (VM2)| Not applicable | `http://159.84.143.151:80` |
 
-#### Form Fields:
-- `file`: The raw telemetry CSV file.
-- `patient_id` (string, required): e.g. `"63678"`.
-- `language` (string, optional): `"en"` or `"fr"` (default: `"en"`).
-- `sent_at` (string, optional): ISO-8601 client dispatch timestamp (e.g. `2026-09-22T14:30:00.000Z`).
+### Authentication headers
 
-#### Response (Quiet Night — No Coaching):
+| Header Name | Expected Value | Used On |
+| :--- | :--- | :--- |
+| `X-API-Key` | Set in `CPAP_Raspberry_Pi/.env` | Pi Edge: `/ingest`, `/timing/{id}`, `/patient/{id}/*` |
+| `X-API-KEY` | Set in `CPAP_Video_Server/.env` | Video VM: `/api/orchestrate`, `/api/vertex-generate`, `/api/catalog/rebuild` |
+| `X-Video-Server-Key` | Set in `CPAP_Video_Server/.env` | Central Backend: `POST /api/videos/{patient_id}/assign` |
+| `X-API-Key` | Set in `CPAP_AI_Server/.env` | Central Backend: `POST /api/telemetry/event-trace` |
+| `X-ML-Key` | Set in `CPAP_AI_Server/.env` | Central Backend: `POST /api/data/predictions` |
+| `X-API-KEY` | Set in `CPAP_AI_Server/.env` | AI Server: `/api/patient/{id}`, `/api/pipeline/run` |
+
+---
+
+## 2. Raspberry Pi edge endpoints
+
+### Ingest nightly telemetry CSV (`POST /ingest`)
+Receives a raw CSV file exported from the mobile app. The Pi extracts the newest row, evaluates the 37 rules, and triggers Video VM orchestration if an issue is found.
+
+- Endpoint: `POST http://localhost:8000/ingest`
+- Content type: `multipart/form-data`
+- Header: `X-API-Key: <YOUR_EDGE_API_KEY>`
+
+Form fields:
+- `file`: Telemetry CSV file
+- `patient_id` (string, required): For example, `"63678"`
+- `language` (string, optional): `"en"` or `"fr"` (default: `"en"`)
+- `sent_at` (string, optional): ISO-8601 client dispatch timestamp
+
+Response when no coaching is required:
 ```json
 {
   "event": false,
-  "message": "Normal telemetry — no coaching required",
+  "message": "Normal telemetry, no coaching required",
   "ingest_saved": "data/ingest/20260922_143000_63678.csv"
 }
 ```
 
-#### Response (Anomaly Flagged — Coaching Dispatched):
+Response when an issue triggers an intervention:
 ```json
 {
   "event": true,
@@ -87,21 +87,21 @@ Uploads a patient telemetry CSV from the mobile app. The Pi extracts the newest 
 }
 ```
 
-### 2.2 Report Measured Roundtrip Time (`POST /timing/{event_id}`)
-Reports the client-observed roundtrip time for the `/ingest` transaction to calculate true transit latency.
+### Report measured roundtrip time (`POST /timing/{event_id}`)
+The mobile app hits this endpoint after the video player buffers, allowing the system to record real network transit time.
 
-- **URL**: `POST http://localhost:8000/timing/{event_id}`
-- **Content-Type**: `application/json`
-- **Header**: `X-API-Key: <YOUR_EDGE_API_KEY>`
+- Endpoint: `POST http://localhost:8000/timing/{event_id}`
+- Content type: `application/json`
+- Header: `X-API-Key: <YOUR_EDGE_API_KEY>`
 
-#### Request Payload:
+Payload:
 ```json
 {
   "rtt_ms": 342.8
 }
 ```
 
-#### Response:
+Response:
 ```json
 {
   "status": "recorded",
@@ -114,26 +114,26 @@ Reports the client-observed roundtrip time for the `/ingest` transaction to calc
 
 ---
 
-## 3. Video Orchestration & Dynamic Resolution APIs (Video Server VM4)
+## 3. Video Server orchestration endpoints (VM4)
 
-### 3.1 Orchestrate Video Coaching (`POST /api/orchestrate`)
-Resolves media assets for Scenario 1 (single clip) or Scenario 2 (virtual sequence stitching), checks the persistent assignment ledger, and pushes the intervention to VM2.
+### Orchestrate video coaching (`POST /api/orchestrate`)
+Resolves video files for Scenario 1 (single clip) or Scenario 2 (stitched playlist), checks the assignment ledger, and notifies VM2.
 
-- **URL**: `POST http://159.84.143.246:8080/api/orchestrate`
-- **Content-Type**: `application/json`
-- **Header**: `X-API-KEY: <YOUR_VIDEO_SERVER_API_KEY>`
+- Endpoint: `POST http://159.84.143.246:8080/api/orchestrate`
+- Content type: `application/json`
+- Header: `X-API-KEY: <YOUR_VIDEO_SERVER_API_KEY>`
 
-#### Flexible Inputs Supported:
-1. Numeric ID: `{"patient_id": "63678", "video_id": 29}`
-2. Extensionless string: `{"patient_id": "63678", "video_filename": "14_Mask_style_change"}`
-3. Exact MP4: `{"patient_id": "63678", "video_filename": "1_Mask_leak_adjust_straps.mp4"}`
+Supported payload variations:
+1. By ID: `{"patient_id": "63678", "video_id": 29}`
+2. By base filename: `{"patient_id": "63678", "video_filename": "14_Mask_style_change"}`
+3. Full filename: `{"patient_id": "63678", "video_filename": "1_Mask_leak_adjust_straps.mp4"}`
 
-#### Stitched Sequence Request (Scenario 2):
+Scenario 2 multi-clip request:
 ```json
 {
   "event_id": "EVT_CPAP_2026_0922_01",
   "patient_id": "63678",
-  "title": "Compound Leak & Discomfort Intervention",
+  "title": "Compound Leak and Discomfort Intervention",
   "clips": [
     {
       "video_id": 1,
@@ -149,14 +149,14 @@ Resolves media assets for Scenario 1 (single clip) or Scenario 2 (virtual sequen
 }
 ```
 
-#### Response (Scenario 2 Success):
+Response (Scenario 2):
 ```json
 {
   "status": "ok",
   "decision": {
     "event_id": "EVT_CPAP_2026_0922_01",
     "patient_id": "63678",
-    "title": "Compound Leak & Discomfort Intervention",
+    "title": "Compound Leak and Discomfort Intervention",
     "video_filename": "1_Mask_leak_adjust_straps.mp4",
     "url": "http://159.84.143.246:8080/videos/existing/1_Mask_leak_adjust_straps.mp4",
     "subtitle_en_url": "http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.en.vtt",
@@ -189,7 +189,7 @@ Resolves media assets for Scenario 1 (single clip) or Scenario 2 (virtual sequen
 }
 ```
 
-#### Response (Deduplication Shield Active):
+Response when deduplication blocks a repeat:
 ```json
 {
   "status": "already_assigned",
@@ -201,16 +201,16 @@ Resolves media assets for Scenario 1 (single clip) or Scenario 2 (virtual sequen
 
 ---
 
-## 4. Generative AI Video Synthesis (Scenario 3)
+## 4. Generative video synthesis (Scenario 3)
 
-### 4.1 On-Demand Video Generation (`POST /api/vertex-generate`)
-Dispatches on-demand generative video synthesis to Google Cloud Veo 3.1, guarded by the 3-Level Pre-Gen Deduplication Shield.
+### On-demand video generation (`POST /api/vertex-generate`)
+Renders an on-demand video using Google Cloud Veo 3.1 if the prompt is not already in the deduplication cache.
 
-- **URL**: `POST http://159.84.143.246:8080/api/vertex-generate`
-- **Content-Type**: `application/json`
-- **Header**: `X-API-KEY: <YOUR_VIDEO_SERVER_API_KEY>`
+- Endpoint: `POST http://159.84.143.246:8080/api/vertex-generate`
+- Content type: `application/json`
+- Header: `X-API-KEY: <YOUR_VIDEO_SERVER_API_KEY>`
 
-#### Request Payload:
+Payload:
 ```json
 {
   "event_id": "EVT_GEN_2026_0922_01",
@@ -221,7 +221,7 @@ Dispatches on-demand generative video synthesis to Google Cloud Veo 3.1, guarded
 }
 ```
 
-#### Response (Level 3 Deduplication Cache Hit):
+Response when served from cache:
 ```json
 {
   "status": "success",
@@ -242,66 +242,65 @@ Dispatches on-demand generative video synthesis to Google Cloud Veo 3.1, guarded
 
 ---
 
-## 5. Streaming & Media Endpoints (Video Server VM4)
+## 5. Media streaming endpoints
 
-### 5.1 HTTP 206 Partial Content Video Stream (`GET /videos/{filename}`)
-Streams 1080p MP4 videos across `existing_videos/` and `new_videos/`. Supports random seeking via `Range: bytes=X-Y`.
+### Video stream (`GET /videos/{filename}`)
+Streams MP4 video. Supports seeking through the standard `Range` header.
 
-- **URL**: `GET http://159.84.143.246:8080/videos/1_Mask_leak_adjust_straps.mp4`
-- **Header (Optional)**: `Range: bytes=0-1048575` (requests first 1 MB)
-- **Auth**: Public Read
+- Endpoint: `GET http://159.84.143.246:8080/videos/1_Mask_leak_adjust_straps.mp4`
+- Range header: `Range: bytes=0-1048575` (requests the first 1 MB)
+- Authentication: None (public read)
 
-### 5.2 Zero-Cache WebVTT Subtitles (`GET /subtitles/{filename}`)
-Serves bilingual WebVTT subtitle files (`.en.vtt` or `.fr.vtt`) with strict zero-cache headers.
+### WebVTT subtitles (`GET /subtitles/{filename}`)
+Serves English or French subtitle files.
 
-- **URL**: `GET http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.en.vtt`
-- **Content-Type**: `text/vtt; charset=utf-8`
-- **Cache-Control**: `no-cache, no-store, must-revalidate, max-age=0`
-
----
-
-## 6. Catalog Synchronization & Webhooks
-
-### 6.1 Query Trigger Catalog (`GET /api/triggers/catalog`)
-Returns the complete 39-video distributed trigger catalog with boolean logic and streaming URLs.
-
-- **URL**: `GET http://159.84.143.246:8080/api/triggers/catalog`
-- **Auth**: Public Read
-
-### 6.2 Inbound Catalog Sync Webhook (`POST /api/triggers/sync`)
-Receiver on AI Server Port 8001 and Pi Edge for automated catalog broadcasts from VM4.
-
-- **URL**: `POST http://159.84.143.151:8001/api/triggers/sync`
-- **Header**: `X-API-KEY: <YOUR_VIDEO_SERVER_API_KEY>`
-- **Header**: `X-ML-Key: <YOUR_BACKEND_API_KEY>`
+- Endpoint: `GET http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.en.vtt`
+- Content type: `text/vtt; charset=utf-8`
+- Cache header: `Cache-Control: no-cache, no-store, must-revalidate, max-age=0`
 
 ---
 
-## 7. Operational Code Recipes (curl, PowerShell, Python)
+## 6. Catalog synchronization
 
-### 7.1 Testing Scenario 1 via curl
+### Fetch trigger catalog (`GET /api/triggers/catalog`)
+Returns the complete 39-video trigger matrix with boolean conditions and streaming URLs.
+
+- Endpoint: `GET http://159.84.143.246:8080/api/triggers/catalog`
+- Authentication: None
+
+### Sync webhook listener (`POST /api/triggers/sync`)
+Receiver on AI Server port 8001 and Pi Edge for automated catalog updates from VM4.
+
+- Endpoint: `POST http://159.84.143.151:8001/api/triggers/sync`
+- Headers: `X-API-KEY: <KEY>`, `X-ML-Key: <KEY>`
+
+---
+
+## 7. Working code examples
+
+### Testing Scenario 1 with curl
 ```bash
 curl -X POST http://159.84.143.246:8080/api/orchestrate \
   -H "Content-Type: application/json" \
-  -H "X-API-KEY: <YOUR_VIDEO_SERVER_API_KEY>" \
-  -d '{"patient_id": "TEST_PATIENT", "video_id": 29, "trigger_reason": "Live API Test"}'
+  -H "X-API-KEY: <YOUR_KEY>" \
+  -d '{"patient_id": "TEST_PATIENT", "video_id": 29, "trigger_reason": "CLI Test"}'
 ```
 
-### 7.2 Testing Video Range Stream via PowerShell
+### Testing video byte-range in PowerShell
 ```powershell
 Invoke-WebRequest -Uri "http://159.84.143.246:8080/videos/1_Mask_leak_adjust_straps.mp4" `
   -Headers @{ "Range" = "bytes=0-1024" } `
   -Method GET
 ```
 
-### 7.3 Python Orchestration Client Example
+### Python client example
 ```python
 import requests
 
 url = "http://159.84.143.246:8080/api/orchestrate"
 headers = {
     "Content-Type": "application/json",
-    "X-API-KEY": "<YOUR_VIDEO_SERVER_API_KEY>"
+    "X-API-KEY": "<YOUR_KEY>"
 }
 payload = {
     "patient_id": "63678",
@@ -313,6 +312,4 @@ response = requests.post(url, json=payload, headers=headers, timeout=5.0)
 print(response.json())
 ```
 
----
-
-*Proceed to [ROUTES.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/ROUTES.md) for an exhaustive route-by-route table.*
+See [ROUTES.md](ROUTES.md) for the complete endpoint reference table.

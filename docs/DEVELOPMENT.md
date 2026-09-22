@@ -1,139 +1,131 @@
-# SleepCare CPAP Ecosystem — Developer Onboarding & Testing Playbook
+# SleepCare CPAP Ecosystem: Developer Onboarding and Testing Guide
 
-> **DISP Laboratory (Lyon) & Linde HomeCare France**  
-> *Author: Pamit Duggal (Software & AI Engineering Intern)*  
-> *Scope: Developer Workflows, Test Suites, Extending Rules, Retraining Models & Debugging*
+> DISP Laboratory (Université Lumière Lyon 2 / INSA Lyon) and Linde HomeCare France  
+> Author: Pamit Duggal (Software and AI Engineering Intern)  
+> Scope: Local development, test execution, adding coaching videos, and troubleshooting
 
 ---
 
-## 1. Local Developer Environment Setup
+## 1. Local environment setup
 
-To run and test the complete ecosystem on a single development machine (Windows, Linux, or macOS):
+To run tests or develop features on a single workstation:
 
-### 1.1 Python Version & Virtual Environment
-Ensure **Python 3.12 (64-bit)** is installed:
+### Python environment
+Make sure you have Python 3.11 or 3.12 installed:
 ```bash
-python --version  # Must output Python 3.11+ or 3.12+
+python --version
 ```
 
-Create a root development virtual environment:
+Create a top-level virtual environment:
 ```bash
-cd "c:\Users\pduggal\Downloads\CPAP new"
 python -m venv .venv
+
 # On Windows:
 .venv\Scripts\activate
-# On Linux/macOS:
+
+# On Linux or macOS:
 source .venv/bin/activate
 ```
 
-Install the combined development requirements:
+Install the dependencies:
 ```bash
 pip install fastapi uvicorn requests pandas numpy scipy scikit-learn lightgbm catboost xgboost lifelines opencv-python slowapi python-multipart python-dotenv jupyter
 ```
 
 ---
 
-## 2. Running Automated Test Suites
+## 2. Running the test suites
 
-The ecosystem features a comprehensive automated testing suite guaranteeing that zero regressions occur across API contracts, media streams, and machine learning models:
+We wrote regression tests for each tier to catch broken imports, route changes, or model regressions before committing code.
 
-### 2.1 Video Server Automated Test Suite (134 Checkpoints)
-Verifies 10 static endpoints, 39 MP4 HTTP 206 streams, 78 WebVTT bilingual subtitles, and 7 action simulation buttons:
+### 2.1 Video Server tests
+On the Video Server VM or local checkout:
 ```powershell
-cd C:\CPAP_Video_Server
+cd CPAP_Video_Server
 python calculate_kpis.py
 ```
-To run full dashboard and playback validation:
-```powershell
-python "C:\Users\Administrateur\.gemini\antigravity-ide\brain\ca990276-ea95-4c83-94c0-4900ef050b09\scratch\test_all_dashboard_elements.py"
-```
+This script tests that all 39 video files exist and can be read, confirms that all 78 WebVTT subtitle tracks match their corresponding video durations, and tests HTTP 206 byte-range streaming.
 
-**Expected Passing Summary**:
+Expected output:
 ```text
 ================================================================================
   ALL TESTS COMPLETED (0 FAILURES):
-    - Static Assets & APIs : 10/10 PASSED
-    - Video Streams (MP4)  : 39/39 PASSED (HTTP 206 Byte-Range Seek)
-    - Subtitles (WebVTT)   : 78/78 PASSED (100% Bilingual Parity EN/FR)
-    - Action/Sim Buttons   : 7/7 PASSED (Scenario 1, 2, 3, Sync, Rebuild, Reset)
+    - Static Assets and APIs : 10/10 PASSED
+    - Video Streams (MP4)    : 39/39 PASSED (HTTP 206 Byte-Range Seek)
+    - Subtitles (WebVTT)     : 78/78 PASSED (100% Bilingual Parity EN/FR)
+    - Action/Sim Buttons     : 7/7 PASSED (Scenario 1, 2, 3, Sync, Rebuild, Reset)
 ================================================================================
 ```
 
-### 2.2 AI Server Automated Test Suite (`CPAP_AI_Server/tests/`)
-Run each specialized test script from PowerShell:
-
+### 2.2 AI Server test suite (`CPAP_AI_Server/tests/`)
+From PowerShell:
 ```powershell
-cd C:\CPAP_AI_Server
+cd CPAP_AI_Server
 
-# 1. Verify Technical Briefing (39 items, boolean logic, <1ms fast path)
-& "C:\Program Files\Python312\python.exe" tests/test_technical_briefing.py
+# 1. Tests the 39 catalog items, boolean evaluation, and <1ms fast path
+python tests/test_technical_briefing.py
 
-# 2. Verify Server & Web Dashboard (HTML, SVG speedometer gauges, telemetry)
-& "C:\Program Files\Python312\python.exe" tests/test_server_dashboard.py
+# 2. Tests the web dashboard HTML, SVG gauges, and telemetry cards
+python tests/test_server_dashboard.py
 
-# 3. Verify Server REST Routes & Ring Buffer Logging
-& "C:\Program Files\Python312\python.exe" tests/verify_server_routes.py
+# 3. Verifies REST route availability and status codes
+python tests/verify_server_routes.py
 
-# 4. Verify Scenario 2 Virtual-Stitched Playlist Priority Sequencing
-& "C:\Program Files\Python312\python.exe" tests/test_playlist.py
+# 4. Tests Scenario 2 virtual playlist ordering and duration calculations
+python tests/test_playlist.py
 
-# 5. Verify Persistent Anti-Duplicate Tracker & Restart Recovery
-& "C:\Program Files\Python312\python.exe" tests/test_tracker.py
+# 5. Tests persistent tracker deduplication and recovery after restart
+python tests/test_tracker.py
 
-# 6. Verify 14 Multimodal Wearable Biomarker Anomaly Triggers
-& "C:\Program Files\Python312\python.exe" tests/test_triggers.py
+# 6. Tests the 14 multimodal wearable anomaly triggers
+python tests/test_triggers.py
 
-# 7. Verify End-to-End System Integration (Tracker, Pipeline, FastAPI)
-& "C:\Program Files\Python312\python.exe" tests/test_full_system.py
+# 7. End-to-end integration test (tracker, pipeline, and FastAPI)
+python tests/test_full_system.py
 ```
 
-### 2.3 Raspberry Pi Edge Verification (`test_csv/`)
-On the Raspberry Pi 5:
+### 2.3 Raspberry Pi edge test suite (`test_csv/`)
+On the Raspberry Pi:
 ```bash
-cd ~/Desktop/CPAP_Edge_copy
+cd ~/Desktop/CPAP_Raspberry_Pi
 
-# 1. Whole Suite Verification: Runs all CSV fixtures through /ingest & /timing
+# 1. Whole suite test: Feeds sample CSV fixtures through /ingest and /timing
 python3 test_csv/verify.py
 
-# 2. Wearables End-to-End Test: Tests 27 cases for Videos 28-37 against live Video VM
+# 2. Wearables test: Tests 27 edge cases for Videos 28 to 37 against the Video VM
 .venv/bin/python test_csv/test_wearables.py
 ```
 
 ---
 
-## 3. How to Add a New Clinical Video (Step-by-Step Guide)
+## 3. How to add a new clinical coaching video
 
-Follow this standardized protocol whenever a new clinical coaching video is produced:
+Follow these steps whenever clinical partners produce a new coaching clip:
 
-### Step 1: Assign ID and Store Media Assets
-1. Assign the next sequential integer ID (e.g. `40`).
-2. Place the Full HD (1080p, 30fps, H.264/AAC) video file in `CPAP_Video_Server/existing_videos/` or `new_videos/`:
-   - e.g.: `40_Nasal_Pillow_Sizing_Guide.mp4`.
-3. Create matching WebVTT bilingual subtitle files:
-   - `40_Nasal_Pillow_Sizing_Guide.en.vtt`
-   - `40_Nasal_Pillow_Sizing_Guide.fr.vtt`
-   Store them in `existing_subtitles/` or `new_subtitles/`.
+### Step 1: Add media files
+1. Pick the next sequential integer ID (for example, `40`).
+2. Put the 1080p MP4 file in `CPAP_Video_Server/existing_videos/` or `new_videos/`:
+   `40_Nasal_Pillow_Sizing_Guide.mp4`
+3. Put the matching bilingual subtitles in `existing_subtitles/` or `new_subtitles/`:
+   `40_Nasal_Pillow_Sizing_Guide.en.vtt`
+   `40_Nasal_Pillow_Sizing_Guide.fr.vtt`
 
-### Step 2: Auto-Profile Video Metadata & Cues
-Run the automated video metadata builder:
+### Step 2: Extract video cues and metadata
+Run the automated metadata profiler:
 ```powershell
-cd C:\CPAP_Video_Server
+cd CPAP_Video_Server
 python build_video_metadata.py
 ```
-This automatically:
-- Extracts resolution, duration, FPS, and audio channels using OpenCV.
-- Parses cue lines and narration transcripts from `.en.vtt` and `.fr.vtt`.
-- Assigns directed composability links (`can_precede`, `can_follow`).
-- Writes `metadata/video_40.json`.
+This reads the video with OpenCV to record duration, resolution, and frame rate, parses the narration cues from the WebVTT files, sets up composability links (`can_precede`, `can_follow`), and creates `metadata/video_40.json`.
 
-### Step 3: Recompile Master Catalog & Synchronize Nodes
+### Step 3: Update catalog and sync nodes
 ```powershell
 python update_master_metadata.py
 python sync_remote_nodes.py
 ```
-This updates `metadata/master_video_metadata.json`, regenerates `distributed_trigger_catalog.json`, and broadcasts webhooks to the AI Server and Pi Edge.
+This rebuilds `metadata/master_video_metadata.json` and pushes the updated catalog out to the AI Server and the Pi.
 
-### Step 4: Verify Streaming & Subtitles
+### Step 4: Verify streaming
 ```bash
 curl -I http://159.84.143.246:8080/videos/40_Nasal_Pillow_Sizing_Guide.mp4
 curl -I http://159.84.143.246:8080/subtitles/40_Nasal_Pillow_Sizing_Guide.en.vtt
@@ -141,45 +133,40 @@ curl -I http://159.84.143.246:8080/subtitles/40_Nasal_Pillow_Sizing_Guide.en.vtt
 
 ---
 
-## 4. How to Modify a Biomarker Anomaly Trigger Rule
+## 4. How to modify an anomaly trigger rule
 
-To modify thresholds or boolean logic for any clinical trigger:
+To adjust thresholds or boolean logic for any clinical trigger:
 
-1. **Update Edge Triage Engine (`CPAP_Raspberry_Pi/edge_detection.py`)**:
-   - Locate the rule function or update `WEARABLE_LOGIC` table.
-   - Example: To alter SomnoArt Sleeve Washing (Video 36) threshold from 60% to 65%:
-     ```python
-     fires36 = lt(SomnoArt_Lens_Transmission, 65) or isTrue(Maintenance_Due)
-     ```
-2. **Update AI Server Video Engine (`CPAP_AI_Server/core/video_engine.py`)**:
-   - Update the corresponding evaluation branch in `evaluate_wearable_anomalies()`.
-3. **Synchronize Distributed Catalog (`CPAP_Video_Server/metadata/video_36.json`)**:
-   - Edit the condition string in `video_36.json`.
-   - Re-run `python update_master_metadata.py`.
-   - Broadcast to cluster: `python sync_remote_nodes.py`.
-4. **Run Regression Tests**:
-   - Execute `test_csv/test_wearables.py` on Pi.
-   - Execute `tests/test_triggers.py` on AI Server.
+1. **Update the edge engine (`CPAP_Raspberry_Pi/edge_detection.py`)**:
+   Locate the rule or edit the `WEARABLE_LOGIC` dictionary. For example, to adjust the SomnoArt sleeve washing trigger from 60% to 65%:
+   ```python
+   fires36 = lt(SomnoArt_Lens_Transmission, 65) or isTrue(Maintenance_Due)
+   ```
+2. **Update the AI Server rule engine (`CPAP_AI_Server/core/video_engine.py`)**:
+   Adjust the evaluation branch in `evaluate_wearable_anomalies()`.
+3. **Update the catalog definition (`CPAP_Video_Server/metadata/video_36.json`)**:
+   Edit the condition string in `video_36.json`, re-run `python update_master_metadata.py`, and run `python sync_remote_nodes.py`.
+4. **Run regression tests**:
+   Run `test_csv/test_wearables.py` on the Pi and `python tests/test_triggers.py` on the AI Server.
 
 ---
 
-## 5. How to Retrain the 7-Layer Machine Learning Models
+## 5. Retraining the machine learning models
 
-The analytical pipeline is defined in [`CPAP_AI_Server/M4_FINAL_F2.ipynb`](file:///c:/Users/pduggal/Downloads/CPAP%20new/CPAP_AI_Server/M4_FINAL_F2.ipynb).
+The 7-layer pipeline is defined in `CPAP_AI_Server/M4_FINAL_F2.ipynb`.
 
-### 5.1 The Runtime Interceptor (`core/interceptor.py`)
-During execution, `sitecustomize.py` injects `smart_read_csv` into the Python runtime. When `pd.read_csv("Usage3.csv")` is called:
-1. It first attempts to stream live data from the Central Backend API (`http://159.84.143.151/api/data/cpap-usage`).
-2. If offline, it falls back seamlessly to local files in `data/Usage3.csv`.
-3. Output CSVs (`patient_action_plan.csv`, `features_merged.csv`) are automatically routed to `artifacts/`.
+### The runtime interceptor (`core/interceptor.py`)
+When executing the pipeline, `sitecustomize.py` hooks `pandas.read_csv`. When a notebook cell calls `pd.read_csv("Usage3.csv")`:
+1. It first queries live data from the Central Backend API (`http://159.84.143.151/api/data/cpap-usage`).
+2. If offline, it falls back to local data in `data/Usage3.csv`.
+3. Output files (`patient_action_plan.csv`, `features_merged.csv`) write directly into `artifacts/`.
 
-### 5.2 Executing Headless Pipeline Runs
-To execute the pipeline headlessly via command line:
+### Running the pipeline from the command line
 ```powershell
-cd C:\CPAP_AI_Server
-& "C:\Program Files\Python312\python.exe" api_data_loader.py --run-pipeline
+cd CPAP_AI_Server
+python api_data_loader.py --run-pipeline
 ```
-Or via HTTP POST request:
+Or via HTTP POST:
 ```bash
 curl -X POST http://localhost:8000/api/pipeline/run \
   -H "X-API-KEY: <YOUR_AI_SERVER_API_KEY>"
@@ -187,37 +174,33 @@ curl -X POST http://localhost:8000/api/pipeline/run \
 
 ---
 
-## 6. Troubleshooting Playbook: Common Issues & Instant Fixes
+## 6. Common issues and troubleshooting
 
 ### 1. `[WinError 10048] Only one usage of each socket address is normally permitted`
-- **Cause**: An earlier Python/Uvicorn process crashed or was left running in the background, holding port 8000, 8001, or 8080.
-- **Instant Fix**:
+- Cause: A previous Python process crashed or was closed abruptly without releasing port 8000, 8001, or 8080.
+- Fix:
   ```powershell
-  # For Port 8080:
+  # Free port 8080:
   Get-NetTCPConnection -LocalPort 8080 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }
-  # For Port 8000 & 8001:
-  & "C:\Program Files\Python312\python.exe" scripts/clear_ports.py
+  
+  # Free ports 8000 and 8001:
+  python scripts/clear_ports.py
   ```
 
-### 2. Browser Shows Stale Subtitles or Double Cues
-- **Cause**: Browser native cue renderer (`video::cue`) is active alongside custom overlay, or aggressive browser caching.
-- **Instant Fix**:
-  - The server emits `Cache-Control: no-cache, no-store, must-revalidate`.
-  - In `dashboard.js`, ensure `track.mode = 'hidden'` is executed on all loaded tracks.
-  - Perform a hard refresh in the browser (`Ctrl + F5` or `Ctrl + Shift + R`).
+### 2. Browser shows double subtitles
+- Cause: Both the native browser cue renderer (`video::cue`) and our custom overlay are active at the same time.
+- Fix: In `dashboard.js`, ensure `track.mode = 'hidden'` runs on all text tracks, and do a hard reload in the browser (`Ctrl + F5`).
 
-### 3. Remote Dashboard Access Returns HTTP 403 Forbidden
-- **Cause**: Defense-in-depth security restriction locking management dashboards and SSE logs to `localhost` (`127.0.0.1`, `::1`).
-- **Instant Fix**: Establish an SSH port forwarding tunnel:
+### 3. Remote dashboard access returns HTTP 403 Forbidden
+- Cause: The operations console blocks requests originating outside localhost.
+- Fix: Create an SSH port forwarding tunnel:
   ```bash
   ssh -L 8080:localhost:8080 user@159.84.143.246
   ```
-  Then navigate to `http://localhost:8080/dashboard`.
+  Then navigate to `http://localhost:8080/dashboard` in your local browser.
 
-### 4. Edge Pi Fails to Detect Pressure Anomaly on Real Phone CSV
-- **Cause**: Mobile app exports column as `pressure90` (lowercase), whereas `edge_detection.py` searches for `Presure90` or `pressure`.
-- **Instant Fix**: Add `pressure90` to the column resolution tuple inside `edge_detection.py`.
+### 4. Edge Pi misses pressure anomalies on phone CSV uploads
+- Cause: The mobile app exports the column as lowercase `pressure90`, but `edge_detection.py` searches for `Presure90` or `pressure`.
+- Fix: Add `pressure90` to the column resolution tuple in `edge_detection.py`.
 
----
-
-*You have completed the technical documentation suite! Refer back to [HANDOVER_REPORT.md](file:///c:/Users/pduggal/Downloads/CPAP%20new/docs/HANDOVER_REPORT.md) for master summaries and immediate roadmaps.*
+Refer back to [HANDOVER_REPORT.md](HANDOVER_REPORT.md) for master summaries and immediate roadmaps.

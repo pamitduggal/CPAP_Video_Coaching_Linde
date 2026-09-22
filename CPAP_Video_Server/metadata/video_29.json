@@ -1,0 +1,115 @@
+{
+  "video_id": 29,
+  "filename": "29_Hexoskin_Elastic_strap_adjustment.mp4",
+  "title": "Hexoskin - Elastic Strap Adjustment",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "Hexoskin RIP Straps",
+  "trigger_type": "hexoskin_rip_displacement",
+  "trigger_conditions": {
+    "Hexoskin_Thorax_Abdomen_Async": "> 25.0%",
+    "Breathing_Signal_Noise": "== High"
+  },
+  "tags": {
+    "clinical": [
+      "hexoskin",
+      "rip_respiratory_bands",
+      "strap_adjustment",
+      "breathing_tracking"
+    ],
+    "biomarker": [
+      "respiratory_inductive_plethysmography",
+      "breathing_asynchrony"
+    ],
+    "symptom": [
+      "erratic_breathing_signal",
+      "garment_wrinkling"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Patient turns in bed; loose fabric creates erratic breathing curves."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Patient sits up and fastens upper chest and lower abdominal elastic straps snugly."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Lying down; smooth synchronized thoracic and abdominal breathing waves appear."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "can_precede": [
+      14,
+      15,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "biomarker_alert",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "29_Hexoskin_Elastic_strap_adjustment.en.vtt",
+      "full_narration": "Fasten the chest and abdominal elastic straps snugly over your shirt to prevent sensor shifting and ensure accurate breathing tracking.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Fasten the chest and abdominal elastic straps snugly over your shirt"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "to prevent sensor shifting"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "and ensure accurate breathing tracking."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "29_Hexoskin_Elastic_strap_adjustment.fr.vtt",
+      "full_narration": "Ajustez les sangles élastiques sur la poitrine et l'abdomen pour maintenir les capteurs bien en place et fiabiliser les données respiratoires.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Ajustez les sangles élastiques sur la poitrine et l'abdomen"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "pour maintenir les capteurs bien en place"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "et fiabiliser les données respiratoires."
+        }
+      ]
+    }
+  },
+  "condition_logic": "AND",
+  "clinical_priority": "low"
+}

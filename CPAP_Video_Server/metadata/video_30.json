@@ -1,0 +1,114 @@
+{
+  "video_id": 30,
+  "filename": "30_Hexoskin_Recorder_docking_led_check.mp4",
+  "title": "Hexoskin - Recorder Docking Check",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "Hexoskin Docking & Status",
+  "trigger_type": "hexoskin_recording_inactive",
+  "trigger_conditions": {
+    "Hexoskin_Device_Status": "== 'Disconnected'",
+    "Recording_Active": "== False"
+  },
+  "tags": {
+    "clinical": [
+      "hexoskin",
+      "device_docking",
+      "led_status",
+      "sleep_recording"
+    ],
+    "biomarker": [
+      "hardware_telemetry_link"
+    ],
+    "symptom": [
+      "missing_recording",
+      "unseated_connector"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Device placed loosely in side pocket; recording not initiated."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Patient firmly pushes connector into socket until middle orange LED turns solid."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Tucks recorder neatly into side pocket with cable loop secure."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "can_precede": [
+      14,
+      15,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "30_Hexoskin_Recorder_docking_led_check.en.vtt",
+      "full_narration": "Firmly plug the recording device into the garment connector until the middle orange light turns solid, confirming your session is recording.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Firmly plug the recording device into the garment connector"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "until the middle orange light turns solid,"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "confirming your session is recording."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "30_Hexoskin_Recorder_docking_led_check.fr.vtt",
+      "full_narration": "Enclenchez fermement le boîtier sur le connecteur du vêtement jusqu'à ce que le voyant orange reste allumé en continu.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Enclenchez fermement le boîtier sur le connecteur du vêtement"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "jusqu'à ce que le voyant orange"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "reste allumé en continu."
+        }
+      ]
+    }
+  },
+  "condition_logic": "OR",
+  "clinical_priority": "medium"
+}

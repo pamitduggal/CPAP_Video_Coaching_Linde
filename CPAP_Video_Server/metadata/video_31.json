@@ -1,0 +1,116 @@
+{
+  "video_id": 31,
+  "filename": "31_MightySat_Low_perfusion_hand_warming.mp4",
+  "title": "MightySat - Low Perfusion Hand Warming",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "MightySat Perfusion Index",
+  "trigger_type": "mightysat_low_pi",
+  "trigger_conditions": {
+    "MightySat_PI": "< 0.5%",
+    "SpO2_Confidence": "< 50.0%"
+  },
+  "tags": {
+    "clinical": [
+      "masimo",
+      "mightysat",
+      "perfusion_index",
+      "vasoconstriction",
+      "spo2"
+    ],
+    "biomarker": [
+      "perfusion_index_pi",
+      "peripheral_blood_flow"
+    ],
+    "symptom": [
+      "cold_fingers",
+      "low_pulse_amplitude"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "MightySat screen displays low perfusion (PI 0.2%) with weak signal bar."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Patient removes sensor and rubs palms together vigorously to warm fingers."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Re-inserts middle finger; display shows robust PI 2.8% and steady 98% SpO2."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "can_precede": [
+      14,
+      15,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "biomarker_alert",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "31_MightySat_Low_perfusion_hand_warming.en.vtt",
+      "full_narration": "If your Perfusion Index is low, warm your hands by rubbing them together for a moment to improve blood flow before placing the sensor.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "If your Perfusion Index is low,"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "warm your hands by rubbing them together for a moment to improve blood flow"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "before placing the sensor."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "31_MightySat_Low_perfusion_hand_warming.fr.vtt",
+      "full_narration": "Si l'indice de perfusion est faible, réchauffez vos mains en les frottant pour stimuler la circulation avant de placer le capteur.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Si l'indice de perfusion est faible,"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "réchauffez vos mains en les frottant pour stimuler la circulation"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "avant de placer le capteur."
+        }
+      ]
+    }
+  },
+  "condition_logic": "OR",
+  "clinical_priority": "medium"
+}

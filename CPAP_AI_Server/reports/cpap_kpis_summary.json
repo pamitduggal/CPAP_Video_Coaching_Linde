@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "timestamp": "2026-09-14 10:42:00",
+    "cohort_total": 41117,
+    "computation_time_s": 0.73
+  },
+  "adherence_efficacy": {
+    "mean_use_7d": 6.71,
+    "median_use_7d": 7.03,
+    "pct_compliant_4h": 90.12,
+    "pct_subtherapeutic": 8.07,
+    "pct_zero_use": 1.81,
+    "mean_residual_ahi": 3.07,
+    "pct_ahi_controlled": 81.75,
+    "pct_ahi_severe": 0.35,
+    "mean_mask_leak": 0.21,
+    "pct_leak_elevated": 0.0,
+    "mean_delivered_pressure": 10.21
+  },
+  "alarms_surveillance": {
+    "total_active_alarms": 12112,
+    "alarm_rate_pct": 29.46,
+    "cusum_use_alarms": 5938,
+    "cusum_ahi_alarms": 7588,
+    "ewma_use_alarms": 2628
+  },
+  "risk_stratification": {
+    "mean_z_risk": 0.1983,
+    "low_risk_count": 31449,
+    "medium_risk_count": 9659,
+    "high_risk_count": 9,
+    "dropout_mechanisms": {
+      "none": 31449,
+      "natural": 8894,
+      "effectful": 774
+    }
+  },
+  "wearable_biomarkers": {
+    "multimodal_patients": 357,
+    "afib_detected": 27,
+    "severe_hypoxia": 103,
+    "hypertension": 14,
+    "poor_sleep_efficiency": 0
+  },
+  "interventions_and_videos": {
+    "action_plan_distribution": {
+      "Call": 40326,
+      "Visit": 740,
+      "Video": 51
+    },
+    "surveys_dispatched": 41063,
+    "acute_events_urgent": 51,
+    "top_coaching_videos": {
+      "none": 41066,
+      "How to Achieve a Comfortable Mask Fit": 21,
+      "Making CPAP Part of Your Nightly Routine": 18,
+      "Optimising Your Sleep Environment with CPAP": 6,
+      "CPAP and Its Impact on Mood, Energy and Mental Health": 3
+    }
+  }
+}

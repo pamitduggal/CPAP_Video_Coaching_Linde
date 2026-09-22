@@ -1,0 +1,4079 @@
+{
+  "event": "clinical_video_catalog_update",
+  "sync_timestamp": "2026-09-18T13:15:24.409866+00:00",
+  "video_vm_server": "http://159.84.143.246:8080",
+  "summary": {
+    "total_curated_videos": 37,
+    "total_ai_videos": 2,
+    "total_library_videos": 39,
+    "total_subtitle_tracks": 78,
+    "total_indexed_triggers": 39
+  },
+  "supported_scenarios": [
+    "scenario_1_single_clip",
+    "scenario_2_stitched_sequence",
+    "scenario_3_generative_ai_veo"
+  ],
+  "triggers": [
+    {
+      "video_id": 1,
+      "filename": "1_Mask_leak_adjust_straps.mp4",
+      "title": "Adjust Mask Straps",
+      "category": "Mask & Equipment",
+      "subtopic": "Strap Adjustment",
+      "trigger_type": "mask_leak",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 24.0",
+        "CPAP_Leaks95_max": "< 30.0"
+      },
+      "tags": {
+        "clinical": [
+          "mask_leak",
+          "strap_adjustment",
+          "air_leakage"
+        ],
+        "biomarker": [
+          "cpap_leak"
+        ],
+        "symptom": [
+          "air_hissing",
+          "eye_irritation"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/1_Mask_leak_adjust_straps.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [],
+        "can_precede": [
+          2,
+          3,
+          14
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 2,
+      "filename": "2_Mask_leak_refit_while_lying_down.mp4",
+      "title": "Refit Mask While Lying Down",
+      "category": "Mask & Equipment",
+      "subtopic": "Lying Down Refit",
+      "trigger_type": "mask_leak",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 30.0",
+        "CPAP_Use": ">= 2.0"
+      },
+      "tags": {
+        "clinical": [
+          "mask_leak",
+          "lying_down_fit",
+          "facial_contour"
+        ],
+        "biomarker": [
+          "cpap_leak"
+        ],
+        "symptom": [
+          "air_leak_in_bed"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/2_Mask_leak_refit_while_lying_down.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/2_Mask_leak_refit_while_lying_down.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/2_Mask_leak_refit_while_lying_down.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          3
+        ],
+        "can_precede": [
+          8,
+          14
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 3,
+      "filename": "3_Cushion_cleaning.mp4",
+      "title": "Cushion Cleaning Reminder",
+      "category": "Maintenance",
+      "subtopic": "Cushion Hygiene",
+      "trigger_type": "hygiene",
+      "condition_logic": "OR",
+      "clinical_priority": "maintenance",
+      "trigger_conditions": {
+        "CPAP_Use": ">= 4.0",
+        "CPAP_Leaks95": "< 10.0",
+        "CPAP_AHI": "< 5.0"
+      },
+      "tags": {
+        "clinical": [
+          "hygiene",
+          "cushion_care",
+          "facial_oils"
+        ],
+        "biomarker": [
+          "cpap_adherence_good"
+        ],
+        "symptom": [
+          "mask_slippage",
+          "skin_redness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/3_Cushion_cleaning.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/3_Cushion_cleaning.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/3_Cushion_cleaning.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2
+        ],
+        "can_precede": [],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 4,
+      "filename": "4_Low_usage_ramp_mode.mp4",
+      "title": "Low Usage - Use Ramp Mode",
+      "category": "Tips & Tricks",
+      "subtopic": "Pressure Ramp Feature",
+      "trigger_type": "low_usage",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Use": "> 0",
+        "CPAP_Use_max": "< 4.0",
+        "CPAP_Presure90": ">= 12.0"
+      },
+      "tags": {
+        "clinical": [
+          "low_usage",
+          "high_pressure_discomfort",
+          "ramp_feature"
+        ],
+        "biomarker": [
+          "cpap_use_low",
+          "cpap_pressure_high"
+        ],
+        "symptom": [
+          "unable_to_fall_asleep",
+          "high_pressure_sensation"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/4_Low_usage_ramp_mode.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/4_Low_usage_ramp_mode.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/4_Low_usage_ramp_mode.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          5
+        ],
+        "can_precede": [
+          7,
+          9
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 5,
+      "filename": "5_Low_usage_daytime_practice.mp4",
+      "title": "Low Usage - Daytime Practice",
+      "category": "Tips & Tricks",
+      "subtopic": "Desensitization",
+      "trigger_type": "zero_usage",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Use": "== 0.0"
+      },
+      "tags": {
+        "clinical": [
+          "zero_usage",
+          "desensitization",
+          "claustrophobia"
+        ],
+        "biomarker": [
+          "cpap_use_zero"
+        ],
+        "symptom": [
+          "anxiety",
+          "mask_aversion"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/5_Low_usage_daytime_practice.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/5_Low_usage_daytime_practice.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/5_Low_usage_daytime_practice.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [],
+        "can_precede": [
+          4,
+          6
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 6,
+      "filename": "6_Early_mask_removal.mp4",
+      "title": "Early Mask Removal",
+      "category": "Tips & Tricks",
+      "subtopic": "Sleep Continuity",
+      "trigger_type": "early_removal",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Use": "> 0",
+        "CPAP_Use_max": "< 4.0",
+        "CPAP_Presure90": "< 12.0"
+      },
+      "tags": {
+        "clinical": [
+          "early_removal",
+          "unconscious_removal",
+          "sleep_fragmentation"
+        ],
+        "biomarker": [
+          "cpap_use_low"
+        ],
+        "symptom": [
+          "waking_up_without_mask"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/6_Early_mask_removal.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/6_Early_mask_removal.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/6_Early_mask_removal.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          5
+        ],
+        "can_precede": [
+          17,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 7,
+      "filename": "7_Dry_mouth_humidifier.mp4",
+      "title": "Dry Mouth - Use Humidifier",
+      "category": "Comfort",
+      "subtopic": "Heated Humidification",
+      "trigger_type": "dry_mouth",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 10.0",
+        "CPAP_Leaks95_max": "< 24.0",
+        "CPAP_Presure90": ">= 10.0"
+      },
+      "tags": {
+        "clinical": [
+          "dry_mouth",
+          "humidifier_setting",
+          "airway_dryness"
+        ],
+        "biomarker": [
+          "cpap_leak_mild"
+        ],
+        "symptom": [
+          "dry_throat",
+          "parched_mouth"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/7_Dry_mouth_humidifier.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/7_Dry_mouth_humidifier.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/7_Dry_mouth_humidifier.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          8,
+          9
+        ],
+        "can_precede": [
+          8
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 8,
+      "filename": "8_Mouth_breathing_chin_support.mp4",
+      "title": "Mouth Breathing - Chin Support",
+      "category": "Mask & Equipment",
+      "subtopic": "Mouth Leak Control",
+      "trigger_type": "mouth_breathing",
+      "condition_logic": "AND",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 30.0",
+        "CPAP_Use": "< 2.0"
+      },
+      "tags": {
+        "clinical": [
+          "mouth_breathing",
+          "chin_strap",
+          "oral_leak"
+        ],
+        "biomarker": [
+          "cpap_leak_severe"
+        ],
+        "symptom": [
+          "open_mouth_sleeping",
+          "dry_mouth"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/8_Mouth_breathing_chin_support.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/8_Mouth_breathing_chin_support.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/8_Mouth_breathing_chin_support.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          7
+        ],
+        "can_precede": [
+          14
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 9,
+      "filename": "9_Nasal_congestion_relief.mp4",
+      "title": "Nasal Congestion Relief",
+      "category": "Comfort",
+      "subtopic": "Nasal Hygiene",
+      "trigger_type": "nasal_congestion",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 10.0",
+        "CPAP_Leaks95_max": "< 24.0",
+        "CPAP_Presure90": "< 10.0"
+      },
+      "tags": {
+        "clinical": [
+          "nasal_congestion",
+          "saline_spray",
+          "resistance"
+        ],
+        "biomarker": [
+          "cpap_leak_mild"
+        ],
+        "symptom": [
+          "stuffy_nose",
+          "nasal_blockage"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/9_Nasal_congestion_relief.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/9_Nasal_congestion_relief.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/9_Nasal_congestion_relief.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          5
+        ],
+        "can_precede": [
+          7
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 10,
+      "filename": "10_Aerophagia_elevate_head.mp4",
+      "title": "Aerophagia - Elevate Head",
+      "category": "Tips & Tricks",
+      "subtopic": "Sleeping Position",
+      "trigger_type": "aerophagia",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Presure90": ">= 13.0",
+        "CPAP_Leaks95": "< 10.0",
+        "CPAP_AHI": "< 5.0"
+      },
+      "tags": {
+        "clinical": [
+          "aerophagia",
+          "air_swallowing",
+          "head_elevation"
+        ],
+        "biomarker": [
+          "cpap_pressure_high"
+        ],
+        "symptom": [
+          "stomach_bloating",
+          "gas",
+          "abdominal_discomfort"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/10_Aerophagia_elevate_head.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/10_Aerophagia_elevate_head.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/10_Aerophagia_elevate_head.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4
+        ],
+        "can_precede": [
+          11
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 11,
+      "filename": "11_Aerophagia_side_sleeping.mp4",
+      "title": "Aerophagia - Side Sleeping",
+      "category": "Tips & Tricks",
+      "subtopic": "Side Sleeping Posture",
+      "trigger_type": "aerophagia",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Presure90": ">= 13.0",
+        "CPAP_Leaks95": "< 10.0",
+        "CPAP_AHI": ">= 5.0"
+      },
+      "tags": {
+        "clinical": [
+          "aerophagia",
+          "side_sleeping",
+          "positional_therapy"
+        ],
+        "biomarker": [
+          "cpap_pressure_high",
+          "cpap_ahi_elevated"
+        ],
+        "symptom": [
+          "bloating",
+          "gas",
+          "air_swallowing"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/11_Aerophagia_side_sleeping.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/11_Aerophagia_side_sleeping.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/11_Aerophagia_side_sleeping.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          10
+        ],
+        "can_precede": [
+          12
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 12,
+      "filename": "12_High_breathing_events_contact_provider.mp4",
+      "title": "High Breathing Events - Contact Provider",
+      "category": "Clinical Alerts",
+      "subtopic": "Apnea Index Elevation",
+      "trigger_type": "high_ahi",
+      "condition_logic": "AND",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "CPAP_AHI": ">= 15.0",
+        "CPAP_Use": ">= 3.0"
+      },
+      "tags": {
+        "clinical": [
+          "high_ahi",
+          "residual_apnea",
+          "clinical_escalation"
+        ],
+        "biomarker": [
+          "cpap_ahi_high"
+        ],
+        "symptom": [
+          "gasping",
+          "daytime_fatigue"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/12_High_breathing_events_contact_provider.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/12_High_breathing_events_contact_provider.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/12_High_breathing_events_contact_provider.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          11
+        ],
+        "can_precede": [
+          13,
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 13,
+      "filename": "13_Biomarker_changes_use_CPAP_and_contact_provider.mp4",
+      "title": "Biomarker Changes - Use CPAP & Contact Provider",
+      "category": "Clinical Alerts",
+      "subtopic": "Biomarker Anomaly",
+      "trigger_type": "biomarker_anomaly",
+      "condition_logic": "AND",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "CPAP_AHI": ">= 15.0",
+        "CPAP_Use": "< 3.0"
+      },
+      "tags": {
+        "clinical": [
+          "biomarker_anomaly",
+          "poor_adherence",
+          "high_ahi"
+        ],
+        "biomarker": [
+          "cpap_ahi_high",
+          "cpap_use_low"
+        ],
+        "symptom": [
+          "severe_exhaustion",
+          "morning_headache"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/13_Biomarker_changes_use_CPAP_and_contact_provider.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/13_Biomarker_changes_use_CPAP_and_contact_provider.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/13_Biomarker_changes_use_CPAP_and_contact_provider.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          5,
+          6,
+          12
+        ],
+        "can_precede": [
+          15,
+          16,
+          19
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 14,
+      "filename": "14_Mask_style_change.mp4",
+      "title": "Mask Style Change Needed",
+      "category": "Mask & Equipment",
+      "subtopic": "Alternative Mask Fit",
+      "trigger_type": "unresolved_leak",
+      "condition_logic": "OR",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 40.0"
+      },
+      "tags": {
+        "clinical": [
+          "unresolved_leak",
+          "mask_type_change",
+          "nasal_vs_fullface"
+        ],
+        "biomarker": [
+          "cpap_leak_critical"
+        ],
+        "symptom": [
+          "persistent_leak",
+          "facial_soreness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/14_Mask_style_change.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/14_Mask_style_change.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/14_Mask_style_change.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          8
+        ],
+        "can_precede": [
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 15,
+      "filename": "15_Contact_your_provider.mp4",
+      "title": "Severe Apnea - Contact Your Provider",
+      "category": "Clinical Alerts",
+      "subtopic": "Urgent Clinical Escalation",
+      "trigger_type": "critical_ahi",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "CPAP_AHI": ">= 30.0"
+      },
+      "tags": {
+        "clinical": [
+          "critical_ahi",
+          "urgent_care",
+          "physician_review"
+        ],
+        "biomarker": [
+          "cpap_ahi_critical"
+        ],
+        "symptom": [
+          "extreme_hypoxia",
+          "severe_gasping"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/15_Contact_your_provider.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/15_Contact_your_provider.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/15_Contact_your_provider.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          12,
+          13,
+          14,
+          16,
+          19,
+          22
+        ],
+        "can_precede": [],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 16,
+      "filename": "16_ScanWatch_Low_nighttime_oxygen.mp4",
+      "title": "ScanWatch - Low Nighttime Oxygen",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Nocturnal Hypoxemia (ScanWatch)",
+      "trigger_type": "scanwatch",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "ScanWatch_SpO2": "< 90.0",
+        "CPAP_Use": "< 4.0"
+      },
+      "tags": {
+        "clinical": [
+          "scanwatch",
+          "spo2_drop",
+          "nocturnal_hypoxemia"
+        ],
+        "biomarker": [
+          "scanwatch_spo2_low",
+          "cpap_use_low"
+        ],
+        "symptom": [
+          "morning_fog",
+          "shortness_of_breath"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/16_ScanWatch_Low_nighttime_oxygen.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/16_ScanWatch_Low_nighttime_oxygen.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/16_ScanWatch_Low_nighttime_oxygen.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          4,
+          6
+        ],
+        "can_precede": [
+          12,
+          13,
+          15,
+          22
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 17,
+      "filename": "17_ScanWatch_Fragmented_sleep.mp4",
+      "title": "ScanWatch - Fragmented Sleep",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Sleep Micro-arousals (ScanWatch)",
+      "trigger_type": "scanwatch",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "ScanWatch_MicroArousals": ">= 15/hr"
+      },
+      "tags": {
+        "clinical": [
+          "scanwatch",
+          "sleep_fragmentation",
+          "arousals"
+        ],
+        "biomarker": [
+          "scanwatch_fragmentation_high"
+        ],
+        "symptom": [
+          "restless_sleep",
+          "frequent_waking"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/17_ScanWatch_Fragmented_sleep.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/17_ScanWatch_Fragmented_sleep.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/17_ScanWatch_Fragmented_sleep.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          6
+        ],
+        "can_precede": [
+          26,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 18,
+      "filename": "18_ScanWatch_Unusual_heart_rhythm_signal.mp4",
+      "title": "ScanWatch - Unusual Heart Rhythm Signal",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Cardiac Rhythm Anomaly (ScanWatch)",
+      "trigger_type": "scanwatch",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "ScanWatch_ECG_Anomaly": "True"
+      },
+      "tags": {
+        "clinical": [
+          "scanwatch",
+          "heart_rate_variability",
+          "arrhythmia_signal"
+        ],
+        "biomarker": [
+          "scanwatch_hrv_anomaly"
+        ],
+        "symptom": [
+          "palpitations",
+          "chest_flutter"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/18_ScanWatch_Unusual_heart_rhythm_signal.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/18_ScanWatch_Unusual_heart_rhythm_signal.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/18_ScanWatch_Unusual_heart_rhythm_signal.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          16,
+          17
+        ],
+        "can_precede": [
+          19,
+          20,
+          21
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 19,
+      "filename": "19_BPM_Core_High_blood_pressure.mp4",
+      "title": "BPM Core - High Blood Pressure",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hypertension Warning (BPM Core)",
+      "trigger_type": "bpm_core",
+      "condition_logic": "AND",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "BPMCore_Systolic": ">= 140.0"
+      },
+      "tags": {
+        "clinical": [
+          "bpm_core",
+          "hypertension",
+          "blood_pressure"
+        ],
+        "biomarker": [
+          "bpm_core_sys_high"
+        ],
+        "symptom": [
+          "morning_headache",
+          "chest_tightness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/19_BPM_Core_High_blood_pressure.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/19_BPM_Core_High_blood_pressure.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/19_BPM_Core_High_blood_pressure.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          6,
+          13,
+          16
+        ],
+        "can_precede": [
+          15,
+          20,
+          21
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 20,
+      "filename": "20_BPM_Core_Irregular_ECG_alert.mp4",
+      "title": "BPM Core - Irregular ECG Alert",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Electrocardiogram Anomaly (BPM Core)",
+      "trigger_type": "bpm_core",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "BPMCore_ECG_Status": "Afib_Risk"
+      },
+      "tags": {
+        "clinical": [
+          "bpm_core",
+          "ecg_irregular",
+          "atrial_fibrillation_risk"
+        ],
+        "biomarker": [
+          "bpm_core_ecg_afib"
+        ],
+        "symptom": [
+          "racing_heart",
+          "dizziness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/20_BPM_Core_Irregular_ECG_alert.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/20_BPM_Core_Irregular_ECG_alert.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/20_BPM_Core_Irregular_ECG_alert.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          18,
+          19
+        ],
+        "can_precede": [
+          15,
+          21
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 21,
+      "filename": "21_BPM_Core_Heart_sound_review_needed.mp4",
+      "title": "BPM Core - Heart Sound Review Needed",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Digital Stethoscope Assessment (BPM Core)",
+      "trigger_type": "bpm_core",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "BPMCore_Stethoscope": "Review_Required"
+      },
+      "tags": {
+        "clinical": [
+          "bpm_core",
+          "valvular_sound",
+          "digital_stethoscope"
+        ],
+        "biomarker": [
+          "bpm_core_stethoscope_alert"
+        ],
+        "symptom": [
+          "heart_murmur_signal",
+          "fatigue"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/21_BPM_Core_Heart_sound_review_needed.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/21_BPM_Core_Heart_sound_review_needed.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/21_BPM_Core_Heart_sound_review_needed.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          19,
+          20
+        ],
+        "can_precede": [
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 22,
+      "filename": "22_RadG_Low_oxygen_reading.mp4",
+      "title": "RadG - Low Oxygen Reading",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Pulse Oximetry Alert (RadG)",
+      "trigger_type": "radg",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "RadG_SpO2": "< 88.0"
+      },
+      "tags": {
+        "clinical": [
+          "radg",
+          "pulse_oximetry",
+          "spo2_low"
+        ],
+        "biomarker": [
+          "radg_spo2_low"
+        ],
+        "symptom": [
+          "cyanosis_risk",
+          "shortness_of_breath"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/22_RadG_Low_oxygen_reading.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/22_RadG_Low_oxygen_reading.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/22_RadG_Low_oxygen_reading.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          16
+        ],
+        "can_precede": [
+          15,
+          23
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 23,
+      "filename": "23_RadG_Pulse_or_breathing_instability.mp4",
+      "title": "RadG - Pulse or Breathing Instability",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hemodynamic Instability (RadG)",
+      "trigger_type": "radg",
+      "condition_logic": "OR",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "RadG_PR_Variability": "High"
+      },
+      "tags": {
+        "clinical": [
+          "radg",
+          "pulse_variability",
+          "respiratory_instability"
+        ],
+        "biomarker": [
+          "radg_pr_instability"
+        ],
+        "symptom": [
+          "rapid_pulse",
+          "irregular_breathing"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/23_RadG_Pulse_or_breathing_instability.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/23_RadG_Pulse_or_breathing_instability.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/23_RadG_Pulse_or_breathing_instability.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          22
+        ],
+        "can_precede": [
+          12,
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 24,
+      "filename": "24_ProShirt_Breathing_pattern_changed.mp4",
+      "title": "ProShirt - Breathing Pattern Changed",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Thoraco-Abdominal Kinematics (ProShirt)",
+      "trigger_type": "proshirt",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "ProShirt_Asynchrony": "> 30%"
+      },
+      "tags": {
+        "clinical": [
+          "proshirt",
+          "respiratory_effort",
+          "paradoxical_breathing"
+        ],
+        "biomarker": [
+          "proshirt_effort_high"
+        ],
+        "symptom": [
+          "chest_strain",
+          "labored_breathing"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/24_ProShirt_Breathing_pattern_changed.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/24_ProShirt_Breathing_pattern_changed.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/24_ProShirt_Breathing_pattern_changed.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          6
+        ],
+        "can_precede": [
+          25,
+          26
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 25,
+      "filename": "25_ProShirt_Fit_check.mp4",
+      "title": "ProShirt - Fit Check",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Smart Garment Positioning (ProShirt)",
+      "trigger_type": "proshirt",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "ProShirt_SignalQuality": "< 70%"
+      },
+      "tags": {
+        "clinical": [
+          "proshirt",
+          "sensor_alignment",
+          "garment_fit"
+        ],
+        "biomarker": [
+          "proshirt_signal_noise"
+        ],
+        "symptom": [
+          "loose_garment",
+          "signal_loss"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/25_ProShirt_Fit_check.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/25_ProShirt_Fit_check.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/25_ProShirt_Fit_check.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          24
+        ],
+        "can_precede": [],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 26,
+      "filename": "26_SomnoArt_Sleep_architecture_changed.mp4",
+      "title": "SomnoArt - Sleep Architecture Changed",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Sleep Staging & REM Reduction (SomnoArt)",
+      "trigger_type": "somnoart",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "SomnoArt_REM_Pct": "< 12.0"
+      },
+      "tags": {
+        "clinical": [
+          "somnoart",
+          "rem_reduction",
+          "deep_sleep_loss"
+        ],
+        "biomarker": [
+          "somnoart_rem_low"
+        ],
+        "symptom": [
+          "daytime_sleepiness",
+          "memory_fog"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/26_SomnoArt_Sleep_architecture_changed.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/26_SomnoArt_Sleep_architecture_changed.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/26_SomnoArt_Sleep_architecture_changed.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          6,
+          17,
+          24
+        ],
+        "can_precede": [
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 27,
+      "filename": "27_SomnoArt_Poor_sleep_continuity.mp4",
+      "title": "SomnoArt - Poor Sleep Continuity",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Sleep Efficiency Index (SomnoArt)",
+      "trigger_type": "somnoart",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "SomnoArt_SleepEfficiency": "< 75.0%"
+      },
+      "tags": {
+        "clinical": [
+          "somnoart",
+          "sleep_efficiency",
+          "insomnia_co_morbidity"
+        ],
+        "biomarker": [
+          "somnoart_efficiency_low"
+        ],
+        "symptom": [
+          "frequent_awakenings",
+          "unrefreshing_sleep"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/27_SomnoArt_Poor_sleep_continuity.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/27_SomnoArt_Poor_sleep_continuity.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/27_SomnoArt_Poor_sleep_continuity.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          6,
+          17,
+          26
+        ],
+        "can_precede": [
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 28,
+      "filename": "28_Hexoskin_Electrode_moistening_prep.mp4",
+      "title": "Hexoskin - Electrode Moistening Prep",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hexoskin Cardiac Contact",
+      "trigger_type": "hexoskin_ecg_impedance",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "Hexoskin_ECG_Quality": "< 40.0%",
+        "HR_Dropout_Rate": ">= 30.0%"
+      },
+      "tags": {
+        "clinical": [
+          "hexoskin",
+          "ecg_electrode",
+          "moisture_prep",
+          "cardiac_telemetry"
+        ],
+        "biomarker": [
+          "ecg_snr",
+          "heart_rate_variability"
+        ],
+        "symptom": [
+          "noisy_ecg",
+          "heart_rate_dropouts"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/28_Hexoskin_Electrode_moistening_prep.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/28_Hexoskin_Electrode_moistening_prep.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/28_Hexoskin_Electrode_moistening_prep.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 29,
+      "filename": "29_Hexoskin_Elastic_strap_adjustment.mp4",
+      "title": "Hexoskin - Elastic Strap Adjustment",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hexoskin RIP Straps",
+      "trigger_type": "hexoskin_rip_displacement",
+      "condition_logic": "AND",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "Hexoskin_Thorax_Abdomen_Async": "> 25.0%",
+        "Breathing_Signal_Noise": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "hexoskin",
+          "rip_respiratory_bands",
+          "strap_adjustment",
+          "breathing_tracking"
+        ],
+        "biomarker": [
+          "respiratory_inductive_plethysmography",
+          "breathing_asynchrony"
+        ],
+        "symptom": [
+          "erratic_breathing_signal",
+          "garment_wrinkling"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/29_Hexoskin_Elastic_strap_adjustment.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/29_Hexoskin_Elastic_strap_adjustment.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/29_Hexoskin_Elastic_strap_adjustment.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 30,
+      "filename": "30_Hexoskin_Recorder_docking_led_check.mp4",
+      "title": "Hexoskin - Recorder Docking Check",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hexoskin Docking & Status",
+      "trigger_type": "hexoskin_recording_inactive",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "Hexoskin_Device_Status": "== 'Disconnected'",
+        "Recording_Active": "== False"
+      },
+      "tags": {
+        "clinical": [
+          "hexoskin",
+          "device_docking",
+          "led_status",
+          "sleep_recording"
+        ],
+        "biomarker": [
+          "hardware_telemetry_link"
+        ],
+        "symptom": [
+          "missing_recording",
+          "unseated_connector"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/30_Hexoskin_Recorder_docking_led_check.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/30_Hexoskin_Recorder_docking_led_check.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/30_Hexoskin_Recorder_docking_led_check.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 31,
+      "filename": "31_MightySat_Low_perfusion_hand_warming.mp4",
+      "title": "MightySat - Low Perfusion Hand Warming",
+      "category": "Wearable Biomarkers",
+      "subtopic": "MightySat Perfusion Index",
+      "trigger_type": "mightysat_low_pi",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "MightySat_PI": "< 0.5%",
+        "SpO2_Confidence": "< 50.0%"
+      },
+      "tags": {
+        "clinical": [
+          "masimo",
+          "mightysat",
+          "perfusion_index",
+          "vasoconstriction",
+          "spo2"
+        ],
+        "biomarker": [
+          "perfusion_index_pi",
+          "peripheral_blood_flow"
+        ],
+        "symptom": [
+          "cold_fingers",
+          "low_pulse_amplitude"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/31_MightySat_Low_perfusion_hand_warming.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/31_MightySat_Low_perfusion_hand_warming.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/31_MightySat_Low_perfusion_hand_warming.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 32,
+      "filename": "32_MightySat_Finger_depth_nail_prep.mp4",
+      "title": "MightySat - Finger Depth & Nail Prep",
+      "category": "Wearable Biomarkers",
+      "subtopic": "MightySat Sensor Placement",
+      "trigger_type": "mightysat_optical_blockage",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "MightySat_SpO2_Error": "== 'Optical_Blockage'",
+        "Pulse_Waveform": "== 'Erratic'"
+      },
+      "tags": {
+        "clinical": [
+          "masimo",
+          "mightysat",
+          "optical_sensors",
+          "finger_placement",
+          "nail_polish"
+        ],
+        "biomarker": [
+          "photoplethysmography_light_absorption",
+          "spo2_accuracy"
+        ],
+        "symptom": [
+          "optical_sensor_blockage",
+          "unsteady_pulse_wave"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/32_MightySat_Finger_depth_nail_prep.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/32_MightySat_Finger_depth_nail_prep.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/32_MightySat_Finger_depth_nail_prep.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 33,
+      "filename": "33_MightySat_Signal_iq_light_shielding.mp4",
+      "title": "MightySat - Signal IQ Light Shielding",
+      "category": "Wearable Biomarkers",
+      "subtopic": "MightySat Signal Quality",
+      "trigger_type": "mightysat_low_siq",
+      "condition_logic": "AND",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "MightySat_SIQ": "< 30.0%",
+        "Ambient_Light_Interference": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "masimo",
+          "mightysat",
+          "signal_iq",
+          "ambient_light",
+          "motion_artifacts"
+        ],
+        "biomarker": [
+          "signal_confidence_bar",
+          "pleth_variability_index"
+        ],
+        "symptom": [
+          "low_siq_confidence",
+          "light_glare_noise"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/33_MightySat_Signal_iq_light_shielding.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/33_MightySat_Signal_iq_light_shielding.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/33_MightySat_Signal_iq_light_shielding.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 34,
+      "filename": "34_SomnoArt_Forearm_positioning_ppg_seal.mp4",
+      "title": "SomnoArt - Forearm Positioning PPG Seal",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Somno-Art Forearm Placement",
+      "trigger_type": "somnoart_ppg_contact_loss",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "SomnoArt_PPG_Contact": "== 'Poor'",
+        "Optical_Baseline_Drift": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "somno_art",
+          "armband_placement",
+          "ppg_optical_contact",
+          "sleep_staging"
+        ],
+        "biomarker": [
+          "photoplethysmography_pulse_transit",
+          "heart_rate_variability"
+        ],
+        "symptom": [
+          "armband_slipping",
+          "optical_signal_gap"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/34_SomnoArt_Forearm_positioning_ppg_seal.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/34_SomnoArt_Forearm_positioning_ppg_seal.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/34_SomnoArt_Forearm_positioning_ppg_seal.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 35,
+      "filename": "35_SomnoArt_Calibration_stillness_led_check.mp4",
+      "title": "SomnoArt - 1-Min Calibration Stillness",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Somno-Art Calibration",
+      "trigger_type": "somnoart_calibration_failed",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "SomnoArt_Calibration_Status": "== 'Failed_Orange_LED'",
+        "Motion_During_Calibration": "== True"
+      },
+      "tags": {
+        "clinical": [
+          "somno_art",
+          "calibration_baseline",
+          "stillness",
+          "led_diagnostic"
+        ],
+        "biomarker": [
+          "autonomic_nervous_system_baseline"
+        ],
+        "symptom": [
+          "calibration_orange_led_error",
+          "motion_drift"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/35_SomnoArt_Calibration_stillness_led_check.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/35_SomnoArt_Calibration_stillness_led_check.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/35_SomnoArt_Calibration_stillness_led_check.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 36,
+      "filename": "36_SomnoArt_Pod_care_sleeve_washing.mp4",
+      "title": "SomnoArt - Pod Care & Sleeve Washing",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Somno-Art Maintenance",
+      "trigger_type": "somnoart_optical_lens_fogging",
+      "condition_logic": "OR",
+      "clinical_priority": "maintenance",
+      "trigger_conditions": {
+        "SomnoArt_Lens_Transmission": "< 60.0%",
+        "Maintenance_Due": "== True"
+      },
+      "tags": {
+        "clinical": [
+          "somno_art",
+          "pod_disinfection",
+          "textile_sleeve_wash",
+          "lens_maintenance"
+        ],
+        "biomarker": [
+          "optical_transmittance"
+        ],
+        "symptom": [
+          "cloudy_ppg_signal",
+          "sweat_residue"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/36_SomnoArt_Pod_care_sleeve_washing.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/36_SomnoArt_Pod_care_sleeve_washing.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/36_SomnoArt_Pod_care_sleeve_washing.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 37,
+      "filename": "37_CoUsage_CPAP_tubing_sensor_clearance.mp4",
+      "title": "Co-Usage - CPAP Tubing Sensor Clearance",
+      "category": "Wearable Biomarkers",
+      "subtopic": "CPAP & Wearable Co-Usage",
+      "trigger_type": "cpap_wearable_tubing_entanglement",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Mask_Dislodge_Events": ">= 2",
+        "Wearable_Motion_Spikes": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "cpap",
+          "hose_routing",
+          "wearable_armband",
+          "co_monitoring"
+        ],
+        "biomarker": [
+          "cpap_mask_stability",
+          "arm_motion_freedom"
+        ],
+        "symptom": [
+          "tubing_pulling_on_arm",
+          "nighttime_awakening"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/37_CoUsage_CPAP_tubing_sensor_clearance.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/37_CoUsage_CPAP_tubing_sensor_clearance.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/37_CoUsage_CPAP_tubing_sensor_clearance.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 38,
+      "filename": "38_Create_A_Clinical_Instructional_Animation_Showing.mp4",
+      "title": "Create A Clinical Instructional Animation Showing",
+      "category": "Personalized Coaching",
+      "subtopic": "Create A Clinical Instructional Animation Showing",
+      "trigger_type": "clinical_anomaly_trigger",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "Clinical_Anomaly_Score": ">= 0.75"
+      },
+      "tags": {
+        "clinical": [
+          "personalized_coaching"
+        ],
+        "biomarker": [
+          "telemetry_alert"
+        ],
+        "symptom": [
+          "therapy_discomfort"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/new/38_Create_A_Clinical_Instructional_Animation_Showing.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/38_Create_A_Clinical_Instructional_Animation_Showing.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/38_Create_A_Clinical_Instructional_Animation_Showing.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "new"
+    },
+    {
+      "video_id": 39,
+      "filename": "39_Humidifier_Tube_Adjustment_Animation.mp4",
+      "title": "Humidifier Tube Adjustment Animation",
+      "category": "Personalized Coaching",
+      "subtopic": "Humidifier Tube Adjustment Animation",
+      "trigger_type": "humidification_comfort",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "Humidity_Discomfort_Index": ">= 2.0"
+      },
+      "tags": {
+        "clinical": [
+          "humidifier",
+          "anti_rainout"
+        ],
+        "biomarker": [
+          "airway_hydration"
+        ],
+        "symptom": [
+          "nasal_dryness",
+          "condensation_in_tube"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/new/39_Humidifier_Tube_Adjustment_Animation.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/39_Humidifier_Tube_Adjustment_Animation.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/39_Humidifier_Tube_Adjustment_Animation.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "new"
+    }
+  ],
+  "video_triggers": [
+    {
+      "video_id": 1,
+      "filename": "1_Mask_leak_adjust_straps.mp4",
+      "title": "Adjust Mask Straps",
+      "category": "Mask & Equipment",
+      "subtopic": "Strap Adjustment",
+      "trigger_type": "mask_leak",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 24.0",
+        "CPAP_Leaks95_max": "< 30.0"
+      },
+      "tags": {
+        "clinical": [
+          "mask_leak",
+          "strap_adjustment",
+          "air_leakage"
+        ],
+        "biomarker": [
+          "cpap_leak"
+        ],
+        "symptom": [
+          "air_hissing",
+          "eye_irritation"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/1_Mask_leak_adjust_straps.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/1_Mask_leak_adjust_straps.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [],
+        "can_precede": [
+          2,
+          3,
+          14
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 2,
+      "filename": "2_Mask_leak_refit_while_lying_down.mp4",
+      "title": "Refit Mask While Lying Down",
+      "category": "Mask & Equipment",
+      "subtopic": "Lying Down Refit",
+      "trigger_type": "mask_leak",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 30.0",
+        "CPAP_Use": ">= 2.0"
+      },
+      "tags": {
+        "clinical": [
+          "mask_leak",
+          "lying_down_fit",
+          "facial_contour"
+        ],
+        "biomarker": [
+          "cpap_leak"
+        ],
+        "symptom": [
+          "air_leak_in_bed"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/2_Mask_leak_refit_while_lying_down.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/2_Mask_leak_refit_while_lying_down.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/2_Mask_leak_refit_while_lying_down.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          3
+        ],
+        "can_precede": [
+          8,
+          14
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 3,
+      "filename": "3_Cushion_cleaning.mp4",
+      "title": "Cushion Cleaning Reminder",
+      "category": "Maintenance",
+      "subtopic": "Cushion Hygiene",
+      "trigger_type": "hygiene",
+      "condition_logic": "OR",
+      "clinical_priority": "maintenance",
+      "trigger_conditions": {
+        "CPAP_Use": ">= 4.0",
+        "CPAP_Leaks95": "< 10.0",
+        "CPAP_AHI": "< 5.0"
+      },
+      "tags": {
+        "clinical": [
+          "hygiene",
+          "cushion_care",
+          "facial_oils"
+        ],
+        "biomarker": [
+          "cpap_adherence_good"
+        ],
+        "symptom": [
+          "mask_slippage",
+          "skin_redness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/3_Cushion_cleaning.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/3_Cushion_cleaning.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/3_Cushion_cleaning.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2
+        ],
+        "can_precede": [],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 4,
+      "filename": "4_Low_usage_ramp_mode.mp4",
+      "title": "Low Usage - Use Ramp Mode",
+      "category": "Tips & Tricks",
+      "subtopic": "Pressure Ramp Feature",
+      "trigger_type": "low_usage",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Use": "> 0",
+        "CPAP_Use_max": "< 4.0",
+        "CPAP_Presure90": ">= 12.0"
+      },
+      "tags": {
+        "clinical": [
+          "low_usage",
+          "high_pressure_discomfort",
+          "ramp_feature"
+        ],
+        "biomarker": [
+          "cpap_use_low",
+          "cpap_pressure_high"
+        ],
+        "symptom": [
+          "unable_to_fall_asleep",
+          "high_pressure_sensation"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/4_Low_usage_ramp_mode.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/4_Low_usage_ramp_mode.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/4_Low_usage_ramp_mode.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          5
+        ],
+        "can_precede": [
+          7,
+          9
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 5,
+      "filename": "5_Low_usage_daytime_practice.mp4",
+      "title": "Low Usage - Daytime Practice",
+      "category": "Tips & Tricks",
+      "subtopic": "Desensitization",
+      "trigger_type": "zero_usage",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Use": "== 0.0"
+      },
+      "tags": {
+        "clinical": [
+          "zero_usage",
+          "desensitization",
+          "claustrophobia"
+        ],
+        "biomarker": [
+          "cpap_use_zero"
+        ],
+        "symptom": [
+          "anxiety",
+          "mask_aversion"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/5_Low_usage_daytime_practice.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/5_Low_usage_daytime_practice.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/5_Low_usage_daytime_practice.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [],
+        "can_precede": [
+          4,
+          6
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 6,
+      "filename": "6_Early_mask_removal.mp4",
+      "title": "Early Mask Removal",
+      "category": "Tips & Tricks",
+      "subtopic": "Sleep Continuity",
+      "trigger_type": "early_removal",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Use": "> 0",
+        "CPAP_Use_max": "< 4.0",
+        "CPAP_Presure90": "< 12.0"
+      },
+      "tags": {
+        "clinical": [
+          "early_removal",
+          "unconscious_removal",
+          "sleep_fragmentation"
+        ],
+        "biomarker": [
+          "cpap_use_low"
+        ],
+        "symptom": [
+          "waking_up_without_mask"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/6_Early_mask_removal.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/6_Early_mask_removal.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/6_Early_mask_removal.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          5
+        ],
+        "can_precede": [
+          17,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 7,
+      "filename": "7_Dry_mouth_humidifier.mp4",
+      "title": "Dry Mouth - Use Humidifier",
+      "category": "Comfort",
+      "subtopic": "Heated Humidification",
+      "trigger_type": "dry_mouth",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 10.0",
+        "CPAP_Leaks95_max": "< 24.0",
+        "CPAP_Presure90": ">= 10.0"
+      },
+      "tags": {
+        "clinical": [
+          "dry_mouth",
+          "humidifier_setting",
+          "airway_dryness"
+        ],
+        "biomarker": [
+          "cpap_leak_mild"
+        ],
+        "symptom": [
+          "dry_throat",
+          "parched_mouth"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/7_Dry_mouth_humidifier.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/7_Dry_mouth_humidifier.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/7_Dry_mouth_humidifier.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          8,
+          9
+        ],
+        "can_precede": [
+          8
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 8,
+      "filename": "8_Mouth_breathing_chin_support.mp4",
+      "title": "Mouth Breathing - Chin Support",
+      "category": "Mask & Equipment",
+      "subtopic": "Mouth Leak Control",
+      "trigger_type": "mouth_breathing",
+      "condition_logic": "AND",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 30.0",
+        "CPAP_Use": "< 2.0"
+      },
+      "tags": {
+        "clinical": [
+          "mouth_breathing",
+          "chin_strap",
+          "oral_leak"
+        ],
+        "biomarker": [
+          "cpap_leak_severe"
+        ],
+        "symptom": [
+          "open_mouth_sleeping",
+          "dry_mouth"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/8_Mouth_breathing_chin_support.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/8_Mouth_breathing_chin_support.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/8_Mouth_breathing_chin_support.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          7
+        ],
+        "can_precede": [
+          14
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 9,
+      "filename": "9_Nasal_congestion_relief.mp4",
+      "title": "Nasal Congestion Relief",
+      "category": "Comfort",
+      "subtopic": "Nasal Hygiene",
+      "trigger_type": "nasal_congestion",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 10.0",
+        "CPAP_Leaks95_max": "< 24.0",
+        "CPAP_Presure90": "< 10.0"
+      },
+      "tags": {
+        "clinical": [
+          "nasal_congestion",
+          "saline_spray",
+          "resistance"
+        ],
+        "biomarker": [
+          "cpap_leak_mild"
+        ],
+        "symptom": [
+          "stuffy_nose",
+          "nasal_blockage"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/9_Nasal_congestion_relief.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/9_Nasal_congestion_relief.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/9_Nasal_congestion_relief.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          5
+        ],
+        "can_precede": [
+          7
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 10,
+      "filename": "10_Aerophagia_elevate_head.mp4",
+      "title": "Aerophagia - Elevate Head",
+      "category": "Tips & Tricks",
+      "subtopic": "Sleeping Position",
+      "trigger_type": "aerophagia",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Presure90": ">= 13.0",
+        "CPAP_Leaks95": "< 10.0",
+        "CPAP_AHI": "< 5.0"
+      },
+      "tags": {
+        "clinical": [
+          "aerophagia",
+          "air_swallowing",
+          "head_elevation"
+        ],
+        "biomarker": [
+          "cpap_pressure_high"
+        ],
+        "symptom": [
+          "stomach_bloating",
+          "gas",
+          "abdominal_discomfort"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/10_Aerophagia_elevate_head.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/10_Aerophagia_elevate_head.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/10_Aerophagia_elevate_head.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4
+        ],
+        "can_precede": [
+          11
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 11,
+      "filename": "11_Aerophagia_side_sleeping.mp4",
+      "title": "Aerophagia - Side Sleeping",
+      "category": "Tips & Tricks",
+      "subtopic": "Side Sleeping Posture",
+      "trigger_type": "aerophagia",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "CPAP_Presure90": ">= 13.0",
+        "CPAP_Leaks95": "< 10.0",
+        "CPAP_AHI": ">= 5.0"
+      },
+      "tags": {
+        "clinical": [
+          "aerophagia",
+          "side_sleeping",
+          "positional_therapy"
+        ],
+        "biomarker": [
+          "cpap_pressure_high",
+          "cpap_ahi_elevated"
+        ],
+        "symptom": [
+          "bloating",
+          "gas",
+          "air_swallowing"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/11_Aerophagia_side_sleeping.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/11_Aerophagia_side_sleeping.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/11_Aerophagia_side_sleeping.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          10
+        ],
+        "can_precede": [
+          12
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 12,
+      "filename": "12_High_breathing_events_contact_provider.mp4",
+      "title": "High Breathing Events - Contact Provider",
+      "category": "Clinical Alerts",
+      "subtopic": "Apnea Index Elevation",
+      "trigger_type": "high_ahi",
+      "condition_logic": "AND",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "CPAP_AHI": ">= 15.0",
+        "CPAP_Use": ">= 3.0"
+      },
+      "tags": {
+        "clinical": [
+          "high_ahi",
+          "residual_apnea",
+          "clinical_escalation"
+        ],
+        "biomarker": [
+          "cpap_ahi_high"
+        ],
+        "symptom": [
+          "gasping",
+          "daytime_fatigue"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/12_High_breathing_events_contact_provider.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/12_High_breathing_events_contact_provider.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/12_High_breathing_events_contact_provider.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          11
+        ],
+        "can_precede": [
+          13,
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 13,
+      "filename": "13_Biomarker_changes_use_CPAP_and_contact_provider.mp4",
+      "title": "Biomarker Changes - Use CPAP & Contact Provider",
+      "category": "Clinical Alerts",
+      "subtopic": "Biomarker Anomaly",
+      "trigger_type": "biomarker_anomaly",
+      "condition_logic": "AND",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "CPAP_AHI": ">= 15.0",
+        "CPAP_Use": "< 3.0"
+      },
+      "tags": {
+        "clinical": [
+          "biomarker_anomaly",
+          "poor_adherence",
+          "high_ahi"
+        ],
+        "biomarker": [
+          "cpap_ahi_high",
+          "cpap_use_low"
+        ],
+        "symptom": [
+          "severe_exhaustion",
+          "morning_headache"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/13_Biomarker_changes_use_CPAP_and_contact_provider.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/13_Biomarker_changes_use_CPAP_and_contact_provider.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/13_Biomarker_changes_use_CPAP_and_contact_provider.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          5,
+          6,
+          12
+        ],
+        "can_precede": [
+          15,
+          16,
+          19
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 14,
+      "filename": "14_Mask_style_change.mp4",
+      "title": "Mask Style Change Needed",
+      "category": "Mask & Equipment",
+      "subtopic": "Alternative Mask Fit",
+      "trigger_type": "unresolved_leak",
+      "condition_logic": "OR",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Leaks95": ">= 40.0"
+      },
+      "tags": {
+        "clinical": [
+          "unresolved_leak",
+          "mask_type_change",
+          "nasal_vs_fullface"
+        ],
+        "biomarker": [
+          "cpap_leak_critical"
+        ],
+        "symptom": [
+          "persistent_leak",
+          "facial_soreness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/14_Mask_style_change.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/14_Mask_style_change.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/14_Mask_style_change.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          8
+        ],
+        "can_precede": [
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 15,
+      "filename": "15_Contact_your_provider.mp4",
+      "title": "Severe Apnea - Contact Your Provider",
+      "category": "Clinical Alerts",
+      "subtopic": "Urgent Clinical Escalation",
+      "trigger_type": "critical_ahi",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "CPAP_AHI": ">= 30.0"
+      },
+      "tags": {
+        "clinical": [
+          "critical_ahi",
+          "urgent_care",
+          "physician_review"
+        ],
+        "biomarker": [
+          "cpap_ahi_critical"
+        ],
+        "symptom": [
+          "extreme_hypoxia",
+          "severe_gasping"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/15_Contact_your_provider.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/15_Contact_your_provider.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/15_Contact_your_provider.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          12,
+          13,
+          14,
+          16,
+          19,
+          22
+        ],
+        "can_precede": [],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 16,
+      "filename": "16_ScanWatch_Low_nighttime_oxygen.mp4",
+      "title": "ScanWatch - Low Nighttime Oxygen",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Nocturnal Hypoxemia (ScanWatch)",
+      "trigger_type": "scanwatch",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "ScanWatch_SpO2": "< 90.0",
+        "CPAP_Use": "< 4.0"
+      },
+      "tags": {
+        "clinical": [
+          "scanwatch",
+          "spo2_drop",
+          "nocturnal_hypoxemia"
+        ],
+        "biomarker": [
+          "scanwatch_spo2_low",
+          "cpap_use_low"
+        ],
+        "symptom": [
+          "morning_fog",
+          "shortness_of_breath"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/16_ScanWatch_Low_nighttime_oxygen.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/16_ScanWatch_Low_nighttime_oxygen.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/16_ScanWatch_Low_nighttime_oxygen.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          4,
+          6
+        ],
+        "can_precede": [
+          12,
+          13,
+          15,
+          22
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 17,
+      "filename": "17_ScanWatch_Fragmented_sleep.mp4",
+      "title": "ScanWatch - Fragmented Sleep",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Sleep Micro-arousals (ScanWatch)",
+      "trigger_type": "scanwatch",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "ScanWatch_MicroArousals": ">= 15/hr"
+      },
+      "tags": {
+        "clinical": [
+          "scanwatch",
+          "sleep_fragmentation",
+          "arousals"
+        ],
+        "biomarker": [
+          "scanwatch_fragmentation_high"
+        ],
+        "symptom": [
+          "restless_sleep",
+          "frequent_waking"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/17_ScanWatch_Fragmented_sleep.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/17_ScanWatch_Fragmented_sleep.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/17_ScanWatch_Fragmented_sleep.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          6
+        ],
+        "can_precede": [
+          26,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 18,
+      "filename": "18_ScanWatch_Unusual_heart_rhythm_signal.mp4",
+      "title": "ScanWatch - Unusual Heart Rhythm Signal",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Cardiac Rhythm Anomaly (ScanWatch)",
+      "trigger_type": "scanwatch",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "ScanWatch_ECG_Anomaly": "True"
+      },
+      "tags": {
+        "clinical": [
+          "scanwatch",
+          "heart_rate_variability",
+          "arrhythmia_signal"
+        ],
+        "biomarker": [
+          "scanwatch_hrv_anomaly"
+        ],
+        "symptom": [
+          "palpitations",
+          "chest_flutter"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/18_ScanWatch_Unusual_heart_rhythm_signal.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/18_ScanWatch_Unusual_heart_rhythm_signal.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/18_ScanWatch_Unusual_heart_rhythm_signal.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          16,
+          17
+        ],
+        "can_precede": [
+          19,
+          20,
+          21
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 19,
+      "filename": "19_BPM_Core_High_blood_pressure.mp4",
+      "title": "BPM Core - High Blood Pressure",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hypertension Warning (BPM Core)",
+      "trigger_type": "bpm_core",
+      "condition_logic": "AND",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "BPMCore_Systolic": ">= 140.0"
+      },
+      "tags": {
+        "clinical": [
+          "bpm_core",
+          "hypertension",
+          "blood_pressure"
+        ],
+        "biomarker": [
+          "bpm_core_sys_high"
+        ],
+        "symptom": [
+          "morning_headache",
+          "chest_tightness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/19_BPM_Core_High_blood_pressure.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/19_BPM_Core_High_blood_pressure.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/19_BPM_Core_High_blood_pressure.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          6,
+          13,
+          16
+        ],
+        "can_precede": [
+          15,
+          20,
+          21
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 20,
+      "filename": "20_BPM_Core_Irregular_ECG_alert.mp4",
+      "title": "BPM Core - Irregular ECG Alert",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Electrocardiogram Anomaly (BPM Core)",
+      "trigger_type": "bpm_core",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "BPMCore_ECG_Status": "Afib_Risk"
+      },
+      "tags": {
+        "clinical": [
+          "bpm_core",
+          "ecg_irregular",
+          "atrial_fibrillation_risk"
+        ],
+        "biomarker": [
+          "bpm_core_ecg_afib"
+        ],
+        "symptom": [
+          "racing_heart",
+          "dizziness"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/20_BPM_Core_Irregular_ECG_alert.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/20_BPM_Core_Irregular_ECG_alert.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/20_BPM_Core_Irregular_ECG_alert.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          18,
+          19
+        ],
+        "can_precede": [
+          15,
+          21
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 21,
+      "filename": "21_BPM_Core_Heart_sound_review_needed.mp4",
+      "title": "BPM Core - Heart Sound Review Needed",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Digital Stethoscope Assessment (BPM Core)",
+      "trigger_type": "bpm_core",
+      "condition_logic": "OR",
+      "clinical_priority": "critical",
+      "trigger_conditions": {
+        "BPMCore_Stethoscope": "Review_Required"
+      },
+      "tags": {
+        "clinical": [
+          "bpm_core",
+          "valvular_sound",
+          "digital_stethoscope"
+        ],
+        "biomarker": [
+          "bpm_core_stethoscope_alert"
+        ],
+        "symptom": [
+          "heart_murmur_signal",
+          "fatigue"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/21_BPM_Core_Heart_sound_review_needed.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/21_BPM_Core_Heart_sound_review_needed.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/21_BPM_Core_Heart_sound_review_needed.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          19,
+          20
+        ],
+        "can_precede": [
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 22,
+      "filename": "22_RadG_Low_oxygen_reading.mp4",
+      "title": "RadG - Low Oxygen Reading",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Pulse Oximetry Alert (RadG)",
+      "trigger_type": "radg",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "RadG_SpO2": "< 88.0"
+      },
+      "tags": {
+        "clinical": [
+          "radg",
+          "pulse_oximetry",
+          "spo2_low"
+        ],
+        "biomarker": [
+          "radg_spo2_low"
+        ],
+        "symptom": [
+          "cyanosis_risk",
+          "shortness_of_breath"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/22_RadG_Low_oxygen_reading.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/22_RadG_Low_oxygen_reading.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/22_RadG_Low_oxygen_reading.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          16
+        ],
+        "can_precede": [
+          15,
+          23
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2",
+          "existing_plus_generated"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 23,
+      "filename": "23_RadG_Pulse_or_breathing_instability.mp4",
+      "title": "RadG - Pulse or Breathing Instability",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hemodynamic Instability (RadG)",
+      "trigger_type": "radg",
+      "condition_logic": "OR",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "RadG_PR_Variability": "High"
+      },
+      "tags": {
+        "clinical": [
+          "radg",
+          "pulse_variability",
+          "respiratory_instability"
+        ],
+        "biomarker": [
+          "radg_pr_instability"
+        ],
+        "symptom": [
+          "rapid_pulse",
+          "irregular_breathing"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/23_RadG_Pulse_or_breathing_instability.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/23_RadG_Pulse_or_breathing_instability.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/23_RadG_Pulse_or_breathing_instability.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          22
+        ],
+        "can_precede": [
+          12,
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 24,
+      "filename": "24_ProShirt_Breathing_pattern_changed.mp4",
+      "title": "ProShirt - Breathing Pattern Changed",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Thoraco-Abdominal Kinematics (ProShirt)",
+      "trigger_type": "proshirt",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "ProShirt_Asynchrony": "> 30%"
+      },
+      "tags": {
+        "clinical": [
+          "proshirt",
+          "respiratory_effort",
+          "paradoxical_breathing"
+        ],
+        "biomarker": [
+          "proshirt_effort_high"
+        ],
+        "symptom": [
+          "chest_strain",
+          "labored_breathing"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/24_ProShirt_Breathing_pattern_changed.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/24_ProShirt_Breathing_pattern_changed.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/24_ProShirt_Breathing_pattern_changed.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          4,
+          6
+        ],
+        "can_precede": [
+          25,
+          26
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 25,
+      "filename": "25_ProShirt_Fit_check.mp4",
+      "title": "ProShirt - Fit Check",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Smart Garment Positioning (ProShirt)",
+      "trigger_type": "proshirt",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "ProShirt_SignalQuality": "< 70%"
+      },
+      "tags": {
+        "clinical": [
+          "proshirt",
+          "sensor_alignment",
+          "garment_fit"
+        ],
+        "biomarker": [
+          "proshirt_signal_noise"
+        ],
+        "symptom": [
+          "loose_garment",
+          "signal_loss"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/25_ProShirt_Fit_check.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/25_ProShirt_Fit_check.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/25_ProShirt_Fit_check.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          24
+        ],
+        "can_precede": [],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 26,
+      "filename": "26_SomnoArt_Sleep_architecture_changed.mp4",
+      "title": "SomnoArt - Sleep Architecture Changed",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Sleep Staging & REM Reduction (SomnoArt)",
+      "trigger_type": "somnoart",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "SomnoArt_REM_Pct": "< 12.0"
+      },
+      "tags": {
+        "clinical": [
+          "somnoart",
+          "rem_reduction",
+          "deep_sleep_loss"
+        ],
+        "biomarker": [
+          "somnoart_rem_low"
+        ],
+        "symptom": [
+          "daytime_sleepiness",
+          "memory_fog"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/26_SomnoArt_Sleep_architecture_changed.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/26_SomnoArt_Sleep_architecture_changed.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/26_SomnoArt_Sleep_architecture_changed.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          6,
+          17,
+          24
+        ],
+        "can_precede": [
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_1_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 27,
+      "filename": "27_SomnoArt_Poor_sleep_continuity.mp4",
+      "title": "SomnoArt - Poor Sleep Continuity",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Sleep Efficiency Index (SomnoArt)",
+      "trigger_type": "somnoart",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "SomnoArt_SleepEfficiency": "< 75.0%"
+      },
+      "tags": {
+        "clinical": [
+          "somnoart",
+          "sleep_efficiency",
+          "insomnia_co_morbidity"
+        ],
+        "biomarker": [
+          "somnoart_efficiency_low"
+        ],
+        "symptom": [
+          "frequent_awakenings",
+          "unrefreshing_sleep"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/27_SomnoArt_Poor_sleep_continuity.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/27_SomnoArt_Poor_sleep_continuity.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/27_SomnoArt_Poor_sleep_continuity.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          6,
+          17,
+          26
+        ],
+        "can_precede": [
+          15
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 28,
+      "filename": "28_Hexoskin_Electrode_moistening_prep.mp4",
+      "title": "Hexoskin - Electrode Moistening Prep",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hexoskin Cardiac Contact",
+      "trigger_type": "hexoskin_ecg_impedance",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "Hexoskin_ECG_Quality": "< 40.0%",
+        "HR_Dropout_Rate": ">= 30.0%"
+      },
+      "tags": {
+        "clinical": [
+          "hexoskin",
+          "ecg_electrode",
+          "moisture_prep",
+          "cardiac_telemetry"
+        ],
+        "biomarker": [
+          "ecg_snr",
+          "heart_rate_variability"
+        ],
+        "symptom": [
+          "noisy_ecg",
+          "heart_rate_dropouts"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/28_Hexoskin_Electrode_moistening_prep.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/28_Hexoskin_Electrode_moistening_prep.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/28_Hexoskin_Electrode_moistening_prep.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 29,
+      "filename": "29_Hexoskin_Elastic_strap_adjustment.mp4",
+      "title": "Hexoskin - Elastic Strap Adjustment",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hexoskin RIP Straps",
+      "trigger_type": "hexoskin_rip_displacement",
+      "condition_logic": "AND",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "Hexoskin_Thorax_Abdomen_Async": "> 25.0%",
+        "Breathing_Signal_Noise": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "hexoskin",
+          "rip_respiratory_bands",
+          "strap_adjustment",
+          "breathing_tracking"
+        ],
+        "biomarker": [
+          "respiratory_inductive_plethysmography",
+          "breathing_asynchrony"
+        ],
+        "symptom": [
+          "erratic_breathing_signal",
+          "garment_wrinkling"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/29_Hexoskin_Elastic_strap_adjustment.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/29_Hexoskin_Elastic_strap_adjustment.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/29_Hexoskin_Elastic_strap_adjustment.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 30,
+      "filename": "30_Hexoskin_Recorder_docking_led_check.mp4",
+      "title": "Hexoskin - Recorder Docking Check",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Hexoskin Docking & Status",
+      "trigger_type": "hexoskin_recording_inactive",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "Hexoskin_Device_Status": "== 'Disconnected'",
+        "Recording_Active": "== False"
+      },
+      "tags": {
+        "clinical": [
+          "hexoskin",
+          "device_docking",
+          "led_status",
+          "sleep_recording"
+        ],
+        "biomarker": [
+          "hardware_telemetry_link"
+        ],
+        "symptom": [
+          "missing_recording",
+          "unseated_connector"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/30_Hexoskin_Recorder_docking_led_check.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/30_Hexoskin_Recorder_docking_led_check.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/30_Hexoskin_Recorder_docking_led_check.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 31,
+      "filename": "31_MightySat_Low_perfusion_hand_warming.mp4",
+      "title": "MightySat - Low Perfusion Hand Warming",
+      "category": "Wearable Biomarkers",
+      "subtopic": "MightySat Perfusion Index",
+      "trigger_type": "mightysat_low_pi",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "MightySat_PI": "< 0.5%",
+        "SpO2_Confidence": "< 50.0%"
+      },
+      "tags": {
+        "clinical": [
+          "masimo",
+          "mightysat",
+          "perfusion_index",
+          "vasoconstriction",
+          "spo2"
+        ],
+        "biomarker": [
+          "perfusion_index_pi",
+          "peripheral_blood_flow"
+        ],
+        "symptom": [
+          "cold_fingers",
+          "low_pulse_amplitude"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/31_MightySat_Low_perfusion_hand_warming.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/31_MightySat_Low_perfusion_hand_warming.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/31_MightySat_Low_perfusion_hand_warming.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 32,
+      "filename": "32_MightySat_Finger_depth_nail_prep.mp4",
+      "title": "MightySat - Finger Depth & Nail Prep",
+      "category": "Wearable Biomarkers",
+      "subtopic": "MightySat Sensor Placement",
+      "trigger_type": "mightysat_optical_blockage",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "MightySat_SpO2_Error": "== 'Optical_Blockage'",
+        "Pulse_Waveform": "== 'Erratic'"
+      },
+      "tags": {
+        "clinical": [
+          "masimo",
+          "mightysat",
+          "optical_sensors",
+          "finger_placement",
+          "nail_polish"
+        ],
+        "biomarker": [
+          "photoplethysmography_light_absorption",
+          "spo2_accuracy"
+        ],
+        "symptom": [
+          "optical_sensor_blockage",
+          "unsteady_pulse_wave"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/32_MightySat_Finger_depth_nail_prep.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/32_MightySat_Finger_depth_nail_prep.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/32_MightySat_Finger_depth_nail_prep.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 33,
+      "filename": "33_MightySat_Signal_iq_light_shielding.mp4",
+      "title": "MightySat - Signal IQ Light Shielding",
+      "category": "Wearable Biomarkers",
+      "subtopic": "MightySat Signal Quality",
+      "trigger_type": "mightysat_low_siq",
+      "condition_logic": "AND",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "MightySat_SIQ": "< 30.0%",
+        "Ambient_Light_Interference": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "masimo",
+          "mightysat",
+          "signal_iq",
+          "ambient_light",
+          "motion_artifacts"
+        ],
+        "biomarker": [
+          "signal_confidence_bar",
+          "pleth_variability_index"
+        ],
+        "symptom": [
+          "low_siq_confidence",
+          "light_glare_noise"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/33_MightySat_Signal_iq_light_shielding.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/33_MightySat_Signal_iq_light_shielding.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/33_MightySat_Signal_iq_light_shielding.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 34,
+      "filename": "34_SomnoArt_Forearm_positioning_ppg_seal.mp4",
+      "title": "SomnoArt - Forearm Positioning PPG Seal",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Somno-Art Forearm Placement",
+      "trigger_type": "somnoart_ppg_contact_loss",
+      "condition_logic": "OR",
+      "clinical_priority": "low",
+      "trigger_conditions": {
+        "SomnoArt_PPG_Contact": "== 'Poor'",
+        "Optical_Baseline_Drift": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "somno_art",
+          "armband_placement",
+          "ppg_optical_contact",
+          "sleep_staging"
+        ],
+        "biomarker": [
+          "photoplethysmography_pulse_transit",
+          "heart_rate_variability"
+        ],
+        "symptom": [
+          "armband_slipping",
+          "optical_signal_gap"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/34_SomnoArt_Forearm_positioning_ppg_seal.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/34_SomnoArt_Forearm_positioning_ppg_seal.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/34_SomnoArt_Forearm_positioning_ppg_seal.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 35,
+      "filename": "35_SomnoArt_Calibration_stillness_led_check.mp4",
+      "title": "SomnoArt - 1-Min Calibration Stillness",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Somno-Art Calibration",
+      "trigger_type": "somnoart_calibration_failed",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "SomnoArt_Calibration_Status": "== 'Failed_Orange_LED'",
+        "Motion_During_Calibration": "== True"
+      },
+      "tags": {
+        "clinical": [
+          "somno_art",
+          "calibration_baseline",
+          "stillness",
+          "led_diagnostic"
+        ],
+        "biomarker": [
+          "autonomic_nervous_system_baseline"
+        ],
+        "symptom": [
+          "calibration_orange_led_error",
+          "motion_drift"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/35_SomnoArt_Calibration_stillness_led_check.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/35_SomnoArt_Calibration_stillness_led_check.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/35_SomnoArt_Calibration_stillness_led_check.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 36,
+      "filename": "36_SomnoArt_Pod_care_sleeve_washing.mp4",
+      "title": "SomnoArt - Pod Care & Sleeve Washing",
+      "category": "Wearable Biomarkers",
+      "subtopic": "Somno-Art Maintenance",
+      "trigger_type": "somnoart_optical_lens_fogging",
+      "condition_logic": "OR",
+      "clinical_priority": "maintenance",
+      "trigger_conditions": {
+        "SomnoArt_Lens_Transmission": "< 60.0%",
+        "Maintenance_Due": "== True"
+      },
+      "tags": {
+        "clinical": [
+          "somno_art",
+          "pod_disinfection",
+          "textile_sleeve_wash",
+          "lens_maintenance"
+        ],
+        "biomarker": [
+          "optical_transmittance"
+        ],
+        "symptom": [
+          "cloudy_ppg_signal",
+          "sweat_residue"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/36_SomnoArt_Pod_care_sleeve_washing.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/36_SomnoArt_Pod_care_sleeve_washing.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/36_SomnoArt_Pod_care_sleeve_washing.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 37,
+      "filename": "37_CoUsage_CPAP_tubing_sensor_clearance.mp4",
+      "title": "Co-Usage - CPAP Tubing Sensor Clearance",
+      "category": "Wearable Biomarkers",
+      "subtopic": "CPAP & Wearable Co-Usage",
+      "trigger_type": "cpap_wearable_tubing_entanglement",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "CPAP_Mask_Dislodge_Events": ">= 2",
+        "Wearable_Motion_Spikes": "== High"
+      },
+      "tags": {
+        "clinical": [
+          "cpap",
+          "hose_routing",
+          "wearable_armband",
+          "co_monitoring"
+        ],
+        "biomarker": [
+          "cpap_mask_stability",
+          "arm_motion_freedom"
+        ],
+        "symptom": [
+          "tubing_pulling_on_arm",
+          "nighttime_awakening"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/existing/37_CoUsage_CPAP_tubing_sensor_clearance.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/37_CoUsage_CPAP_tubing_sensor_clearance.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/37_CoUsage_CPAP_tubing_sensor_clearance.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          15,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "existing"
+    },
+    {
+      "video_id": 38,
+      "filename": "38_Create_A_Clinical_Instructional_Animation_Showing.mp4",
+      "title": "Create A Clinical Instructional Animation Showing",
+      "category": "Personalized Coaching",
+      "subtopic": "Create A Clinical Instructional Animation Showing",
+      "trigger_type": "clinical_anomaly_trigger",
+      "condition_logic": "AND",
+      "clinical_priority": "high",
+      "trigger_conditions": {
+        "Clinical_Anomaly_Score": ">= 0.75"
+      },
+      "tags": {
+        "clinical": [
+          "personalized_coaching"
+        ],
+        "biomarker": [
+          "telemetry_alert"
+        ],
+        "symptom": [
+          "therapy_discomfort"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/new/38_Create_A_Clinical_Instructional_Animation_Showing.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/38_Create_A_Clinical_Instructional_Animation_Showing.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/38_Create_A_Clinical_Instructional_Animation_Showing.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "new"
+    },
+    {
+      "video_id": 39,
+      "filename": "39_Humidifier_Tube_Adjustment_Animation.mp4",
+      "title": "Humidifier Tube Adjustment Animation",
+      "category": "Personalized Coaching",
+      "subtopic": "Humidifier Tube Adjustment Animation",
+      "trigger_type": "humidification_comfort",
+      "condition_logic": "OR",
+      "clinical_priority": "medium",
+      "trigger_conditions": {
+        "Humidity_Discomfort_Index": ">= 2.0"
+      },
+      "tags": {
+        "clinical": [
+          "humidifier",
+          "anti_rainout"
+        ],
+        "biomarker": [
+          "airway_hydration"
+        ],
+        "symptom": [
+          "nasal_dryness",
+          "condensation_in_tube"
+        ]
+      },
+      "duration_s": 10.0,
+      "urls": {
+        "video_stream": "http://159.84.143.246:8080/videos/new/39_Humidifier_Tube_Adjustment_Animation.mp4",
+        "subtitle_en": "http://159.84.143.246:8080/subtitles/39_Humidifier_Tube_Adjustment_Animation.en.vtt",
+        "subtitle_fr": "http://159.84.143.246:8080/subtitles/39_Humidifier_Tube_Adjustment_Animation.fr.vtt"
+      },
+      "composability": {
+        "can_follow": [
+          1,
+          2,
+          4,
+          7
+        ],
+        "can_precede": [
+          14,
+          27
+        ],
+        "transition_type": "fade_1_5s",
+        "reuse_mode": "standalone_or_sequence",
+        "scenario_fit": [
+          "standalone",
+          "clip_2_of_2"
+        ]
+      },
+      "bucket": "new"
+    }
+  ]
+}

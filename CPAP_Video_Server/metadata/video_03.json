@@ -1,0 +1,108 @@
+{
+  "video_id": 3,
+  "filename": "3_Cushion_cleaning.mp4",
+  "title": "Cushion Cleaning Reminder",
+  "duration_s": 10.0,
+  "category": "Maintenance",
+  "subtopic": "Cushion Hygiene",
+  "trigger_type": "hygiene",
+  "trigger_conditions": {
+    "CPAP_Use": ">= 4.0",
+    "CPAP_Leaks95": "< 10.0",
+    "CPAP_AHI": "< 5.0"
+  },
+  "tags": {
+    "clinical": [
+      "hygiene",
+      "cushion_care",
+      "facial_oils"
+    ],
+    "biomarker": [
+      "cpap_adherence_good"
+    ],
+    "symptom": [
+      "mask_slippage",
+      "skin_redness"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Displays facial oil buildup on mask cushion."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Washing silicone cushion using warm water and gentle soap."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Rinsing and wiping clean for optimal seal performance."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2
+    ],
+    "can_precede": [],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "3_Cushion_cleaning.en.vtt",
+      "full_narration": "A clean cushion helps the mask seal better. Wash it gently And let it air dry on a clean towel.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "A clean cushion helps the mask seal better."
+        },
+        {
+          "start": "00:00:04.000",
+          "end": "00:00:05.000",
+          "text": "Wash it gently"
+        },
+        {
+          "start": "00:00:05.000",
+          "end": "00:00:10.000",
+          "text": "And let it air dry on a clean towel."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "3_Cushion_cleaning.fr.vtt",
+      "full_narration": "Un coussin propre aide le masque à mieux se sceller. Lavez-le doucement Et laissez-le sécher à l'air libre sur une serviette propre.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Un coussin propre aide le masque à mieux se sceller."
+        },
+        {
+          "start": "00:00:04.000",
+          "end": "00:00:05.000",
+          "text": "Lavez-le doucement"
+        },
+        {
+          "start": "00:00:05.000",
+          "end": "00:00:10.000",
+          "text": "Et laissez-le sécher à l'air libre sur une serviette propre."
+        }
+      ]
+    }
+  },
+  "condition_logic": "OR",
+  "clinical_priority": "maintenance"
+}

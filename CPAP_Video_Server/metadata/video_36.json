@@ -1,0 +1,114 @@
+{
+  "video_id": 36,
+  "filename": "36_SomnoArt_Pod_care_sleeve_washing.mp4",
+  "title": "SomnoArt - Pod Care & Sleeve Washing",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "Somno-Art Maintenance",
+  "trigger_type": "somnoart_optical_lens_fogging",
+  "trigger_conditions": {
+    "SomnoArt_Lens_Transmission": "< 60.0%",
+    "Maintenance_Due": "== True"
+  },
+  "tags": {
+    "clinical": [
+      "somno_art",
+      "pod_disinfection",
+      "textile_sleeve_wash",
+      "lens_maintenance"
+    ],
+    "biomarker": [
+      "optical_transmittance"
+    ],
+    "symptom": [
+      "cloudy_ppg_signal",
+      "sweat_residue"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Patient slides electronic pod out of fabric armband sleeve."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Places fabric sleeve in wash bag; gently wipes optical glass window with cloth."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Clean pod and fresh sleeve assembled ready for bedtime recording."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "can_precede": [
+      14,
+      15,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "36_SomnoArt_Pod_care_sleeve_washing.en.vtt",
+      "full_narration": "Always remove the electronic pod before washing the textile sleeve, and clean the optical sensor with a gentle wipe.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Always remove the electronic pod before washing the textile sleeve,"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "and clean the optical sensor"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "with a gentle wipe."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "36_SomnoArt_Pod_care_sleeve_washing.fr.vtt",
+      "full_narration": "Retirez toujours le boîtier électronique avant de laver le brassard textile et nettoyez le capteur optique avec une lingette douce.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Retirez toujours le boîtier électronique avant de laver le brassard textile"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "et nettoyez le capteur optique"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "avec une lingette douce."
+        }
+      ]
+    }
+  },
+  "condition_logic": "OR",
+  "clinical_priority": "maintenance"
+}

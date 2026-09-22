@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SleepCare CPAP Video Server - Clinical Video Orchestration & Control Dashboard</title>
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Dashboard Styling System -->
+  <link rel="stylesheet" href="/dashboard_assets/dashboard.css?v=20260918v1">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Top Header & Ecosystem Status Bar -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="brand-icon">🫁</div>
+        <div class="brand-text">
+          <h1>SleepCare CPAP Video Server</h1>
+          <p>Real-Time Video Streaming, Bilingual Subtitles & Orchestration Node</p>
+        </div>
+      </div>
+
+      <div class="header-status-group">
+        <div class="node-badge">
+          <span class="pulse-dot"></span>
+          <span>ONLINE • PORT 8080</span>
+        </div>
+        <div class="header-meta">
+          <span class="meta-tag" style="border-color: rgba(16, 185, 129, 0.4); color: var(--accent-emerald);">🔒 Localhost Exclusive (127.0.0.1)</span>
+          <span class="meta-tag" style="border-color: rgba(6, 182, 212, 0.4); color: var(--accent-cyan);">Inbound API: 159.84.143.246:8080</span>
+          <span class="meta-tag">Deduplication: Active</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- LIVE ACTIVE SCENARIO & INBOUND ACTIVITY RADAR BANNER -->
+    <section class="scenario-radar-card" id="scenario-radar-card">
+      <div class="radar-header">
+        <div class="radar-title-group">
+          <span class="radar-beacon" id="radar-beacon"></span>
+          <span class="radar-title" id="radar-title">LIVE SCENARIO RADAR: STANDBY</span>
+          <span class="radar-source-tag" id="radar-source-tag">Listening for AI Server & Pi Edge Triggers</span>
+        </div>
+        <div class="radar-meta" id="radar-meta">
+          <span>Ready for inbound clinical requests</span>
+        </div>
+      </div>
+
+      <div class="radar-body" id="radar-body">
+        <div class="radar-scenario-badge" id="radar-scenario-badge">Standby</div>
+        <div class="radar-details">
+          <div class="radar-primary-text" id="radar-primary-text">No active recommendation request in flight.</div>
+          <div class="radar-sub-text" id="radar-sub-text">Inbound recommendations from AI Server (VM3) or Raspberry Pi 5 (Port 8000) will be highlighted here in real-time.</div>
+        </div>
+        <div class="radar-stats-chips" id="radar-stats-chips">
+          <div class="radar-chip"><span>Protocol:</span> <strong>HTTP REST / SSE</strong></div>
+          <div class="radar-chip"><span>Deduplication:</span> <strong>Active (&lt;1ms)</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top KPI Summary Cards with Embedded Circular Gauges -->
+    <section class="kpi-grid">
+      
+      <!-- KPI 1: Total Curated Videos -->
+      <div class="kpi-card" style="--card-accent: var(--accent-cyan);">
+        <div class="kpi-header">
+          <span class="kpi-title">Curated Video Library</span>
+          <div class="kpi-icon">🎬</div>
+        </div>
+        <div class="kpi-body-with-gauge">
+          <div>
+            <div class="kpi-value" id="kpi-total-videos">37 MP4s</div>
+            <div class="kpi-footer">
+              <span>1080p Full HD • 390s Total</span>
+            </div>
+          </div>
+          <div class="kpi-mini-gauge" title="Goal Met: 37 / 27 Curated Clips">
+            <svg viewBox="0 0 36 36" class="mini-gauge-svg">
+              <path class="mini-gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="mini-gauge-fill mini-gauge-cyan" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="mini-gauge-text">100%</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 2: Bilingual Subtitles -->
+      <div class="kpi-card" style="--card-accent: var(--accent-indigo);">
+        <div class="kpi-header">
+          <span class="kpi-title">Bilingual Subtitles</span>
+          <div class="kpi-icon">🌐</div>
+        </div>
+        <div class="kpi-body-with-gauge">
+          <div>
+            <div class="kpi-value" id="kpi-total-subs">74 WebVTT</div>
+            <div class="kpi-footer">
+              <span>37 English (.en) + 37 French (.fr)</span>
+            </div>
+          </div>
+          <div class="kpi-mini-gauge" title="100% Bilingual Track Parity">
+            <svg viewBox="0 0 36 36" class="mini-gauge-svg">
+              <path class="mini-gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="mini-gauge-fill mini-gauge-indigo" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="mini-gauge-text">100%</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 3: API Latency Speed -->
+      <div class="kpi-card" style="--card-accent: var(--accent-emerald);">
+        <div class="kpi-header">
+          <span class="kpi-title">API Latency Speed</span>
+          <div class="kpi-icon">⚡</div>
+        </div>
+        <div class="kpi-body-with-gauge">
+          <div>
+            <div class="kpi-value" style="color: var(--accent-emerald);" id="kpi-latency-val">7.8 ms</div>
+            <div class="kpi-footer">
+              <span id="kpi-latency-status">Sub-10ms (Real-Time SLA)</span>
+            </div>
+          </div>
+          <div class="kpi-mini-gauge" title="Sub-10ms Health Response">
+            <svg viewBox="0 0 36 36" class="mini-gauge-svg">
+              <path class="mini-gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="mini-gauge-fill mini-gauge-emerald" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="mini-gauge-text">92%</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI 4: Deduplication Shield -->
+      <div class="kpi-card" style="--card-accent: var(--accent-amber);">
+        <div class="kpi-header">
+          <span class="kpi-title">Deduplication Shield</span>
+          <div class="kpi-icon">🛡️</div>
+        </div>
+        <div class="kpi-body-with-gauge">
+          <div>
+            <div class="kpi-value" id="kpi-ledger-status">0 Patients Tracked</div>
+            <div class="kpi-footer" id="kpi-dedup-count">
+              <span>Disk persistent (&lt;1ms check)</span>
+            </div>
+          </div>
+          <div class="kpi-mini-gauge" title="Active Protection Efficacy">
+            <svg viewBox="0 0 36 36" class="mini-gauge-svg">
+              <path class="mini-gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <path class="mini-gauge-fill mini-gauge-amber" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              <text x="18" y="20.5" class="mini-gauge-text">100%</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Navigation Bar & Quick Actions -->
+    <nav class="action-bar">
+      <div class="nav-tabs">
+        <button class="tab-btn active" data-tab="studio">
+          <span>🎬</span> Video Player & Studio
+        </button>
+        <button class="tab-btn" data-tab="kpis">
+          <span>📊</span> Clinical KPIs & Graphs
+        </button>
+        <button class="tab-btn" data-tab="triggers">
+          <span>⚡</span> Trigger Catalog (<span id="trigger-count-badge">37</span>)
+        </button>
+        <button class="tab-btn" data-tab="ledger">
+          <span>📜</span> Assignment History (<span id="ledger-count-badge">0</span>)
+        </button>
+        <a href="#live-console-feed-section" class="tab-btn-anchor" title="Scroll down to Video Server Real-Time Log Stream">
+          <span class="live-pulse-dot-sm"></span>
+          <span>💻</span> Live Console Feed ↓
+        </a>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-secondary" id="btn-refresh-kpis" title="Recalculate and refresh live KPIs & graphs">
+          <span>📊</span> Refresh KPIs
+        </button>
+        <button class="btn btn-secondary" id="btn-sync-triggers" title="Broadcast all triggers to AI Server & Raspberry Pi">
+          <span>📡</span> Broadcast Sync
+        </button>
+        <button class="btn btn-secondary" id="btn-rebuild-catalog" title="Rescan folders and update metadata">
+          <span>🔄</span> Rebuild Metadata
+        </button>
+        
+        <!-- Scenario Simulation Dropdown / Buttons -->
+        <button class="btn btn-primary" id="btn-test-scenario-1" title="Dispatch Scenario 1 Test: Single Clip Recommendation">
+          <span>🟢</span> Test Scenario 1
+        </button>
+        <button class="btn btn-primary" id="btn-test-scenario-2" title="Dispatch Scenario 2 Test: Multi-Clip Virtual Sequence">
+          <span>🔵</span> Test Scenario 2
+        </button>
+        <button class="btn btn-primary" id="btn-test-scenario-3" title="Dispatch Scenario 3 Test: Generative AI Video">
+          <span>🟣</span> Test Scenario 3
+        </button>
+
+        <button class="btn btn-danger" id="btn-clear-ledger" title="Clear persistent assignment history">
+          <span>🗑️</span> Reset Ledger
+        </button>
+      </div>
+    </nav>
+
+    <!-- Tab 1: Video Player & Studio -->
+    <section class="tab-content active" id="tab-studio">
+      <div class="video-studio-layout">
+        
+        <!-- Left: HTML5 Video Player -->
+        <div class="player-card">
+          <div class="video-wrapper">
+            <video id="main-video-player" controls preload="metadata" playsinline crossorigin="anonymous">
+              <track id="track-en" label="English" kind="subtitles" srclang="en">
+              <track id="track-fr" label="Français" kind="subtitles" srclang="fr">
+            </video>
+            <div id="video-subtitle-overlay" class="video-subtitle-overlay" aria-live="polite"></div>
+          </div>
+
+          <div class="player-controls-bar">
+            <div class="subtitle-toggles">
+              <span class="toggle-label">Bilingual Subtitles:</span>
+              <button class="sub-btn active" id="sub-btn-en">🇬🇧 English</button>
+              <button class="sub-btn" id="sub-btn-fr">🇫🇷 Français</button>
+              <button class="sub-btn" id="sub-btn-off">Off</button>
+            </div>
+            <span id="subtitle-status-indicator" class="subtitle-status-pill active-en">● Subtitles: English (.en.vtt)</span>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">Range-Byte HTTP Seek Enabled</span>
+          </div>
+
+          <div class="video-meta-box">
+            <div class="video-meta-title" id="player-video-title">Select a video from the library</div>
+            <div class="video-meta-detail" id="player-video-meta">
+              <span>Ready for high-throughput streaming.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Video Playlist Browser -->
+        <div class="playlist-card">
+          <div class="playlist-header">
+            <h3 id="library-browser-title" style="font-size: 1rem; font-weight: 700;">Library Browser</h3>
+            <div class="playlist-filter-pills" id="playlist-filter-pills">
+              <button class="filter-pill active" data-filter="all">All (<span id="pill-count-all">0</span>)</button>
+              <button class="filter-pill filter-pill-new" data-filter="new">AI Generated (<span id="pill-count-new">0</span>)</button>
+              <button class="filter-pill" data-filter="existing">Curated (<span id="pill-count-existing">0</span>)</button>
+            </div>
+          </div>
+          <input type="text" class="search-input" id="video-search-input" placeholder="Search videos by title, ID or biomarker...">
+          
+          <div class="video-items-list" id="video-playlist-items">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tab 2: Dynamic Trigger Catalog -->
+    <section class="tab-content" id="tab-triggers">
+      <div class="data-table-container">
+        <div class="table-toolbar">
+          <h3 style="font-size: 1rem; font-weight: 700;">Ecosystem Trigger Catalog (SSOT)</h3>
+          <input type="text" class="search-input" id="trigger-search-input" placeholder="Filter triggers by condition, metric or safety level..." style="max-width: 380px;">
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 70px;">ID</th>
+                <th>Clinical Topic & Title</th>
+                <th style="width: 170px;">Category</th>
+                <th>Telemetry Trigger Condition</th>
+                <th style="width: 80px;">Duration</th>
+                <th style="width: 100px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="triggers-table-body">
+              <!-- Populated via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Persistent Assignment Ledger -->
+    <section class="tab-content" id="tab-ledger">
+      <div class="data-table-container">
+        <div class="table-toolbar">
+          <div>
+            <h3 style="font-size: 1rem; font-weight: 700;">Persistent Video Assignment Ledger</h3>
+            <p style="font-size: 0.78rem; color: var(--text-secondary);">Remembers past patient assignments across server restarts to shield against duplicates.</p>
+          </div>
+          <input type="text" class="search-input" id="ledger-search-input" placeholder="Search by Patient ID or Video..." style="max-width: 320px;">
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 120px;">Patient ID</th>
+                <th>Assigned Video / Sequence</th>
+                <th style="width: 110px;">Type</th>
+                <th style="width: 160px;">Event Trace ID</th>
+                <th style="width: 130px;">Dashboard Push</th>
+                <th style="width: 120px;">Timestamp</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-table-body">
+              <!-- Populated via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 4: Clinical KPIs, Gauges & Graphs -->
+    <section class="tab-content" id="tab-kpis">
+      
+      <!-- KPI Showcase Header Banner -->
+      <div class="kpi-banner-card">
+        <div class="kpi-banner-left">
+          <div class="kpi-banner-badge">
+            <span class="live-pulse-dot-sm"></span>
+            <span>LIVE MEDICAL BENCHMARK ENGINE</span>
+          </div>
+          <h2>Clinical Key Performance Indicators (KPIs) &amp; Analytics</h2>
+          <p>Real-time technical metrics, clinical domain distribution, endpoint latencies, and escalation safety stratification for Node VM4.</p>
+        </div>
+        <div class="kpi-banner-actions">
+          <div class="kpi-banner-timestamp" id="kpi-timestamp-display">Benchmark: Updated just now</div>
+          <button class="btn btn-primary" id="btn-rebenchmark" title="Execute live benchmark run across endpoints">
+            <span>⚡</span> Run Full Benchmark
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 Radial Gauges Showcase Grid -->
+      <div class="gauges-grid">
+        
+        <!-- Gauge 1: System Health -->
+        <div class="gauge-card">
+          <div class="gauge-card-header">
+            <span class="gauge-title">System Health &amp; Uptime</span>
+            <span class="badge badge-success" id="gauge-health-badge">Optimal</span>
+          </div>
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 120 120" class="radial-gauge">
+              <circle cx="60" cy="60" r="46" class="gauge-bg" stroke-dasharray="216 75" transform="rotate(135 60 60)"/>
+              <circle cx="60" cy="60" r="46" class="gauge-bar gauge-emerald" id="gauge-health-circle" stroke-dasharray="216 75" stroke-dashoffset="0" transform="rotate(135 60 60)"/>
+              <text x="60" y="58" class="gauge-center-val" id="gauge-health-val">100%</text>
+              <text x="60" y="74" class="gauge-center-sub">UPTIME</text>
+            </svg>
+          </div>
+          <div class="gauge-footer">Port 8080 Active • 0 Errors</div>
+        </div>
+
+        <!-- Gauge 2: Content Coverage Goal -->
+        <div class="gauge-card">
+          <div class="gauge-card-header">
+            <span class="gauge-title">Content Goal Met</span>
+            <span class="badge badge-info" id="gauge-content-badge">37/27 Videos</span>
+          </div>
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 120 120" class="radial-gauge">
+              <circle cx="60" cy="60" r="46" class="gauge-bg" stroke-dasharray="216 75" transform="rotate(135 60 60)"/>
+              <circle cx="60" cy="60" r="46" class="gauge-bar gauge-cyan" id="gauge-content-circle" stroke-dasharray="216 75" stroke-dashoffset="0" transform="rotate(135 60 60)"/>
+              <text x="60" y="58" class="gauge-center-val" id="gauge-content-val">100%</text>
+              <text x="60" y="74" class="gauge-center-sub">TARGET MET</text>
+            </svg>
+          </div>
+          <div class="gauge-footer">137.0% of Baseline Spec</div>
+        </div>
+
+        <!-- Gauge 3: Bilingual Subtitles -->
+        <div class="gauge-card">
+          <div class="gauge-card-header">
+            <span class="gauge-title">Bilingual Parity</span>
+            <span class="badge badge-info" id="gauge-subs-badge">74/74 Tracks</span>
+          </div>
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 120 120" class="radial-gauge">
+              <circle cx="60" cy="60" r="46" class="gauge-bg" stroke-dasharray="216 75" transform="rotate(135 60 60)"/>
+              <circle cx="60" cy="60" r="46" class="gauge-bar gauge-indigo" id="gauge-subs-circle" stroke-dasharray="216 75" stroke-dashoffset="0" transform="rotate(135 60 60)"/>
+              <text x="60" y="58" class="gauge-center-val" id="gauge-subs-val">100%</text>
+              <text x="60" y="74" class="gauge-center-sub">EN + FR</text>
+            </svg>
+          </div>
+          <div class="gauge-footer">100% Bilingual Cues Synchronized</div>
+        </div>
+
+        <!-- Gauge 4: API Latency Speed -->
+        <div class="gauge-card">
+          <div class="gauge-card-header">
+            <span class="gauge-title">API Health Latency</span>
+            <span class="badge badge-success" id="gauge-latency-badge">&lt; 10ms</span>
+          </div>
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 120 120" class="radial-gauge">
+              <circle cx="60" cy="60" r="46" class="gauge-bg" stroke-dasharray="216 75" transform="rotate(135 60 60)"/>
+              <circle cx="60" cy="60" r="46" class="gauge-bar gauge-emerald" id="gauge-latency-circle" stroke-dasharray="216 75" stroke-dashoffset="40" transform="rotate(135 60 60)"/>
+              <text x="60" y="58" class="gauge-center-val" id="gauge-latency-num">7.8ms</text>
+              <text x="60" y="74" class="gauge-center-sub">PING SPEED</text>
+            </svg>
+          </div>
+          <div class="gauge-footer">Target: &lt; 20ms (Optimal SLA)</div>
+        </div>
+
+        <!-- Gauge 5: Security Shield Efficacy -->
+        <div class="gauge-card">
+          <div class="gauge-card-header">
+            <span class="gauge-title">Security &amp; Probe Shield</span>
+            <span class="badge badge-danger" id="gauge-sec-badge">100% Blocked</span>
+          </div>
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 120 120" class="radial-gauge">
+              <circle cx="60" cy="60" r="46" class="gauge-bg" stroke-dasharray="216 75" transform="rotate(135 60 60)"/>
+              <circle cx="60" cy="60" r="46" class="gauge-bar gauge-rose" id="gauge-sec-circle" stroke-dasharray="216 75" stroke-dashoffset="0" transform="rotate(135 60 60)"/>
+              <text x="60" y="58" class="gauge-center-val" id="gauge-sec-val">100%</text>
+              <text x="60" y="74" class="gauge-center-sub">PROTECTED</text>
+            </svg>
+          </div>
+          <div class="gauge-footer">X-API-KEY Token Auth Active</div>
+        </div>
+
+        <!-- Gauge 6: Deduplication Shield Speed -->
+        <div class="gauge-card">
+          <div class="gauge-card-header">
+            <span class="gauge-title">Deduplication Filter</span>
+            <span class="badge badge-purple" id="gauge-dedup-badge">&lt; 1ms Shield</span>
+          </div>
+          <div class="gauge-svg-wrapper">
+            <svg viewBox="0 0 120 120" class="radial-gauge">
+              <circle cx="60" cy="60" r="46" class="gauge-bg" stroke-dasharray="216 75" transform="rotate(135 60 60)"/>
+              <circle cx="60" cy="60" r="46" class="gauge-bar gauge-purple" id="gauge-dedup-circle" stroke-dasharray="216 75" stroke-dashoffset="0" transform="rotate(135 60 60)"/>
+              <text x="60" y="58" class="gauge-center-val" id="gauge-dedup-val">&lt;1ms</text>
+              <text x="60" y="74" class="gauge-center-sub">DEDUP SPEED</text>
+            </svg>
+          </div>
+          <div class="gauge-footer">Instant Duplicate Suppression</div>
+        </div>
+
+      </div>
+
+      <!-- Graphs Grid 1: Topic Distribution & Latency Benchmarks -->
+      <div class="graphs-grid">
+        
+        <!-- Graph 1: Clinical Domain & Topic Distribution Bar Chart -->
+        <div class="graph-card">
+          <div class="graph-card-header">
+            <div class="graph-title-group">
+              <span class="graph-icon">🩺</span>
+              <div>
+                <h3 class="graph-title">Clinical Domain &amp; Topic Distribution</h3>
+                <p class="graph-sub">Asset allocation across clinical therapy and biomarker monitoring domains</p>
+              </div>
+            </div>
+            <span class="badge badge-info">37 Curated Clips</span>
+          </div>
+
+          <div class="graph-card-body" id="topic-distribution-bars">
+            <!-- Dynamically populated bars -->
+          </div>
+        </div>
+
+        <!-- Graph 2: Live Latency Benchmarking Comparison Chart -->
+        <div class="graph-card">
+          <div class="graph-card-header">
+            <div class="graph-title-group">
+              <span class="graph-icon">⏱️</span>
+              <div>
+                <h3 class="graph-title">Live Endpoint Latency Benchmarks</h3>
+                <p class="graph-sub">HTTP roundtrip response times measured in milliseconds</p>
+              </div>
+            </div>
+            <span class="badge badge-success">Target: &lt; 20ms</span>
+          </div>
+
+          <div class="graph-card-body">
+            <div class="latency-chart-container">
+              <div class="latency-sla-line">
+                <span class="latency-sla-label">20ms Target SLA Threshold</span>
+              </div>
+              <div class="latency-columns-grid" id="latency-columns-container">
+                <!-- Dynamically populated latency column bars -->
+              </div>
+            </div>
+            <div class="latency-chart-legend">
+              <span>🟢 Sub-10ms (Real-Time)</span>
+              <span>🔵 Sub-20ms (Standard Query)</span>
+              <span>⚡ Range-Byte Streaming Active</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Graphs Grid 2: Safety Stratification & Storage Capacity -->
+      <div class="graphs-grid" style="margin-top: 1.25rem;">
+        
+        <!-- Graph 3: Clinical Safety Severity Stratification -->
+        <div class="graph-card">
+          <div class="graph-card-header">
+            <div class="graph-title-group">
+              <span class="graph-icon">🛡️</span>
+              <div>
+                <h3 class="graph-title">Clinical Safety &amp; Escalation Stratification</h3>
+                <p class="graph-sub">Triage level categorization for patient recommendations</p>
+              </div>
+            </div>
+            <span class="badge badge-warning">Triage Active</span>
+          </div>
+
+          <div class="graph-card-body" id="safety-stratification-body">
+            <!-- Dynamically populated safety bars -->
+          </div>
+        </div>
+
+        <!-- Graph 4: Storage Footprint & Asset Distribution Meter -->
+        <div class="graph-card">
+          <div class="graph-card-header">
+            <div class="graph-title-group">
+              <span class="graph-icon">💾</span>
+              <div>
+                <h3 class="graph-title">Asset Storage Capacity Footprint</h3>
+                <p class="graph-sub">Disk allocation across videos, metadata, and bilingual subtitles</p>
+              </div>
+            </div>
+            <span class="badge badge-info" id="kpi-storage-total">270.4 MB Total</span>
+          </div>
+
+          <div class="graph-card-body">
+            <div class="storage-meter-wrapper">
+              <div class="storage-progress-bar">
+                <div class="storage-seg storage-seg-videos" id="storage-seg-videos" style="width: 95.5%;" title="Clinical Videos: 258.3 MB"></div>
+                <div class="storage-seg storage-seg-meta" id="storage-seg-meta" style="width: 4.4%;" title="Metadata JSON: 12.1 MB"></div>
+                <div class="storage-seg storage-seg-subs" id="storage-seg-subs" style="width: 0.1%;" title="WebVTT Subtitles: 17.0 KB"></div>
+              </div>
+              
+              <div class="storage-legend-grid">
+                <div class="storage-legend-card">
+                  <div class="storage-legend-top">
+                    <span class="legend-bullet" style="background: var(--accent-cyan);"></span>
+                    <span class="legend-name">Clinical Videos (MP4)</span>
+                  </div>
+                  <div class="storage-legend-val" id="storage-val-videos">258.29 MB</div>
+                  <div class="storage-legend-sub">37 Clips @ 1080p Full HD</div>
+                </div>
+
+                <div class="storage-legend-card">
+                  <div class="storage-legend-top">
+                    <span class="legend-bullet" style="background: var(--accent-indigo);"></span>
+                    <span class="legend-name">Structured Metadata</span>
+                  </div>
+                  <div class="storage-legend-val" id="storage-val-meta">12.07 MB</div>
+                  <div class="storage-legend-sub">43 JSON Schema Registries</div>
+                </div>
+
+                <div class="storage-legend-card">
+                  <div class="storage-legend-top">
+                    <span class="legend-bullet" style="background: var(--accent-emerald);"></span>
+                    <span class="legend-name">Bilingual Subtitles</span>
+                  </div>
+                  <div class="storage-legend-val" id="storage-val-subs">17.00 KB</div>
+                  <div class="storage-legend-sub">74 WebVTT Tracks (.en/.fr)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Persistent Bottom Section: Video Server Real-Time Log Stream & Live Console Feed -->
+    <section class="live-console-feed-section" id="live-console-feed-section">
+      <div class="console-section-header">
+        <div class="console-section-title-group">
+          <span class="live-pulse-dot"></span>
+          <h2>VIDEO SERVER REAL-TIME LOG STREAM &amp; INBOUND REQUEST CONSOLE</h2>
+        </div>
+        <div class="console-section-meta">
+          <span class="meta-tag">Protocol: Server-Sent Events (SSE)</span>
+          <span class="meta-tag">Channel: /api/logs/stream</span>
+          <span class="meta-tag">Live Activity: /api/activity/latest</span>
+        </div>
+      </div>
+
+      <div class="terminal-dual-layout">
+        
+        <!-- Left: Inbound Request & Scenario Activity Feed -->
+        <div class="activity-feed-card">
+          <div class="terminal-header">
+            <div class="terminal-title-group">
+              <span class="term-dot term-dot-green"></span>
+              <span>LIVE INBOUND REQUEST FEED (AI SERVER / PI EDGE)</span>
+            </div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Active Scenarios 1/2/3</span>
+          </div>
+
+          <div class="activity-feed-body" id="activity-feed-body">
+            <!-- Populated via JavaScript -->
+            <div class="activity-placeholder">No incoming requests yet. Dispatch a test or wait for AI Server / Pi trigger.</div>
+          </div>
+        </div>
+
+        <!-- Right: Server Real-Time Log Terminal -->
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-title-group">
+              <span class="term-dot term-dot-red"></span>
+              <span class="term-dot term-dot-yellow"></span>
+              <span class="term-dot term-dot-green"></span>
+              <span>VIDEO SERVER REAL-TIME LOG STREAM</span>
+            </div>
+
+            <div class="terminal-actions">
+              <input type="text" class="search-input" id="log-filter-input" placeholder="Filter logs..." style="padding: 0.2rem 0.6rem; font-size: 0.75rem; width: 140px;">
+              <button class="terminal-btn" id="btn-log-scroll">Auto-Scroll: ON</button>
+              <button class="terminal-btn" id="btn-clear-logs">Clear View</button>
+            </div>
+          </div>
+
+          <div class="terminal-body" id="terminal-logs-body">
+            <div class="log-line log-info">Connecting to real-time server log stream (SSE)...</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- JavaScript Engine -->
+  <script src="/dashboard_assets/dashboard.js?v=20260918v1"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{
+  "video_id": 25,
+  "filename": "25_ProShirt_Fit_check.mp4",
+  "title": "ProShirt - Fit Check",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "Smart Garment Positioning (ProShirt)",
+  "trigger_type": "proshirt",
+  "trigger_conditions": {
+    "ProShirt_SignalQuality": "< 70%"
+  },
+  "tags": {
+    "clinical": [
+      "proshirt",
+      "sensor_alignment",
+      "garment_fit"
+    ],
+    "biomarker": [
+      "proshirt_signal_noise"
+    ],
+    "symptom": [
+      "loose_garment",
+      "signal_loss"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "ProShirt alert indicating poor sensor contact or signal noise."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Adjusting garment zipper and alignment over chest."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Signal quality indicator turns green confirming proper sensor fit."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      24
+    ],
+    "can_precede": [],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "25_ProShirt_Fit_check.en.vtt",
+      "full_narration": "Make sure your monitoring shirt fits correctly before sleep so your breathing and heart signals are captured clearly.",
+      "cues": [
+        {
+          "start": "00:00.000",
+          "end": "00:04.900",
+          "text": "Make sure your monitoring shirt fits correctly before sleep"
+        },
+        {
+          "start": "00:05.100",
+          "end": "00:09.800",
+          "text": "so your breathing and heart signals are captured clearly."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "25_ProShirt_Fit_check.fr.vtt",
+      "full_narration": "Assurez-vous que votre vêtement de suivi est bien ajusté avant de dormir afin que votre respiration et vos signaux cardiaques soient correctement enregistrés.",
+      "cues": [
+        {
+          "start": "00:00.000",
+          "end": "00:04.900",
+          "text": "Assurez-vous que votre vêtement de suivi est bien ajusté avant de dormir"
+        },
+        {
+          "start": "00:05.100",
+          "end": "00:09.800",
+          "text": "afin que votre respiration et vos signaux cardiaques soient correctement enregistrés."
+        }
+      ]
+    }
+  },
+  "condition_logic": "OR",
+  "clinical_priority": "low"
+}

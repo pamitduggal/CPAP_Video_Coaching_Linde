@@ -1,0 +1,115 @@
+{
+  "video_id": 34,
+  "filename": "34_SomnoArt_Forearm_positioning_ppg_seal.mp4",
+  "title": "SomnoArt - Forearm Positioning PPG Seal",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "Somno-Art Forearm Placement",
+  "trigger_type": "somnoart_ppg_contact_loss",
+  "trigger_conditions": {
+    "SomnoArt_PPG_Contact": "== 'Poor'",
+    "Optical_Baseline_Drift": "== High"
+  },
+  "tags": {
+    "clinical": [
+      "somno_art",
+      "armband_placement",
+      "ppg_optical_contact",
+      "sleep_staging"
+    ],
+    "biomarker": [
+      "photoplethysmography_pulse_transit",
+      "heart_rate_variability"
+    ],
+    "symptom": [
+      "armband_slipping",
+      "optical_signal_gap"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Loose armband on wrist slips; app indicates poor optical contact."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Moves band to mid-forearm, adjusting Velcro snugly (1-finger clearance test)."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "PPG optical sensor sits securely flush against skin with green light."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "can_precede": [
+      14,
+      15,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "biomarker_alert",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "34_SomnoArt_Forearm_positioning_ppg_seal.en.vtt",
+      "full_narration": "Position the armband on your mid-forearm with a snug, comfortable fit so the optical sensor rests firmly against clean skin.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Position the armband on your mid-forearm"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "with a snug, comfortable fit"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "so the optical sensor rests firmly against clean skin."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "34_SomnoArt_Forearm_positioning_ppg_seal.fr.vtt",
+      "full_narration": "Placez le brassard au milieu de l'avant-bras avec un ajustement souple pour que le capteur optique adhère bien à la peau.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Placez le brassard au milieu de l'avant-bras"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "avec un ajustement souple"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "pour que le capteur optique adhère bien à la peau."
+        }
+      ]
+    }
+  },
+  "condition_logic": "OR",
+  "clinical_priority": "low"
+}

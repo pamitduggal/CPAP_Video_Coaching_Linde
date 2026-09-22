@@ -1,0 +1,116 @@
+{
+  "video_id": 33,
+  "filename": "33_MightySat_Signal_iq_light_shielding.mp4",
+  "title": "MightySat - Signal IQ Light Shielding",
+  "duration_s": 10.0,
+  "category": "Wearable Biomarkers",
+  "subtopic": "MightySat Signal Quality",
+  "trigger_type": "mightysat_low_siq",
+  "trigger_conditions": {
+    "MightySat_SIQ": "< 30.0%",
+    "Ambient_Light_Interference": "== High"
+  },
+  "tags": {
+    "clinical": [
+      "masimo",
+      "mightysat",
+      "signal_iq",
+      "ambient_light",
+      "motion_artifacts"
+    ],
+    "biomarker": [
+      "signal_confidence_bar",
+      "pleth_variability_index"
+    ],
+    "symptom": [
+      "low_siq_confidence",
+      "light_glare_noise"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Direct bright bedside lamp glare causes Signal I.Q. bar to drop."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Dims direct lamp and rests forearm flat and completely still on mattress."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Signal I.Q. vertical confidence bar reaches full 100% height."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "can_precede": [
+      14,
+      15,
+      27
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "33_MightySat_Signal_iq_light_shielding.en.vtt",
+      "full_narration": "Rest your hand flat and stay still for a few seconds away from direct bright light until the Signal I.Q. bar peaks.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Rest your hand flat and stay still for a few seconds"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "away from direct bright light"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "until the Signal I.Q. bar peaks."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "33_MightySat_Signal_iq_light_shielding.fr.vtt",
+      "full_narration": "Posez votre main à plat, restez immobile et évitez la lumière directe jusqu'à ce que la barre de signal atteigne son niveau maximal.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:03.000",
+          "text": "Posez votre main à plat, restez immobile"
+        },
+        {
+          "start": "00:00:03.000",
+          "end": "00:00:07.000",
+          "text": "et évitez la lumière directe"
+        },
+        {
+          "start": "00:00:07.000",
+          "end": "00:00:10.000",
+          "text": "jusqu'à ce que la barre de signal atteigne son niveau maximal."
+        }
+      ]
+    }
+  },
+  "condition_logic": "AND",
+  "clinical_priority": "low"
+}

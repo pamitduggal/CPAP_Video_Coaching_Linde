@@ -1,0 +1,4144 @@
+[
+  {
+    "video_id": 1,
+    "filename": "1_Mask_leak_adjust_straps.mp4",
+    "title": "Adjust Mask Straps",
+    "duration_s": 10.0,
+    "category": "Mask & Equipment",
+    "subtopic": "Strap Adjustment",
+    "trigger_type": "mask_leak",
+    "trigger_conditions": {
+      "CPAP_Leaks95": ">= 24.0",
+      "CPAP_Leaks95_max": "< 30.0"
+    },
+    "tags": {
+      "clinical": [
+        "mask_leak",
+        "strap_adjustment",
+        "air_leakage"
+      ],
+      "biomarker": [
+        "cpap_leak"
+      ],
+      "symptom": [
+        "air_hissing",
+        "eye_irritation"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Identifies mask leak issue and air escaping around cushion."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Demonstrates pulling top and bottom headgear straps evenly."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Shows properly fitted mask with comfortable seal."
+      }
+    },
+    "composability": {
+      "can_follow": [],
+      "can_precede": [
+        2,
+        3,
+        14
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "1_Mask_leak_adjust_straps.en.vtt",
+        "full_narration": "If your mask is leaking Try small, even strap adjustments. Until it feels secure and comfortable.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.000",
+            "text": "If your mask is leaking"
+          },
+          {
+            "start": "00:00:02.000",
+            "end": "00:00:05.000",
+            "text": "Try small, even strap adjustments."
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "Until it feels secure and comfortable."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "1_Mask_leak_adjust_straps.fr.vtt",
+        "full_narration": "Si votre masque fuit, Essayez de petits ajustements réguliers des sangles. Jusqu'à ce qu'il soit bien fixé et confortable.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.000",
+            "text": "Si votre masque fuit,"
+          },
+          {
+            "start": "00:00:02.000",
+            "end": "00:00:05.000",
+            "text": "Essayez de petits ajustements réguliers des sangles."
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "Jusqu'à ce qu'il soit bien fixé et confortable."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 2,
+    "filename": "2_Mask_leak_refit_while_lying_down.mp4",
+    "title": "Refit Mask While Lying Down",
+    "duration_s": 10.0,
+    "category": "Mask & Equipment",
+    "subtopic": "Lying Down Refit",
+    "trigger_type": "mask_leak",
+    "trigger_conditions": {
+      "CPAP_Leaks95": ">= 30.0",
+      "CPAP_Use": ">= 2.0"
+    },
+    "tags": {
+      "clinical": [
+        "mask_leak",
+        "lying_down_fit",
+        "facial_contour"
+      ],
+      "biomarker": [
+        "cpap_leak"
+      ],
+      "symptom": [
+        "air_leak_in_bed"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Shows patient in bed experiencing leak while lying down."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Demonstrates unseating cushion and gently reseating while reclined."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Confirms leak-free seal in actual sleeping posture."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        3
+      ],
+      "can_precede": [
+        8,
+        14
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "2_Mask_leak_refit_while_lying_down.en.vtt",
+        "full_narration": "Your mask may fit differently when you lie down. Recheck the fit it in your sleeping position.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Your mask may fit differently when you lie down."
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "Recheck the fit it in your sleeping position."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "2_Mask_leak_refit_while_lying_down.fr.vtt",
+        "full_narration": "Votre masque peut s'ajuster différemment lorsque vous êtes allongé. Vérifiez à nouveau l'ajustement dans votre position de sommeil.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Votre masque peut s'ajuster différemment lorsque vous êtes allongé."
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "Vérifiez à nouveau l'ajustement dans votre position de sommeil."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 3,
+    "filename": "3_Cushion_cleaning.mp4",
+    "title": "Cushion Cleaning Reminder",
+    "duration_s": 10.0,
+    "category": "Maintenance",
+    "subtopic": "Cushion Hygiene",
+    "trigger_type": "hygiene",
+    "trigger_conditions": {
+      "CPAP_Use": ">= 4.0",
+      "CPAP_Leaks95": "< 10.0",
+      "CPAP_AHI": "< 5.0"
+    },
+    "tags": {
+      "clinical": [
+        "hygiene",
+        "cushion_care",
+        "facial_oils"
+      ],
+      "biomarker": [
+        "cpap_adherence_good"
+      ],
+      "symptom": [
+        "mask_slippage",
+        "skin_redness"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Displays facial oil buildup on mask cushion."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Washing silicone cushion using warm water and gentle soap."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Rinsing and wiping clean for optimal seal performance."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2
+      ],
+      "can_precede": [],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "3_Cushion_cleaning.en.vtt",
+        "full_narration": "A clean cushion helps the mask seal better. Wash it gently And let it air dry on a clean towel.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "A clean cushion helps the mask seal better."
+          },
+          {
+            "start": "00:00:04.000",
+            "end": "00:00:05.000",
+            "text": "Wash it gently"
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "And let it air dry on a clean towel."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "3_Cushion_cleaning.fr.vtt",
+        "full_narration": "Un coussin propre aide le masque à mieux se sceller. Lavez-le doucement Et laissez-le sécher à l'air libre sur une serviette propre.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Un coussin propre aide le masque à mieux se sceller."
+          },
+          {
+            "start": "00:00:04.000",
+            "end": "00:00:05.000",
+            "text": "Lavez-le doucement"
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "Et laissez-le sécher à l'air libre sur une serviette propre."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "maintenance"
+  },
+  {
+    "video_id": 4,
+    "filename": "4_Low_usage_ramp_mode.mp4",
+    "title": "Low Usage - Use Ramp Mode",
+    "duration_s": 10.0,
+    "category": "Tips & Tricks",
+    "subtopic": "Pressure Ramp Feature",
+    "trigger_type": "low_usage",
+    "trigger_conditions": {
+      "CPAP_Use": "> 0",
+      "CPAP_Use_max": "< 4.0",
+      "CPAP_Presure90": ">= 12.0"
+    },
+    "tags": {
+      "clinical": [
+        "low_usage",
+        "high_pressure_discomfort",
+        "ramp_feature"
+      ],
+      "biomarker": [
+        "cpap_use_low",
+        "cpap_pressure_high"
+      ],
+      "symptom": [
+        "unable_to_fall_asleep",
+        "high_pressure_sensation"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Shows patient struggling with high initial airflow pressure."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Pressing Ramp button on CPAP machine panel."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Pressure gradually increases while patient comfortably falls asleep."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        5
+      ],
+      "can_precede": [
+        7,
+        9
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "4_Low_usage_ramp_mode.en.vtt",
+        "full_narration": "If the pressure feels too strong at first, try the ramp feature. So it starts low and increases gradually..",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "If the pressure feels too strong at first,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:04.500",
+            "text": "try the ramp feature."
+          },
+          {
+            "start": "00:00:04.500",
+            "end": "00:00:10.000",
+            "text": "So it starts low and increases gradually.."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "4_Low_usage_ramp_mode.fr.vtt",
+        "full_narration": "Si la pression semble trop forte au début, essayez la fonction rampe. Ainsi, elle commence doucement et augmente progressivement.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Si la pression semble trop forte au début,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:04.500",
+            "text": "essayez la fonction rampe."
+          },
+          {
+            "start": "00:00:04.500",
+            "end": "00:00:10.000",
+            "text": "Ainsi, elle commence doucement et augmente progressivement."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 5,
+    "filename": "5_Low_usage_daytime_practice.mp4",
+    "title": "Low Usage - Daytime Practice",
+    "duration_s": 10.0,
+    "category": "Tips & Tricks",
+    "subtopic": "Desensitization",
+    "trigger_type": "zero_usage",
+    "trigger_conditions": {
+      "CPAP_Use": "== 0.0"
+    },
+    "tags": {
+      "clinical": [
+        "zero_usage",
+        "desensitization",
+        "claustrophobia"
+      ],
+      "biomarker": [
+        "cpap_use_zero"
+      ],
+      "symptom": [
+        "anxiety",
+        "mask_aversion"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Introduces daytime desensitization strategy while awake."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Wearing mask while watching TV or reading for 20-30 minutes."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Builds familiarity and reduces nighttime anxiety."
+      }
+    },
+    "composability": {
+      "can_follow": [],
+      "can_precede": [
+        4,
+        6
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "5_Low_usage_daytime_practice.en.vtt",
+        "full_narration": "Practice with your mask,during the day while reading or relaxing. it can help feel CPAP more natural at night",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Practice with your mask,during the day"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.000",
+            "text": "while reading or relaxing."
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "it can help feel CPAP more natural at night"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "5_Low_usage_daytime_practice.fr.vtt",
+        "full_narration": "Entraînez-vous avec votre masque pendant la journée, en lisant ou en vous relaxant. Cela peut aider à rendre la PPC plus naturelle la nuit.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Entraînez-vous avec votre masque pendant la journée,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.000",
+            "text": "en lisant ou en vous relaxant."
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "Cela peut aider à rendre la PPC plus naturelle la nuit."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 6,
+    "filename": "6_Early_mask_removal.mp4",
+    "title": "Early Mask Removal",
+    "duration_s": 10.0,
+    "category": "Tips & Tricks",
+    "subtopic": "Sleep Continuity",
+    "trigger_type": "early_removal",
+    "trigger_conditions": {
+      "CPAP_Use": "> 0",
+      "CPAP_Use_max": "< 4.0",
+      "CPAP_Presure90": "< 12.0"
+    },
+    "tags": {
+      "clinical": [
+        "early_removal",
+        "unconscious_removal",
+        "sleep_fragmentation"
+      ],
+      "biomarker": [
+        "cpap_use_low"
+      ],
+      "symptom": [
+        "waking_up_without_mask"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Illustrates waking up in middle of night and taking off mask."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Setting an alarm to re-fit mask or putting tape on headgear straps."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Extending therapy duration past 4-hour clinical threshold."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        5
+      ],
+      "can_precede": [
+        17,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "6_Early_mask_removal.en.vtt",
+        "full_narration": "If you wake up and find your mask off simply put it back on and restart the machine",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.500",
+            "text": "If you wake up and find your mask off"
+          },
+          {
+            "start": "00:00:03.500",
+            "end": "00:00:10.000",
+            "text": "simply put it back on and restart the machine"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "6_Early_mask_removal.fr.vtt",
+        "full_narration": "Si vous vous réveillez et trouvez votre masque enlevé, remettez-le simplement et redémarrez la machine.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.500",
+            "text": "Si vous vous réveillez et trouvez votre masque enlevé,"
+          },
+          {
+            "start": "00:00:03.500",
+            "end": "00:00:10.000",
+            "text": "remettez-le simplement et redémarrez la machine."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 7,
+    "filename": "7_Dry_mouth_humidifier.mp4",
+    "title": "Dry Mouth - Use Humidifier",
+    "duration_s": 10.0,
+    "category": "Comfort",
+    "subtopic": "Heated Humidification",
+    "trigger_type": "dry_mouth",
+    "trigger_conditions": {
+      "CPAP_Leaks95": ">= 10.0",
+      "CPAP_Leaks95_max": "< 24.0",
+      "CPAP_Presure90": ">= 10.0"
+    },
+    "tags": {
+      "clinical": [
+        "dry_mouth",
+        "humidifier_setting",
+        "airway_dryness"
+      ],
+      "biomarker": [
+        "cpap_leak_mild"
+      ],
+      "symptom": [
+        "dry_throat",
+        "parched_mouth"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient experiencing dry mouth upon waking."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Filling humidifier tub with distilled water and increasing heat setting."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Moisturized air delivery preventing throat dryness."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        4,
+        8,
+        9
+      ],
+      "can_precede": [
+        8
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "7_Dry_mouth_humidifier.en.vtt",
+        "full_narration": "Dry mouth is a common CPAP side effect. using your humidifier can make the airflow more comfortable.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Dry mouth is a common CPAP side effect."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:10.000",
+            "text": "using your humidifier can make the airflow more comfortable."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "7_Dry_mouth_humidifier.fr.vtt",
+        "full_narration": "La bouche sèche est un effet secondaire courant de la PPC. L'utilisation de votre humidificateur peut rendre le flux d'air plus confortable.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "La bouche sèche est un effet secondaire courant de la PPC."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:10.000",
+            "text": "L'utilisation de votre humidificateur peut rendre le flux d'air plus confortable."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 8,
+    "filename": "8_Mouth_breathing_chin_support.mp4",
+    "title": "Mouth Breathing - Chin Support",
+    "duration_s": 10.0,
+    "category": "Mask & Equipment",
+    "subtopic": "Mouth Leak Control",
+    "trigger_type": "mouth_breathing",
+    "trigger_conditions": {
+      "CPAP_Leaks95": ">= 30.0",
+      "CPAP_Use": "< 2.0"
+    },
+    "tags": {
+      "clinical": [
+        "mouth_breathing",
+        "chin_strap",
+        "oral_leak"
+      ],
+      "biomarker": [
+        "cpap_leak_severe"
+      ],
+      "symptom": [
+        "open_mouth_sleeping",
+        "dry_mouth"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Shows mouth dropping open under CPAP pressure."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Applying a chin strap or switching to a full face mask."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Keeps mouth closed to maintain therapeutic pressure."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        7
+      ],
+      "can_precede": [
+        14
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "8_Mouth_breathing_chin_support.en.vtt",
+        "full_narration": "If you breathe through your mouth at night A chin support may help reduce dryness and keep therapy on track",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "If you breathe through your mouth at night"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.500",
+            "text": "A chin support may help reduce dryness"
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "and keep therapy on track"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "8_Mouth_breathing_chin_support.fr.vtt",
+        "full_narration": "Si vous respirez par la bouche la nuit, Une mentonnière peut aider à réduire la sécheresse et maintenir votre thérapie sur la bonne voie.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Si vous respirez par la bouche la nuit,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.500",
+            "text": "Une mentonnière peut aider à réduire la sécheresse"
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "et maintenir votre thérapie sur la bonne voie."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 9,
+    "filename": "9_Nasal_congestion_relief.mp4",
+    "title": "Nasal Congestion Relief",
+    "duration_s": 10.0,
+    "category": "Comfort",
+    "subtopic": "Nasal Hygiene",
+    "trigger_type": "nasal_congestion",
+    "trigger_conditions": {
+      "CPAP_Leaks95": ">= 10.0",
+      "CPAP_Leaks95_max": "< 24.0",
+      "CPAP_Presure90": "< 10.0"
+    },
+    "tags": {
+      "clinical": [
+        "nasal_congestion",
+        "saline_spray",
+        "resistance"
+      ],
+      "biomarker": [
+        "cpap_leak_mild"
+      ],
+      "symptom": [
+        "stuffy_nose",
+        "nasal_blockage"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient suffering from blocked nose before sleep."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Using sterile saline nasal spray to clear nasal airways."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Clear nasal breathing with comfortable CPAP air flow."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        4,
+        5
+      ],
+      "can_precede": [
+        7
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "9_Nasal_congestion_relief.en.vtt",
+        "full_narration": "Nasal congestion can make CPAP harder to use. A saline spray may help you breathe more comfortably",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Nasal congestion can make CPAP harder to use."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:10.000",
+            "text": "A saline spray may help you breathe more comfortably"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "9_Nasal_congestion_relief.fr.vtt",
+        "full_narration": "La congestion nasale peut rendre la PPC plus difficile à utiliser. Un spray salin peut vous aider à respirer plus confortablement.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "La congestion nasale peut rendre la PPC plus difficile à utiliser."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:10.000",
+            "text": "Un spray salin peut vous aider à respirer plus confortablement."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 10,
+    "filename": "10_Aerophagia_elevate_head.mp4",
+    "title": "Aerophagia - Elevate Head",
+    "duration_s": 10.0,
+    "category": "Tips & Tricks",
+    "subtopic": "Sleeping Position",
+    "trigger_type": "aerophagia",
+    "trigger_conditions": {
+      "CPAP_Presure90": ">= 13.0",
+      "CPAP_Leaks95": "< 10.0",
+      "CPAP_AHI": "< 5.0"
+    },
+    "tags": {
+      "clinical": [
+        "aerophagia",
+        "air_swallowing",
+        "head_elevation"
+      ],
+      "biomarker": [
+        "cpap_pressure_high"
+      ],
+      "symptom": [
+        "stomach_bloating",
+        "gas",
+        "abdominal_discomfort"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient waking with stomach bloating due to swallowed air."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Adjusting pillow to elevate head and upper torso 30 degrees."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Aligns esophagus and airway to prevent aerophagia."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        4
+      ],
+      "can_precede": [
+        11
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "10_Aerophagia_elevate_head.en.vtt",
+        "full_narration": "If you feel Bloated in the morning You may be swallowing air Sleeping with your head slightly elevated may help.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "If you feel Bloated in the morning"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:04.000",
+            "text": "You may be swallowing air"
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "Sleeping with your head slightly elevated may help."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "10_Aerophagia_elevate_head.fr.vtt",
+        "full_narration": "Si vous vous sentez ballonné le matin, Il se peut que vous avaliez de l'air. Dormir avec la tête légèrement surélevée peut aider.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Si vous vous sentez ballonné le matin,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:04.000",
+            "text": "Il se peut que vous avaliez de l'air."
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "Dormir avec la tête légèrement surélevée peut aider."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 11,
+    "filename": "11_Aerophagia_side_sleeping.mp4",
+    "title": "Aerophagia - Side Sleeping",
+    "duration_s": 10.0,
+    "category": "Tips & Tricks",
+    "subtopic": "Side Sleeping Posture",
+    "trigger_type": "aerophagia",
+    "trigger_conditions": {
+      "CPAP_Presure90": ">= 13.0",
+      "CPAP_Leaks95": "< 10.0",
+      "CPAP_AHI": ">= 5.0"
+    },
+    "tags": {
+      "clinical": [
+        "aerophagia",
+        "side_sleeping",
+        "positional_therapy"
+      ],
+      "biomarker": [
+        "cpap_pressure_high",
+        "cpap_ahi_elevated"
+      ],
+      "symptom": [
+        "bloating",
+        "gas",
+        "air_swallowing"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Shows back sleeping position causing airway collapse and high pressure."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Transitioning to side sleeping position supported by pillow."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Reduces airway obstruction and air swallowing."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        10
+      ],
+      "can_precede": [
+        12
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "11_Aerophagia_side_sleeping.en.vtt",
+        "full_narration": "Side sleeping may help If CPAP air is making you uncomfortable during the night",
+        "cues": [
+          {
+            "start": "00:00:01.500",
+            "end": "00:00:04.000",
+            "text": "Side sleeping may help"
+          },
+          {
+            "start": "00:00:04.500",
+            "end": "00:00:10.000",
+            "text": "If CPAP air is making you uncomfortable during the night"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "11_Aerophagia_side_sleeping.fr.vtt",
+        "full_narration": "Dormir sur le côté peut aider Si l'air de la PPC vous gêne pendant la nuit.",
+        "cues": [
+          {
+            "start": "00:00:01.500",
+            "end": "00:00:04.000",
+            "text": "Dormir sur le côté peut aider"
+          },
+          {
+            "start": "00:00:04.500",
+            "end": "00:00:10.000",
+            "text": "Si l'air de la PPC vous gêne pendant la nuit."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 12,
+    "filename": "12_High_breathing_events_contact_provider.mp4",
+    "title": "High Breathing Events - Contact Provider",
+    "duration_s": 10.0,
+    "category": "Clinical Alerts",
+    "subtopic": "Apnea Index Elevation",
+    "trigger_type": "high_ahi",
+    "trigger_conditions": {
+      "CPAP_AHI": ">= 15.0",
+      "CPAP_Use": ">= 3.0"
+    },
+    "tags": {
+      "clinical": [
+        "high_ahi",
+        "residual_apnea",
+        "clinical_escalation"
+      ],
+      "biomarker": [
+        "cpap_ahi_high"
+      ],
+      "symptom": [
+        "gasping",
+        "daytime_fatigue"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Alert displaying elevated Apnea-Hypopnea Index count."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Explains residual apnea events despite wearing mask."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Prompts patient to contact sleep doctor or homecare technician."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        11
+      ],
+      "can_precede": [
+        13,
+        15
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "clinical_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "12_High_breathing_events_contact_provider.en.vtt",
+        "full_narration": "If your breathing events stay high. your therapy may need review contact your Sleepcare provider for support.",
+        "cues": [
+          {
+            "start": "00:00:01.000",
+            "end": "00:00:02.500",
+            "text": "If your breathing events stay high."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:04.500",
+            "text": "your therapy may need review"
+          },
+          {
+            "start": "00:00:04.500",
+            "end": "00:00:10.000",
+            "text": "contact your Sleepcare provider for support."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "12_High_breathing_events_contact_provider.fr.vtt",
+        "full_narration": "Si vos événements respiratoires restent élevés, votre traitement pourrait nécessiter une révision. Contactez votre professionnel du sommeil pour obtenir de l'aide.",
+        "cues": [
+          {
+            "start": "00:00:01.000",
+            "end": "00:00:02.500",
+            "text": "Si vos événements respiratoires restent élevés,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:04.500",
+            "text": "votre traitement pourrait nécessiter une révision."
+          },
+          {
+            "start": "00:00:04.500",
+            "end": "00:00:10.000",
+            "text": "Contactez votre professionnel du sommeil pour obtenir de l'aide."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 13,
+    "filename": "13_Biomarker_changes_use_CPAP_and_contact_provider.mp4",
+    "title": "Biomarker Changes - Use CPAP & Contact Provider",
+    "duration_s": 10.0,
+    "category": "Clinical Alerts",
+    "subtopic": "Biomarker Anomaly",
+    "trigger_type": "biomarker_anomaly",
+    "trigger_conditions": {
+      "CPAP_AHI": ">= 15.0",
+      "CPAP_Use": "< 3.0"
+    },
+    "tags": {
+      "clinical": [
+        "biomarker_anomaly",
+        "poor_adherence",
+        "high_ahi"
+      ],
+      "biomarker": [
+        "cpap_ahi_high",
+        "cpap_use_low"
+      ],
+      "symptom": [
+        "severe_exhaustion",
+        "morning_headache"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Highlights combined high AHI and insufficient nightly usage."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Emphasizes health risk of untreated sleep apnea."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Directs patient to wear mask full night and call homecare provider."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        5,
+        6,
+        12
+      ],
+      "can_precede": [
+        15,
+        16,
+        19
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2",
+        "existing_plus_generated"
+      ]
+    },
+    "safety_level": "clinical_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "13_Biomarker_changes_use_CPAP_and_contact_provider.en.vtt",
+        "full_narration": "Changes in your nighttime health signals can mean your sleep apnea is not fully controlled Wear your mask all night and contact your provider",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Changes in your nighttime health signals"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.500",
+            "text": "can mean your sleep apnea is not fully controlled"
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "Wear your mask all night and contact your provider"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "13_Biomarker_changes_use_CPAP_and_contact_provider.fr.vtt",
+        "full_narration": "Des changements dans vos signaux de santé nocturnes peuvent signifier que votre apnée du sommeil n'est pas totalement contrôlée. Portez votre masque toute la nuit et contactez votre professionnel de santé.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Des changements dans vos signaux de santé nocturnes"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.500",
+            "text": "peuvent signifier que votre apnée du sommeil n'est pas totalement contrôlée."
+          },
+          {
+            "start": "00:00:05.500",
+            "end": "00:00:10.000",
+            "text": "Portez votre masque toute la nuit et contactez votre professionnel de santé."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 14,
+    "filename": "14_Mask_style_change.mp4",
+    "title": "Mask Style Change Needed",
+    "duration_s": 10.0,
+    "category": "Mask & Equipment",
+    "subtopic": "Alternative Mask Fit",
+    "trigger_type": "unresolved_leak",
+    "trigger_conditions": {
+      "CPAP_Leaks95": ">= 40.0"
+    },
+    "tags": {
+      "clinical": [
+        "unresolved_leak",
+        "mask_type_change",
+        "nasal_vs_fullface"
+      ],
+      "biomarker": [
+        "cpap_leak_critical"
+      ],
+      "symptom": [
+        "persistent_leak",
+        "facial_soreness"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Displays extreme leak warning despite strap adjustments."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Reviewing alternative mask styles (nasal vs full-face)."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Recommends contacting homecare clinician for mask swap."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        8
+      ],
+      "can_precede": [
+        15
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "14_Mask_style_change.en.vtt",
+        "full_narration": "Sometimes the problem is not the machine but the mask style A different mask may fit your face better and reduce leaks",
+        "cues": [
+          {
+            "start": "00:00:01.000",
+            "end": "00:00:02.500",
+            "text": "Sometimes the problem is not the machine"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.000",
+            "text": "but the mask style"
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "A different mask may fit your face better and reduce leaks"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "14_Mask_style_change.fr.vtt",
+        "full_narration": "Parfois, le problème ne vient pas de la machine, mais du modèle de masque. Un masque différent pourrait mieux s'adapter à votre visage et réduire les fuites.",
+        "cues": [
+          {
+            "start": "00:00:01.000",
+            "end": "00:00:02.500",
+            "text": "Parfois, le problème ne vient pas de la machine,"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.000",
+            "text": "mais du modèle de masque."
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "Un masque différent pourrait mieux s'adapter à votre visage et réduire les fuites."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 15,
+    "filename": "15_Contact_your_provider.mp4",
+    "title": "Severe Apnea - Contact Your Provider",
+    "duration_s": 10.0,
+    "category": "Clinical Alerts",
+    "subtopic": "Urgent Clinical Escalation",
+    "trigger_type": "critical_ahi",
+    "trigger_conditions": {
+      "CPAP_AHI": ">= 30.0"
+    },
+    "tags": {
+      "clinical": [
+        "critical_ahi",
+        "urgent_care",
+        "physician_review"
+      ],
+      "biomarker": [
+        "cpap_ahi_critical"
+      ],
+      "symptom": [
+        "extreme_hypoxia",
+        "severe_gasping"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Red alert banner indicating severe apnea index level (AHI >= 30)."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Stresses importance of medical consultation for safety."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Displays direct provider contact button and emergency phone line."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        12,
+        13,
+        14,
+        16,
+        19,
+        22
+      ],
+      "can_precede": [],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "critical_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "15_Contact_your_provider.en.vtt",
+        "full_narration": "If leaks , dryness , snoring or discomfort continue after these adjustements contact your sleep team, you may need more support",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "If leaks , dryness , snoring or discomfort"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.000",
+            "text": "continue after these adjustements"
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "contact your sleep team, you may need more support"
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "15_Contact_your_provider.fr.vtt",
+        "full_narration": "Si les fuites, la sécheresse, les ronflements ou l'inconfort persistent après ces ajustements, contactez votre équipe de sommeil, vous pourriez avoir besoin de plus de soutien.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Si les fuites, la sécheresse, les ronflements ou l'inconfort"
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:05.000",
+            "text": "persistent après ces ajustements,"
+          },
+          {
+            "start": "00:00:05.000",
+            "end": "00:00:10.000",
+            "text": "contactez votre équipe de sommeil, vous pourriez avoir besoin de plus de soutien."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 16,
+    "filename": "16_ScanWatch_Low_nighttime_oxygen.mp4",
+    "title": "ScanWatch - Low Nighttime Oxygen",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Nocturnal Hypoxemia (ScanWatch)",
+    "trigger_type": "scanwatch",
+    "trigger_conditions": {
+      "ScanWatch_SpO2": "< 90.0",
+      "CPAP_Use": "< 4.0"
+    },
+    "tags": {
+      "clinical": [
+        "scanwatch",
+        "spo2_drop",
+        "nocturnal_hypoxemia"
+      ],
+      "biomarker": [
+        "scanwatch_spo2_low",
+        "cpap_use_low"
+      ],
+      "symptom": [
+        "morning_fog",
+        "shortness_of_breath"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "ScanWatch display showing nocturnal SpO2 dips below 90%."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Explains link between missing CPAP hours and oxygen desaturation."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Advises wearing CPAP continuously to stabilize oxygen."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        4,
+        6
+      ],
+      "can_precede": [
+        12,
+        13,
+        15,
+        22
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2",
+        "existing_plus_generated"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "16_ScanWatch_Low_nighttime_oxygen.en.vtt",
+        "full_narration": "Your watch showed lower nighttime oxygen than usual. Wear your CPAP all night and contact your provider if this pattern continues.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.800",
+            "text": "Your watch showed lower nighttime oxygen than usual."
+          },
+          {
+            "start": "00:05.000",
+            "end": "00:09.800",
+            "text": "Wear your CPAP all night and contact your provider if this pattern continues."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "16_ScanWatch_Low_nighttime_oxygen.fr.vtt",
+        "full_narration": "Votre montre a montré un taux d’oxygène nocturne plus bas que d’habitude. Portez votre CPAP toute la nuit et contactez votre professionnel de santé si cela continue.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.800",
+            "text": "Votre montre a montré un taux d’oxygène nocturne plus bas que d’habitude."
+          },
+          {
+            "start": "00:05.000",
+            "end": "00:09.800",
+            "text": "Portez votre CPAP toute la nuit et contactez votre professionnel de santé si cela continue."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 17,
+    "filename": "17_ScanWatch_Fragmented_sleep.mp4",
+    "title": "ScanWatch - Fragmented Sleep",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Sleep Micro-arousals (ScanWatch)",
+    "trigger_type": "scanwatch",
+    "trigger_conditions": {
+      "ScanWatch_MicroArousals": ">= 15/hr"
+    },
+    "tags": {
+      "clinical": [
+        "scanwatch",
+        "sleep_fragmentation",
+        "arousals"
+      ],
+      "biomarker": [
+        "scanwatch_fragmentation_high"
+      ],
+      "symptom": [
+        "restless_sleep",
+        "frequent_waking"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "ScanWatch hypnogram showing frequent nighttime awakenings."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Shows how mask leaks or high pressure trigger micro-arousals."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Suggests checking mask fit and bedroom sleep hygiene."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        6
+      ],
+      "can_precede": [
+        26,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "17_ScanWatch_Fragmented_sleep.en.vtt",
+        "full_narration": "Your sleep looked more interrupted than usual. Using your CPAP all night may help, and persistent changes should be discussed with your provider.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.800",
+            "text": "Your sleep looked more interrupted than usual."
+          },
+          {
+            "start": "00:05.000",
+            "end": "00:09.800",
+            "text": "Using your CPAP all night may help, and persistent changes should be discussed with your provider."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "17_ScanWatch_Fragmented_sleep.fr.vtt",
+        "full_narration": "Votre sommeil a semblé plus interrompu que d’habitude. Utiliser votre CPAP toute la nuit peut aider, et des changements persistants doivent être discutés avec votre professionnel de santé.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.800",
+            "text": "Votre sommeil a semblé plus interrompu que d’habitude."
+          },
+          {
+            "start": "00:05.000",
+            "end": "00:09.800",
+            "text": "Utiliser votre CPAP toute la nuit peut aider, et des changements persistants doivent être discutés avec votre professionnel de santé."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 18,
+    "filename": "18_ScanWatch_Unusual_heart_rhythm_signal.mp4",
+    "title": "ScanWatch - Unusual Heart Rhythm Signal",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Cardiac Rhythm Anomaly (ScanWatch)",
+    "trigger_type": "scanwatch",
+    "trigger_conditions": {
+      "ScanWatch_ECG_Anomaly": "True"
+    },
+    "tags": {
+      "clinical": [
+        "scanwatch",
+        "heart_rate_variability",
+        "arrhythmia_signal"
+      ],
+      "biomarker": [
+        "scanwatch_hrv_anomaly"
+      ],
+      "symptom": [
+        "palpitations",
+        "chest_flutter"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "ScanWatch notification showing irregular heart rhythm signal."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Illustrates how sleep apnea stresses cardiovascular system."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Recommends sharing watch ECG recording with physician."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        16,
+        17
+      ],
+      "can_precede": [
+        19,
+        20,
+        21
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2",
+        "existing_plus_generated"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "18_ScanWatch_Unusual_heart_rhythm_signal.en.vtt",
+        "full_narration": "Your watch detected an unusual heart rhythm signal. Stay calm and contact your provider for guidance.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.500",
+            "text": "Your watch detected an unusual heart rhythm signal."
+          },
+          {
+            "start": "00:04.700",
+            "end": "00:09.800",
+            "text": "Stay calm and contact your provider for guidance."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "18_ScanWatch_Unusual_heart_rhythm_signal.fr.vtt",
+        "full_narration": "Votre montre a détecté un signal inhabituel du rythme cardiaque. Restez calme et contactez votre professionnel de santé pour obtenir des conseils.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.500",
+            "text": "Votre montre a détecté un signal inhabituel du rythme cardiaque."
+          },
+          {
+            "start": "00:04.700",
+            "end": "00:09.800",
+            "text": "Restez calme et contactez votre professionnel de santé pour obtenir des conseils."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 19,
+    "filename": "19_BPM_Core_High_blood_pressure.mp4",
+    "title": "BPM Core - High Blood Pressure",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Hypertension Warning (BPM Core)",
+    "trigger_type": "bpm_core",
+    "trigger_conditions": {
+      "BPMCore_Systolic": ">= 140.0"
+    },
+    "tags": {
+      "clinical": [
+        "bpm_core",
+        "hypertension",
+        "blood_pressure"
+      ],
+      "biomarker": [
+        "bpm_core_sys_high"
+      ],
+      "symptom": [
+        "morning_headache",
+        "chest_tightness"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "BPM Core monitor displaying elevated blood pressure (>=140 mmHg)."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Correlates untreated sleep apnea with morning hypertension."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Encourages daily BP logging and strict CPAP compliance."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        4,
+        6,
+        13,
+        16
+      ],
+      "can_precede": [
+        15,
+        20,
+        21
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "19_BPM_Core_High_blood_pressure.en.vtt",
+        "full_narration": "Your blood pressure reading was higher than usual. Repeat the measurement as instructed and contact your provider if this continues.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.700",
+            "text": "Your blood pressure reading was higher than usual."
+          },
+          {
+            "start": "00:04.900",
+            "end": "00:09.800",
+            "text": "Repeat the measurement as instructed and contact your provider if this continues."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "19_BPM_Core_High_blood_pressure.fr.vtt",
+        "full_narration": "Votre tension artérielle était plus élevée que d’habitude. Refaites la mesure comme indiqué et contactez votre professionnel de santé si cela continue.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.700",
+            "text": "Votre tension artérielle était plus élevée que d’habitude."
+          },
+          {
+            "start": "00:04.900",
+            "end": "00:09.800",
+            "text": "Refaites la mesure comme indiqué et contactez votre professionnel de santé si cela continue."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 20,
+    "filename": "20_BPM_Core_Irregular_ECG_alert.mp4",
+    "title": "BPM Core - Irregular ECG Alert",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Electrocardiogram Anomaly (BPM Core)",
+    "trigger_type": "bpm_core",
+    "trigger_conditions": {
+      "BPMCore_ECG_Status": "Afib_Risk"
+    },
+    "tags": {
+      "clinical": [
+        "bpm_core",
+        "ecg_irregular",
+        "atrial_fibrillation_risk"
+      ],
+      "biomarker": [
+        "bpm_core_ecg_afib"
+      ],
+      "symptom": [
+        "racing_heart",
+        "dizziness"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "BPM Core digital display alerting irregular ECG rhythm."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Shows 3-lead ECG wave recording with fluctuating intervals."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Advises sending ECG PDF report to cardiologist."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        18,
+        19
+      ],
+      "can_precede": [
+        15,
+        21
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "critical_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "20_BPM_Core_Irregular_ECG_alert.en.vtt",
+        "full_narration": "Your home heart rhythm check looked unusual. Stay calm and contact your provider for guidance.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.400",
+            "text": "Your home heart rhythm check looked unusual."
+          },
+          {
+            "start": "00:04.600",
+            "end": "00:09.800",
+            "text": "Stay calm and contact your provider for guidance."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "20_BPM_Core_Irregular_ECG_alert.fr.vtt",
+        "full_narration": "Votre contrôle du rythme cardiaque à domicile a semblé inhabituel. Restez calme et contactez votre professionnel de santé pour obtenir des conseils.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.400",
+            "text": "Votre contrôle du rythme cardiaque à domicile a semblé inhabituel."
+          },
+          {
+            "start": "00:04.600",
+            "end": "00:09.800",
+            "text": "Restez calme et contactez votre professionnel de santé pour obtenir des conseils."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 21,
+    "filename": "21_BPM_Core_Heart_sound_review_needed.mp4",
+    "title": "BPM Core - Heart Sound Review Needed",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Digital Stethoscope Assessment (BPM Core)",
+    "trigger_type": "bpm_core",
+    "trigger_conditions": {
+      "BPMCore_Stethoscope": "Review_Required"
+    },
+    "tags": {
+      "clinical": [
+        "bpm_core",
+        "valvular_sound",
+        "digital_stethoscope"
+      ],
+      "biomarker": [
+        "bpm_core_stethoscope_alert"
+      ],
+      "symptom": [
+        "heart_murmur_signal",
+        "fatigue"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Stethoscope indicator flashing on BPM Core device."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Explains acoustic sensor listening to heart valve sound patterns."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Prompts user to sync device with clinical portal for physician review."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        19,
+        20
+      ],
+      "can_precede": [
+        15
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "21_BPM_Core_Heart_sound_review_needed.en.vtt",
+        "full_narration": "Your heart sound recording may need review. Share the result with your provider for next steps.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.500",
+            "text": "Your heart sound recording may need review."
+          },
+          {
+            "start": "00:04.700",
+            "end": "00:09.800",
+            "text": "Share the result with your provider for next steps."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "21_BPM_Core_Heart_sound_review_needed.fr.vtt",
+        "full_narration": "Votre enregistrement des sons cardiaques peut nécessiter une évaluation. Partagez le résultat avec votre professionnel de santé pour connaître la suite.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.500",
+            "text": "Votre enregistrement des sons cardiaques peut nécessiter une évaluation."
+          },
+          {
+            "start": "00:04.700",
+            "end": "00:09.800",
+            "text": "Partagez le résultat avec votre professionnel de santé pour connaître la suite."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "critical"
+  },
+  {
+    "video_id": 22,
+    "filename": "22_RadG_Low_oxygen_reading.mp4",
+    "title": "RadG - Low Oxygen Reading",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Pulse Oximetry Alert (RadG)",
+    "trigger_type": "radg",
+    "trigger_conditions": {
+      "RadG_SpO2": "< 88.0"
+    },
+    "tags": {
+      "clinical": [
+        "radg",
+        "pulse_oximetry",
+        "spo2_low"
+      ],
+      "biomarker": [
+        "radg_spo2_low"
+      ],
+      "symptom": [
+        "cyanosis_risk",
+        "shortness_of_breath"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "RadG bedside monitor showing SpO2 reading dropping below 88%."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Demonstrates continuous real-time blood oxygen monitoring."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Recommends verifying sensor placement and ensuring CPAP airflow."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        16
+      ],
+      "can_precede": [
+        15,
+        23
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2",
+        "existing_plus_generated"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "22_RadG_Low_oxygen_reading.en.vtt",
+        "full_narration": "Your oxygen reading was lower than expected. Wear your CPAP all night and contact your provider if low readings continue.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.500",
+            "text": "Your oxygen reading was lower than expected."
+          },
+          {
+            "start": "00:04.700",
+            "end": "00:09.800",
+            "text": "Wear your CPAP all night and contact your provider if low readings continue."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "22_RadG_Low_oxygen_reading.fr.vtt",
+        "full_narration": "Votre taux d’oxygène était plus bas que prévu. Portez votre CPAP toute la nuit et contactez votre professionnel de santé si cela continue.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.500",
+            "text": "Votre taux d’oxygène était plus bas que prévu."
+          },
+          {
+            "start": "00:04.700",
+            "end": "00:09.800",
+            "text": "Portez votre CPAP toute la nuit et contactez votre professionnel de santé si cela continue."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 23,
+    "filename": "23_RadG_Pulse_or_breathing_instability.mp4",
+    "title": "RadG - Pulse or Breathing Instability",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Hemodynamic Instability (RadG)",
+    "trigger_type": "radg",
+    "trigger_conditions": {
+      "RadG_PR_Variability": "High"
+    },
+    "tags": {
+      "clinical": [
+        "radg",
+        "pulse_variability",
+        "respiratory_instability"
+      ],
+      "biomarker": [
+        "radg_pr_instability"
+      ],
+      "symptom": [
+        "rapid_pulse",
+        "irregular_breathing"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "RadG graph displaying erratic pulse rate spikes."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Correlates pulse instability with obstructive apnea events."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Advises patient to rest and notify homecare manager."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        22
+      ],
+      "can_precede": [
+        12,
+        15
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "23_RadG_Pulse_or_breathing_instability.en.vtt",
+        "full_narration": "Your pulse or breathing signals looked unusual. Recheck the sensor and contact your provider if this continues.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.700",
+            "text": "Your pulse or breathing signals looked unusual."
+          },
+          {
+            "start": "00:04.900",
+            "end": "00:09.800",
+            "text": "Recheck the sensor and contact your provider if this continues."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "23_RadG_Pulse_or_breathing_instability.fr.vtt",
+        "full_narration": "Vos signaux de pouls ou de respiration ont semblé inhabituels. Vérifiez à nouveau le capteur et contactez votre professionnel de santé si cela continue.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.700",
+            "text": "Vos signaux de pouls ou de respiration ont semblé inhabituels."
+          },
+          {
+            "start": "00:04.900",
+            "end": "00:09.800",
+            "text": "Vérifiez à nouveau le capteur et contactez votre professionnel de santé si cela continue."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 24,
+    "filename": "24_ProShirt_Breathing_pattern_changed.mp4",
+    "title": "ProShirt - Breathing Pattern Changed",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Thoraco-Abdominal Kinematics (ProShirt)",
+    "trigger_type": "proshirt",
+    "trigger_conditions": {
+      "ProShirt_Asynchrony": "> 30%"
+    },
+    "tags": {
+      "clinical": [
+        "proshirt",
+        "respiratory_effort",
+        "paradoxical_breathing"
+      ],
+      "biomarker": [
+        "proshirt_effort_high"
+      ],
+      "symptom": [
+        "chest_strain",
+        "labored_breathing"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "ProShirt animation highlighting chest and abdominal expansion sensors."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Detects paradoxical breathing effort during obstructive airway events."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Confirms need for continuous pressure therapy to stabilize breathing."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        4,
+        6
+      ],
+      "can_precede": [
+        25,
+        26
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "24_ProShirt_Breathing_pattern_changed.en.vtt",
+        "full_narration": "Your overnight breathing pattern changed more than usual. Use your CPAP carefully and contact your provider if this continues.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.900",
+            "text": "Your overnight breathing pattern changed more than usual."
+          },
+          {
+            "start": "00:05.100",
+            "end": "00:09.800",
+            "text": "Use your CPAP carefully and contact your provider if this continues."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "24_ProShirt_Breathing_pattern_changed.fr.vtt",
+        "full_narration": "Votre respiration pendant la nuit a changé davantage que d’habitude. Utilisez votre CPAP avec soin et contactez votre professionnel de santé si cela continue.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.900",
+            "text": "Votre respiration pendant la nuit a changé davantage que d’habitude."
+          },
+          {
+            "start": "00:05.100",
+            "end": "00:09.800",
+            "text": "Utilisez votre CPAP avec soin et contactez votre professionnel de santé si cela continue."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 25,
+    "filename": "25_ProShirt_Fit_check.mp4",
+    "title": "ProShirt - Fit Check",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Smart Garment Positioning (ProShirt)",
+    "trigger_type": "proshirt",
+    "trigger_conditions": {
+      "ProShirt_SignalQuality": "< 70%"
+    },
+    "tags": {
+      "clinical": [
+        "proshirt",
+        "sensor_alignment",
+        "garment_fit"
+      ],
+      "biomarker": [
+        "proshirt_signal_noise"
+      ],
+      "symptom": [
+        "loose_garment",
+        "signal_loss"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "ProShirt alert indicating poor sensor contact or signal noise."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Adjusting garment zipper and alignment over chest."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Signal quality indicator turns green confirming proper sensor fit."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        24
+      ],
+      "can_precede": [],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "25_ProShirt_Fit_check.en.vtt",
+        "full_narration": "Make sure your monitoring shirt fits correctly before sleep so your breathing and heart signals are captured clearly.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.900",
+            "text": "Make sure your monitoring shirt fits correctly before sleep"
+          },
+          {
+            "start": "00:05.100",
+            "end": "00:09.800",
+            "text": "so your breathing and heart signals are captured clearly."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "25_ProShirt_Fit_check.fr.vtt",
+        "full_narration": "Assurez-vous que votre vêtement de suivi est bien ajusté avant de dormir afin que votre respiration et vos signaux cardiaques soient correctement enregistrés.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.900",
+            "text": "Assurez-vous que votre vêtement de suivi est bien ajusté avant de dormir"
+          },
+          {
+            "start": "00:05.100",
+            "end": "00:09.800",
+            "text": "afin que votre respiration et vos signaux cardiaques soient correctement enregistrés."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "low"
+  },
+  {
+    "video_id": 26,
+    "filename": "26_SomnoArt_Sleep_architecture_changed.mp4",
+    "title": "SomnoArt - Sleep Architecture Changed",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Sleep Staging & REM Reduction (SomnoArt)",
+    "trigger_type": "somnoart",
+    "trigger_conditions": {
+      "SomnoArt_REM_Pct": "< 12.0"
+    },
+    "tags": {
+      "clinical": [
+        "somnoart",
+        "rem_reduction",
+        "deep_sleep_loss"
+      ],
+      "biomarker": [
+        "somnoart_rem_low"
+      ],
+      "symptom": [
+        "daytime_sleepiness",
+        "memory_fog"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "SomnoArt clinical hypnogram showing absence of deep REM sleep cycles."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Explains how sleep apnea micro-arousals suppress restorative REM sleep."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Encourages consistent CPAP use to restore natural sleep architecture."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        6,
+        17,
+        24
+      ],
+      "can_precede": [
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_1_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "26_SomnoArt_Sleep_architecture_changed.en.vtt",
+        "full_narration": "Your sleep pattern changed during the night. Use your CPAP all night and discuss ongoing changes with your provider.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.800",
+            "text": "Your sleep pattern changed during the night."
+          },
+          {
+            "start": "00:05.000",
+            "end": "00:09.800",
+            "text": "Use your CPAP all night and discuss ongoing changes with your provider."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "26_SomnoArt_Sleep_architecture_changed.fr.vtt",
+        "full_narration": "Votre structure de sommeil a changé pendant la nuit. Utilisez votre CPAP toute la nuit et discutez de ces changements avec votre professionnel de santé.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.800",
+            "text": "Votre structure de sommeil a changé pendant la nuit."
+          },
+          {
+            "start": "00:05.000",
+            "end": "00:09.800",
+            "text": "Utilisez votre CPAP toute la nuit et discutez de ces changements avec votre professionnel de santé."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 27,
+    "filename": "27_SomnoArt_Poor_sleep_continuity.mp4",
+    "title": "SomnoArt - Poor Sleep Continuity",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Sleep Efficiency Index (SomnoArt)",
+    "trigger_type": "somnoart",
+    "trigger_conditions": {
+      "SomnoArt_SleepEfficiency": "< 75.0%"
+    },
+    "tags": {
+      "clinical": [
+        "somnoart",
+        "sleep_efficiency",
+        "insomnia_co_morbidity"
+      ],
+      "biomarker": [
+        "somnoart_efficiency_low"
+      ],
+      "symptom": [
+        "frequent_awakenings",
+        "unrefreshing_sleep"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "SomnoArt report displaying low overall sleep efficiency (<75%)."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Identifies frequent awakening periods throughout the night."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Recommends optimizing CPAP humidity, mask comfort, and sleep schedule."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        6,
+        17,
+        26
+      ],
+      "can_precede": [
+        15
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "27_SomnoArt_Poor_sleep_continuity.en.vtt",
+        "full_narration": "Your sleep was more interrupted than usual. Wear your CPAP all night and discuss persistent changes with your provider.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.700",
+            "text": "Your sleep was more interrupted than usual."
+          },
+          {
+            "start": "00:04.900",
+            "end": "00:09.800",
+            "text": "Wear your CPAP all night and discuss persistent changes with your provider."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "27_SomnoArt_Poor_sleep_continuity.fr.vtt",
+        "full_narration": "Votre sommeil a été plus interrompu que d’habitude. Portez votre CPAP toute la nuit et discutez de changements persistants avec votre professionnel de santé.",
+        "cues": [
+          {
+            "start": "00:00.000",
+            "end": "00:04.700",
+            "text": "Votre sommeil a été plus interrompu que d’habitude."
+          },
+          {
+            "start": "00:04.900",
+            "end": "00:09.800",
+            "text": "Portez votre CPAP toute la nuit et discutez de changements persistants avec votre professionnel de santé."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 28,
+    "filename": "28_Hexoskin_Electrode_moistening_prep.mp4",
+    "title": "Hexoskin - Electrode Moistening Prep",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Hexoskin Cardiac Contact",
+    "trigger_type": "hexoskin_ecg_impedance",
+    "trigger_conditions": {
+      "Hexoskin_ECG_Quality": "< 40.0%",
+      "HR_Dropout_Rate": ">= 30.0%"
+    },
+    "tags": {
+      "clinical": [
+        "hexoskin",
+        "ecg_electrode",
+        "moisture_prep",
+        "cardiac_telemetry"
+      ],
+      "biomarker": [
+        "ecg_snr",
+        "heart_rate_variability"
+      ],
+      "symptom": [
+        "noisy_ecg",
+        "heart_rate_dropouts"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient holds Hexoskin shirt; app alerts noisy ECG baseline."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Patient applies drop of water or moisturizing gel to the 3 gray cardiac electrodes."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Puts shirt on; ECG waveform stabilizes into a clean rhythm."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "28_Hexoskin_Electrode_moistening_prep.en.vtt",
+        "full_narration": "If cardiac signals are weak, apply a small drop of water or moisturizing cream to the three gray electrodes inside your shirt for optimal contact.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "If cardiac signals are weak,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "apply a small drop of water or moisturizing cream to the three gray electrodes"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "inside your shirt for optimal contact."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "28_Hexoskin_Electrode_moistening_prep.fr.vtt",
+        "full_narration": "Si le signal cardiaque est faible, appliquez une goutte d'eau ou de crème hydratante sur les trois électrodes grises à l'intérieur du vêtement.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Si le signal cardiaque est faible,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "appliquez une goutte d'eau ou de crème hydratante sur les trois électrodes grises"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "à l'intérieur du vêtement."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "low"
+  },
+  {
+    "video_id": 29,
+    "filename": "29_Hexoskin_Elastic_strap_adjustment.mp4",
+    "title": "Hexoskin - Elastic Strap Adjustment",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Hexoskin RIP Straps",
+    "trigger_type": "hexoskin_rip_displacement",
+    "trigger_conditions": {
+      "Hexoskin_Thorax_Abdomen_Async": "> 25.0%",
+      "Breathing_Signal_Noise": "== High"
+    },
+    "tags": {
+      "clinical": [
+        "hexoskin",
+        "rip_respiratory_bands",
+        "strap_adjustment",
+        "breathing_tracking"
+      ],
+      "biomarker": [
+        "respiratory_inductive_plethysmography",
+        "breathing_asynchrony"
+      ],
+      "symptom": [
+        "erratic_breathing_signal",
+        "garment_wrinkling"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient turns in bed; loose fabric creates erratic breathing curves."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Patient sits up and fastens upper chest and lower abdominal elastic straps snugly."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Lying down; smooth synchronized thoracic and abdominal breathing waves appear."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "29_Hexoskin_Elastic_strap_adjustment.en.vtt",
+        "full_narration": "Fasten the chest and abdominal elastic straps snugly over your shirt to prevent sensor shifting and ensure accurate breathing tracking.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Fasten the chest and abdominal elastic straps snugly over your shirt"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "to prevent sensor shifting"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "and ensure accurate breathing tracking."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "29_Hexoskin_Elastic_strap_adjustment.fr.vtt",
+        "full_narration": "Ajustez les sangles élastiques sur la poitrine et l'abdomen pour maintenir les capteurs bien en place et fiabiliser les données respiratoires.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Ajustez les sangles élastiques sur la poitrine et l'abdomen"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "pour maintenir les capteurs bien en place"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "et fiabiliser les données respiratoires."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "low"
+  },
+  {
+    "video_id": 30,
+    "filename": "30_Hexoskin_Recorder_docking_led_check.mp4",
+    "title": "Hexoskin - Recorder Docking Check",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Hexoskin Docking & Status",
+    "trigger_type": "hexoskin_recording_inactive",
+    "trigger_conditions": {
+      "Hexoskin_Device_Status": "== 'Disconnected'",
+      "Recording_Active": "== False"
+    },
+    "tags": {
+      "clinical": [
+        "hexoskin",
+        "device_docking",
+        "led_status",
+        "sleep_recording"
+      ],
+      "biomarker": [
+        "hardware_telemetry_link"
+      ],
+      "symptom": [
+        "missing_recording",
+        "unseated_connector"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Device placed loosely in side pocket; recording not initiated."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Patient firmly pushes connector into socket until middle orange LED turns solid."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Tucks recorder neatly into side pocket with cable loop secure."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "30_Hexoskin_Recorder_docking_led_check.en.vtt",
+        "full_narration": "Firmly plug the recording device into the garment connector until the middle orange light turns solid, confirming your session is recording.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Firmly plug the recording device into the garment connector"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "until the middle orange light turns solid,"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "confirming your session is recording."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "30_Hexoskin_Recorder_docking_led_check.fr.vtt",
+        "full_narration": "Enclenchez fermement le boîtier sur le connecteur du vêtement jusqu'à ce que le voyant orange reste allumé en continu.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Enclenchez fermement le boîtier sur le connecteur du vêtement"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "jusqu'à ce que le voyant orange"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "reste allumé en continu."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 31,
+    "filename": "31_MightySat_Low_perfusion_hand_warming.mp4",
+    "title": "MightySat - Low Perfusion Hand Warming",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "MightySat Perfusion Index",
+    "trigger_type": "mightysat_low_pi",
+    "trigger_conditions": {
+      "MightySat_PI": "< 0.5%",
+      "SpO2_Confidence": "< 50.0%"
+    },
+    "tags": {
+      "clinical": [
+        "masimo",
+        "mightysat",
+        "perfusion_index",
+        "vasoconstriction",
+        "spo2"
+      ],
+      "biomarker": [
+        "perfusion_index_pi",
+        "peripheral_blood_flow"
+      ],
+      "symptom": [
+        "cold_fingers",
+        "low_pulse_amplitude"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "MightySat screen displays low perfusion (PI 0.2%) with weak signal bar."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Patient removes sensor and rubs palms together vigorously to warm fingers."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Re-inserts middle finger; display shows robust PI 2.8% and steady 98% SpO2."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "31_MightySat_Low_perfusion_hand_warming.en.vtt",
+        "full_narration": "If your Perfusion Index is low, warm your hands by rubbing them together for a moment to improve blood flow before placing the sensor.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "If your Perfusion Index is low,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "warm your hands by rubbing them together for a moment to improve blood flow"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "before placing the sensor."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "31_MightySat_Low_perfusion_hand_warming.fr.vtt",
+        "full_narration": "Si l'indice de perfusion est faible, réchauffez vos mains en les frottant pour stimuler la circulation avant de placer le capteur.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Si l'indice de perfusion est faible,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "réchauffez vos mains en les frottant pour stimuler la circulation"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "avant de placer le capteur."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 32,
+    "filename": "32_MightySat_Finger_depth_nail_prep.mp4",
+    "title": "MightySat - Finger Depth & Nail Prep",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "MightySat Sensor Placement",
+    "trigger_type": "mightysat_optical_blockage",
+    "trigger_conditions": {
+      "MightySat_SpO2_Error": "== 'Optical_Blockage'",
+      "Pulse_Waveform": "== 'Erratic'"
+    },
+    "tags": {
+      "clinical": [
+        "masimo",
+        "mightysat",
+        "optical_sensors",
+        "finger_placement",
+        "nail_polish"
+      ],
+      "biomarker": [
+        "photoplethysmography_light_absorption",
+        "spo2_accuracy"
+      ],
+      "symptom": [
+        "optical_sensor_blockage",
+        "unsteady_pulse_wave"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Sensor partially inserted shows fluctuating pulse wave."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Slides clean bare finger fully inside until touching internal alignment stop."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Smooth arterial plethysmograph waveform appears with immediate lock."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "32_MightySat_Finger_depth_nail_prep.en.vtt",
+        "full_narration": "Insert your finger completely until it touches the internal stop on a clean, unpolished nail for precise oxygen readings.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Insert your finger completely until it touches the internal stop"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "on a clean, unpolished nail"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "for precise oxygen readings."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "32_MightySat_Finger_depth_nail_prep.fr.vtt",
+        "full_narration": "Insérez votre doigt jusqu'au fond de l'appareil sur un ongle propre et sans vernis pour une mesure précise de l'oxygène.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Insérez votre doigt jusqu'au fond de l'appareil"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "sur un ongle propre et sans vernis"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "pour une mesure précise de l'oxygène."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "low"
+  },
+  {
+    "video_id": 33,
+    "filename": "33_MightySat_Signal_iq_light_shielding.mp4",
+    "title": "MightySat - Signal IQ Light Shielding",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "MightySat Signal Quality",
+    "trigger_type": "mightysat_low_siq",
+    "trigger_conditions": {
+      "MightySat_SIQ": "< 30.0%",
+      "Ambient_Light_Interference": "== High"
+    },
+    "tags": {
+      "clinical": [
+        "masimo",
+        "mightysat",
+        "signal_iq",
+        "ambient_light",
+        "motion_artifacts"
+      ],
+      "biomarker": [
+        "signal_confidence_bar",
+        "pleth_variability_index"
+      ],
+      "symptom": [
+        "low_siq_confidence",
+        "light_glare_noise"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Direct bright bedside lamp glare causes Signal I.Q. bar to drop."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Dims direct lamp and rests forearm flat and completely still on mattress."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Signal I.Q. vertical confidence bar reaches full 100% height."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "33_MightySat_Signal_iq_light_shielding.en.vtt",
+        "full_narration": "Rest your hand flat and stay still for a few seconds away from direct bright light until the Signal I.Q. bar peaks.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Rest your hand flat and stay still for a few seconds"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "away from direct bright light"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "until the Signal I.Q. bar peaks."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "33_MightySat_Signal_iq_light_shielding.fr.vtt",
+        "full_narration": "Posez votre main à plat, restez immobile et évitez la lumière directe jusqu'à ce que la barre de signal atteigne son niveau maximal.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Posez votre main à plat, restez immobile"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "et évitez la lumière directe"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "jusqu'à ce que la barre de signal atteigne son niveau maximal."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "low"
+  },
+  {
+    "video_id": 34,
+    "filename": "34_SomnoArt_Forearm_positioning_ppg_seal.mp4",
+    "title": "SomnoArt - Forearm Positioning PPG Seal",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Somno-Art Forearm Placement",
+    "trigger_type": "somnoart_ppg_contact_loss",
+    "trigger_conditions": {
+      "SomnoArt_PPG_Contact": "== 'Poor'",
+      "Optical_Baseline_Drift": "== High"
+    },
+    "tags": {
+      "clinical": [
+        "somno_art",
+        "armband_placement",
+        "ppg_optical_contact",
+        "sleep_staging"
+      ],
+      "biomarker": [
+        "photoplethysmography_pulse_transit",
+        "heart_rate_variability"
+      ],
+      "symptom": [
+        "armband_slipping",
+        "optical_signal_gap"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Loose armband on wrist slips; app indicates poor optical contact."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Moves band to mid-forearm, adjusting Velcro snugly (1-finger clearance test)."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "PPG optical sensor sits securely flush against skin with green light."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "biomarker_alert",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "34_SomnoArt_Forearm_positioning_ppg_seal.en.vtt",
+        "full_narration": "Position the armband on your mid-forearm with a snug, comfortable fit so the optical sensor rests firmly against clean skin.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Position the armband on your mid-forearm"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "with a snug, comfortable fit"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "so the optical sensor rests firmly against clean skin."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "34_SomnoArt_Forearm_positioning_ppg_seal.fr.vtt",
+        "full_narration": "Placez le brassard au milieu de l'avant-bras avec un ajustement souple pour que le capteur optique adhère bien à la peau.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Placez le brassard au milieu de l'avant-bras"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "avec un ajustement souple"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "pour que le capteur optique adhère bien à la peau."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "low"
+  },
+  {
+    "video_id": 35,
+    "filename": "35_SomnoArt_Calibration_stillness_led_check.mp4",
+    "title": "SomnoArt - 1-Min Calibration Stillness",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Somno-Art Calibration",
+    "trigger_type": "somnoart_calibration_failed",
+    "trigger_conditions": {
+      "SomnoArt_Calibration_Status": "== 'Failed_Orange_LED'",
+      "Motion_During_Calibration": "== True"
+    },
+    "tags": {
+      "clinical": [
+        "somno_art",
+        "calibration_baseline",
+        "stillness",
+        "led_diagnostic"
+      ],
+      "biomarker": [
+        "autonomic_nervous_system_baseline"
+      ],
+      "symptom": [
+        "calibration_orange_led_error",
+        "motion_drift"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Power button pressed (2s); white LEDs flash in calibration mode."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Patient rests forearm completely still on pillow for 60 seconds."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "All LEDs illuminate solid green for 4 seconds, confirming calibration."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "35_SomnoArt_Calibration_stillness_led_check.en.vtt",
+        "full_narration": "After turning on your Somno-Art, keep your arm completely still for one minute until the lights turn solid green.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "After turning on your Somno-Art,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "keep your arm completely still for one minute"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "until the lights turn solid green."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "35_SomnoArt_Calibration_stillness_led_check.fr.vtt",
+        "full_narration": "Après avoir allumé votre Somno-Art, gardez le bras totalement immobile pendant une minute jusqu'à ce que les voyants deviennent verts.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Après avoir allumé votre Somno-Art,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "gardez le bras totalement immobile pendant une minute"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "jusqu'à ce que les voyants deviennent verts."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  },
+  {
+    "video_id": 36,
+    "filename": "36_SomnoArt_Pod_care_sleeve_washing.mp4",
+    "title": "SomnoArt - Pod Care & Sleeve Washing",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "Somno-Art Maintenance",
+    "trigger_type": "somnoart_optical_lens_fogging",
+    "trigger_conditions": {
+      "SomnoArt_Lens_Transmission": "< 60.0%",
+      "Maintenance_Due": "== True"
+    },
+    "tags": {
+      "clinical": [
+        "somno_art",
+        "pod_disinfection",
+        "textile_sleeve_wash",
+        "lens_maintenance"
+      ],
+      "biomarker": [
+        "optical_transmittance"
+      ],
+      "symptom": [
+        "cloudy_ppg_signal",
+        "sweat_residue"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient slides electronic pod out of fabric armband sleeve."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Places fabric sleeve in wash bag; gently wipes optical glass window with cloth."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Clean pod and fresh sleeve assembled ready for bedtime recording."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "36_SomnoArt_Pod_care_sleeve_washing.en.vtt",
+        "full_narration": "Always remove the electronic pod before washing the textile sleeve, and clean the optical sensor with a gentle wipe.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Always remove the electronic pod before washing the textile sleeve,"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "and clean the optical sensor"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "with a gentle wipe."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "36_SomnoArt_Pod_care_sleeve_washing.fr.vtt",
+        "full_narration": "Retirez toujours le boîtier électronique avant de laver le brassard textile et nettoyez le capteur optique avec une lingette douce.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Retirez toujours le boîtier électronique avant de laver le brassard textile"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "et nettoyez le capteur optique"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "avec une lingette douce."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "maintenance"
+  },
+  {
+    "video_id": 37,
+    "filename": "37_CoUsage_CPAP_tubing_sensor_clearance.mp4",
+    "title": "Co-Usage - CPAP Tubing Sensor Clearance",
+    "duration_s": 10.0,
+    "category": "Wearable Biomarkers",
+    "subtopic": "CPAP & Wearable Co-Usage",
+    "trigger_type": "cpap_wearable_tubing_entanglement",
+    "trigger_conditions": {
+      "CPAP_Mask_Dislodge_Events": ">= 2",
+      "Wearable_Motion_Spikes": "== High"
+    },
+    "tags": {
+      "clinical": [
+        "cpap",
+        "hose_routing",
+        "wearable_armband",
+        "co_monitoring"
+      ],
+      "biomarker": [
+        "cpap_mask_stability",
+        "arm_motion_freedom"
+      ],
+      "symptom": [
+        "tubing_pulling_on_arm",
+        "nighttime_awakening"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "CPAP hose pulls on wearable armband during bedtime turning."
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Re-routes air hose overhead behind pillow, giving full arm clearance."
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Turns comfortably on side with no pulling on mask or sensors."
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        15,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "37_CoUsage_CPAP_tubing_sensor_clearance.en.vtt",
+        "full_narration": "Route your CPAP tubing overhead or behind your pillow so it moves freely without pulling on your wearable monitoring sensors.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Route your CPAP tubing overhead or behind your pillow"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "so it moves freely without pulling"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "on your wearable monitoring sensors."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "37_CoUsage_CPAP_tubing_sensor_clearance.fr.vtt",
+        "full_narration": "Acheminez le tuyau PPC au-dessus de l'oreiller pour éviter qu'il ne tire sur vos capteurs et votre brassard de suivi.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:03.000",
+            "text": "Acheminez le tuyau PPC au-dessus de l'oreiller"
+          },
+          {
+            "start": "00:00:03.000",
+            "end": "00:00:07.000",
+            "text": "pour éviter qu'il ne tire"
+          },
+          {
+            "start": "00:00:07.000",
+            "end": "00:00:10.000",
+            "text": "sur vos capteurs et votre brassard de suivi."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 38,
+    "filename": "38_Create_A_Clinical_Instructional_Animation_Showing.mp4",
+    "title": "Create A Clinical Instructional Animation Showing",
+    "type": "generated_ai_video",
+    "duration_s": 10.0,
+    "category": "Personalized Coaching",
+    "subtopic": "Create A Clinical Instructional Animation Showing",
+    "trigger_type": "clinical_anomaly_trigger",
+    "trigger_conditions": {
+      "Clinical_Anomaly_Score": ">= 0.75"
+    },
+    "tags": {
+      "clinical": [
+        "personalized_coaching"
+      ],
+      "biomarker": [
+        "telemetry_alert"
+      ],
+      "symptom": [
+        "therapy_discomfort"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient therapy assessment and intro"
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Demonstration of personalized coaching intervention"
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Optimal therapeutic compliance outcome"
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "38_Create_A_Clinical_Instructional_Animation_Showing.en.vtt",
+        "full_narration": "Your blood pressure reading was higher than usual. Repeat the measurement as instructed and contact your provider if this continues.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:04.700",
+            "text": "Your blood pressure reading was higher than usual."
+          },
+          {
+            "start": "00:00:04.900",
+            "end": "00:00:09.800",
+            "text": "Repeat the measurement as instructed and contact your provider if this continues."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "38_Create_A_Clinical_Instructional_Animation_Showing.fr.vtt",
+        "full_narration": "Votre tension artérielle était plus élevée que d'habitude. Refaites la mesure comme indiqué et contactez votre professionnel de santé si cela continue.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:04.700",
+            "text": "Votre tension artérielle était plus élevée que d'habitude."
+          },
+          {
+            "start": "00:00:04.900",
+            "end": "00:00:09.800",
+            "text": "Refaites la mesure comme indiqué et contactez votre professionnel de santé si cela continue."
+          }
+        ]
+      }
+    },
+    "condition_logic": "AND",
+    "clinical_priority": "high"
+  },
+  {
+    "video_id": 39,
+    "filename": "39_Humidifier_Tube_Adjustment_Animation.mp4",
+    "title": "Humidifier Tube Adjustment Animation",
+    "type": "generated_ai_video",
+    "duration_s": 10.0,
+    "category": "Personalized Coaching",
+    "subtopic": "Humidifier Tube Adjustment Animation",
+    "trigger_type": "humidification_comfort",
+    "trigger_conditions": {
+      "Humidity_Discomfort_Index": ">= 2.0"
+    },
+    "tags": {
+      "clinical": [
+        "humidifier",
+        "anti_rainout"
+      ],
+      "biomarker": [
+        "airway_hydration"
+      ],
+      "symptom": [
+        "nasal_dryness",
+        "condensation_in_tube"
+      ]
+    },
+    "technical_specs": {
+      "resolution": "1920x1080",
+      "fps": 30.0,
+      "frame_count": 300,
+      "aspect_ratio": "16:9"
+    },
+    "scene_segmentation": {
+      "start_scene_0_3s": {
+        "timecode": "00:00:00 - 00:00:03",
+        "description": "Patient therapy assessment and intro"
+      },
+      "core_scene_3_7s": {
+        "timecode": "00:00:03 - 00:00:07",
+        "description": "Demonstration of personalized coaching intervention"
+      },
+      "end_scene_7_10s": {
+        "timecode": "00:00:07 - 00:00:10",
+        "description": "Optimal therapeutic compliance outcome"
+      }
+    },
+    "composability": {
+      "can_follow": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "can_precede": [
+        14,
+        27
+      ],
+      "transition_type": "fade_1_5s",
+      "reuse_mode": "standalone_or_sequence",
+      "scenario_fit": [
+        "standalone",
+        "clip_2_of_2"
+      ]
+    },
+    "safety_level": "standard",
+    "language_assets": {
+      "en": {
+        "subtitle_file": "39_Humidifier_Tube_Adjustment_Animation.en.vtt",
+        "full_narration": "Nasal congestion can make CPAP harder to use. A saline spray may help you breathe more comfortably.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "Nasal congestion can make CPAP harder to use."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:09.800",
+            "text": "A saline spray may help you breathe more comfortably."
+          }
+        ]
+      },
+      "fr": {
+        "subtitle_file": "39_Humidifier_Tube_Adjustment_Animation.fr.vtt",
+        "full_narration": "La congestion nasale peut rendre la PPC plus difficile à utiliser. Un spray salin peut vous aider à respirer plus confortablement.",
+        "cues": [
+          {
+            "start": "00:00:00.000",
+            "end": "00:00:02.500",
+            "text": "La congestion nasale peut rendre la PPC plus difficile à utiliser."
+          },
+          {
+            "start": "00:00:02.500",
+            "end": "00:00:09.800",
+            "text": "Un spray salin peut vous aider à respirer plus confortablement."
+          }
+        ]
+      }
+    },
+    "condition_logic": "OR",
+    "clinical_priority": "medium"
+  }
+]

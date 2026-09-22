@@ -1,0 +1,99 @@
+{
+  "video_id": 2,
+  "filename": "2_Mask_leak_refit_while_lying_down.mp4",
+  "title": "Refit Mask While Lying Down",
+  "duration_s": 10.0,
+  "category": "Mask & Equipment",
+  "subtopic": "Lying Down Refit",
+  "trigger_type": "mask_leak",
+  "trigger_conditions": {
+    "CPAP_Leaks95": ">= 30.0",
+    "CPAP_Use": ">= 2.0"
+  },
+  "tags": {
+    "clinical": [
+      "mask_leak",
+      "lying_down_fit",
+      "facial_contour"
+    ],
+    "biomarker": [
+      "cpap_leak"
+    ],
+    "symptom": [
+      "air_leak_in_bed"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Shows patient in bed experiencing leak while lying down."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Demonstrates unseating cushion and gently reseating while reclined."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Confirms leak-free seal in actual sleeping posture."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      3
+    ],
+    "can_precede": [
+      8,
+      14
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "2_Mask_leak_refit_while_lying_down.en.vtt",
+      "full_narration": "Your mask may fit differently when you lie down. Recheck the fit it in your sleeping position.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:02.500",
+          "text": "Your mask may fit differently when you lie down."
+        },
+        {
+          "start": "00:00:05.500",
+          "end": "00:00:10.000",
+          "text": "Recheck the fit it in your sleeping position."
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "2_Mask_leak_refit_while_lying_down.fr.vtt",
+      "full_narration": "Votre masque peut s'ajuster différemment lorsque vous êtes allongé. Vérifiez à nouveau l'ajustement dans votre position de sommeil.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:02.500",
+          "text": "Votre masque peut s'ajuster différemment lorsque vous êtes allongé."
+        },
+        {
+          "start": "00:00:05.500",
+          "end": "00:00:10.000",
+          "text": "Vérifiez à nouveau l'ajustement dans votre position de sommeil."
+        }
+      ]
+    }
+  },
+  "condition_logic": "AND",
+  "clinical_priority": "high"
+}

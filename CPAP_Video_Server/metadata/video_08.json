@@ -1,0 +1,110 @@
+{
+  "video_id": 8,
+  "filename": "8_Mouth_breathing_chin_support.mp4",
+  "title": "Mouth Breathing - Chin Support",
+  "duration_s": 10.0,
+  "category": "Mask & Equipment",
+  "subtopic": "Mouth Leak Control",
+  "trigger_type": "mouth_breathing",
+  "trigger_conditions": {
+    "CPAP_Leaks95": ">= 30.0",
+    "CPAP_Use": "< 2.0"
+  },
+  "tags": {
+    "clinical": [
+      "mouth_breathing",
+      "chin_strap",
+      "oral_leak"
+    ],
+    "biomarker": [
+      "cpap_leak_severe"
+    ],
+    "symptom": [
+      "open_mouth_sleeping",
+      "dry_mouth"
+    ]
+  },
+  "technical_specs": {
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "frame_count": 300,
+    "aspect_ratio": "16:9"
+  },
+  "scene_segmentation": {
+    "start_scene_0_3s": {
+      "timecode": "00:00:00 - 00:00:03",
+      "description": "Shows mouth dropping open under CPAP pressure."
+    },
+    "core_scene_3_7s": {
+      "timecode": "00:00:03 - 00:00:07",
+      "description": "Applying a chin strap or switching to a full face mask."
+    },
+    "end_scene_7_10s": {
+      "timecode": "00:00:07 - 00:00:10",
+      "description": "Keeps mouth closed to maintain therapeutic pressure."
+    }
+  },
+  "composability": {
+    "can_follow": [
+      1,
+      2,
+      7
+    ],
+    "can_precede": [
+      14
+    ],
+    "transition_type": "fade_1_5s",
+    "reuse_mode": "standalone_or_sequence",
+    "scenario_fit": [
+      "standalone",
+      "clip_2_of_2"
+    ]
+  },
+  "safety_level": "standard",
+  "language_assets": {
+    "en": {
+      "subtitle_file": "8_Mouth_breathing_chin_support.en.vtt",
+      "full_narration": "If you breathe through your mouth at night A chin support may help reduce dryness and keep therapy on track",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:02.500",
+          "text": "If you breathe through your mouth at night"
+        },
+        {
+          "start": "00:00:02.500",
+          "end": "00:00:05.500",
+          "text": "A chin support may help reduce dryness"
+        },
+        {
+          "start": "00:00:05.500",
+          "end": "00:00:10.000",
+          "text": "and keep therapy on track"
+        }
+      ]
+    },
+    "fr": {
+      "subtitle_file": "8_Mouth_breathing_chin_support.fr.vtt",
+      "full_narration": "Si vous respirez par la bouche la nuit, Une mentonnière peut aider à réduire la sécheresse et maintenir votre thérapie sur la bonne voie.",
+      "cues": [
+        {
+          "start": "00:00:00.000",
+          "end": "00:00:02.500",
+          "text": "Si vous respirez par la bouche la nuit,"
+        },
+        {
+          "start": "00:00:02.500",
+          "end": "00:00:05.500",
+          "text": "Une mentonnière peut aider à réduire la sécheresse"
+        },
+        {
+          "start": "00:00:05.500",
+          "end": "00:00:10.000",
+          "text": "et maintenir votre thérapie sur la bonne voie."
+        }
+      ]
+    }
+  },
+  "condition_logic": "AND",
+  "clinical_priority": "medium"
+}
